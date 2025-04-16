@@ -1,1 +1,63 @@
-.
+1. Wykrycie zdarzenia przez OCB
+OCB otrzymuje alert z systemu monitorowania.
+
+Po weryfikacji (np. aktywność wielu czujek) zakłada zgłoszenie w systemie OTRS/JIRA, przypisuje je jako ZDARZENIE KRYTYCZNE lub WAŻNE.
+
+Automatyczna notyfikacja mail/SMS/Teams trafia do:
+
+IBS (Inspektor Bezpieczeństwa Systemu),
+
+Administratora DIT odpowiedzialnego za system,
+
+Dyrektora DCB (z oznaczeniem „do wiadomości” – FYI).
+
+2. Reakcja IBS
+IBS weryfikuje możliwe konsekwencje zdarzenia (np. wpływ na poufność, integralność, dostępność).
+
+Jeśli potwierdza, że zdarzenie może mieć wpływ na ciągłość działania lub bezpieczeństwo – oznacza zgłoszenie w systemie jako „INCYDENT”.
+
+Uzupełnia w OTRS/JIRA wstępny opis skutków i ryzyka.
+
+Jeżeli ryzyko rośnie – eskaluje status incydentu na „KRYTYCZNY” → generuje automatyczne powiadomienie dla Dyrektora DCB.
+
+3. Działania DIT (Administrator)
+Administrator DIT podejmuje działania techniczne – ale nie raportuje ręcznie do wielu osób.
+
+Postęp działań jest aktualizowany przez DIT bezpośrednio w OTRS/JIRA (np. „Restart usługi zakończony”, „Weryfikujemy zapory”, „Zidentyfikowano błąd systemowy…”).
+
+IBS i OCB obserwują aktualizacje i reagują, jeśli wymagane są dalsze działania.
+
+4. Status dla Dyrektora DCB
+Dyrektor DCB nie jest angażowany w każdą wiadomość operacyjną.
+
+Otrzymuje automatyczne aktualizacje statusu na podstawie oznaczeń w systemie:
+
+„Otrzymano zgłoszenie”,
+
+„Działania trwają”,
+
+„Zdarzenie zamknięte – wymaga analizy po incydencie”.
+
+5. Zamknięcie zdarzenia
+IBS dokonuje oceny, czy działania naprawcze były wystarczające.
+
+W przypadku poważnych incydentów – inicjuje procedurę Post Incident Review.
+
+Raport powykonawczy zawiera:
+
+Przyczynę,
+
+Zakres wpływu,
+
+Podjęte działania,
+
+Rekomendacje na przyszłość.
+
+ Wdrożeniowe propozycje:
+
+Obszar	Usprawnienie
+Komunikacja	Automatyzacja powiadomień przez JIRA/OTRS i webhooki Teams/SMS
+Monitoring	Predefiniowane szablony zgłoszeń dla typów zdarzeń
+Odpowiedzialność	Jasno przypisane role: kto uruchamia zgłoszenie, kto analizuje, kto leczy
+Raportowanie	Panel przeglądowy (dashboard) z aktualnym statusem i linkami do incydentu
+Obciążenie DIT	Administratorzy tylko aktualizują status w systemie – bez zbędnych maili
