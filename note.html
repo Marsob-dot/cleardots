@@ -1,1 +1,55 @@
-.
+
+wpływ na dużą liczbę klientów,
+brak utraty danych (czyli dotyczy dostępności, nie poufności/integralności).
+To klasyczny incydent utrata dostępności funkcji krytycznej (DORA / RTS).
+Najbardziej adekwatna para Zagrożenie – Podatność (ISO 27005)
+Na podstawie Tabeli A.10 (zagrożenia) �
+oraz Tabeli A.11 (podatności) �
+Tabela A.10 -Tabela zagrożeń wg iso 27005.docx None
+Tabela A.11 - tabela podatności wg ISO 27005.docx None
+🔴 Wariant 1 – najbardziej ogólny i bezpieczny klasyfikacyjnie
+Zagrożenie:
+TT01 – Awaria urządzenia lub systemu
+Podatność:
+VN05 – Pojedynczy punkt awarii (SPOF)
+Dlaczego to pasuje?
+nastąpiła awaria komponentu,
+komponent najwyraźniej był krytyczny,
+brak redundancji lub nieskuteczny mechanizm przełączenia spowodował 2h przestój,
+skutkiem była niedostępność usługi bankowości elektronicznej.
+👉 To najczęstsza i najbardziej „kanoniczna” para dla takich zdarzeń w banku.
+Alternatywy – zależnie od przyczyny technicznej
+Jeżeli z RCA wyjdzie coś innego, wtedy para może być inna:
+🟡 Jeśli był to błąd wdrożeniowy / aktualizacja
+TH13 – Manipulacja oprogramowaniem �
++ VS19 – Nieskuteczna kontrola zmian �
+Tabela A.10 -Tabela zagrożeń wg iso 27005.docx None
+Tabela A.11 - tabela podatności wg ISO 27005.docx None
+Scenariusz: Zmiana → brak testów → błąd → niedostępność.
+🟡 Jeśli był to problem konfiguracyjny
+TT01 – Awaria urządzenia lub systemu
++ VS11 – Nieprawidłowa konfiguracja parametrów �
+Tabela A.11 - tabela podatności wg ISO 27005.docx None
+🟡 Jeśli był to problem przeciążeniowy
+TT02 – Przeciążenie systemu informacyjnego �
++ VN05 – Pojedynczy punkt awarii (SPOF) �
+Tabela A.10 -Tabela zagrożeń wg iso 27005.docx None
+Tabela A.11 - tabela podatności wg ISO 27005.docx None
+Co jest najbardziej logiczne dla Twojego opisu?
+Ponieważ podałeś tylko:
+"Awaria komponentu xxx" + 2h przestoju
+Bez informacji o:
+zmianie,
+ataku,
+przeciążeniu,
+błędzie operacyjnym,
+najbardziej neutralna i poprawna klasyfikacja do rejestru ryzyk będzie:
+✅ TT01 – Awaria urządzenia lub systemu
+✅ VN05 – Pojedynczy punkt awarii (SPOF)
+Jak to zapisać w arkuszu ryzyka (propozycja)
+Pełny scenariusz:
+Awaria krytycznego komponentu systemu bankowości elektronicznej, przy braku skutecznej redundancji (SPOF), skutkuje niedostępnością kanałów www i mobile przez ≥ 2h, co powoduje spełnienie kryteriów istotnego incydentu ICT wg RTS/DORA.
+Jeżeli chcesz — mogę teraz:
+dobrać właściwą klasyfikację ryzyka wg Twojej Metodyki (Po, Pr, Wp, Wi, Wd, Wa),
+albo ocenić czy to będzie incydent istotny wg RTS 2024/1772.
+
