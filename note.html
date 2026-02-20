@@ -1,1 +1,67 @@
-.
+
+VII. Podsumowanie ustaleń z przeglądu Ram zarządzania ryzykiem ICT oraz analiza i ocena wagi słabości
+1. Stan obecny
+Przeprowadzony przegląd potwierdził, że mechanizmy wykrywania i reagowania na incydenty funkcjonują prawidłowo.
+Detekcja niedostępności usługi nastąpiła niezwłocznie.
+Uruchomiono procedury reagowania zgodnie z obowiązującymi regulacjami.
+Przywrócenie dostępności usługi nastąpiło w czasie akceptowalnym operacyjnie, z wykorzystaniem scenariusza obejścia (VPN przez Internet).
+Nie stwierdzono naruszenia poufności ani integralności danych.
+Ramy zarządzania ryzykiem ICT zapewniły skuteczne zarządzanie fazą reakcji i odtworzenia.
+2. Zidentyfikowane słabości (procesowe / technologiczne)
+Incydent ujawnił niedoskonałości w obszarze kontroli prewencyjnych, w szczególności:
+brak formalnej weryfikacji rzeczywistej niezależności łączy podstawowego i zapasowego,
+brak cyklicznych testów scenariusza utraty obu łączy (failover end-to-end),
+ograniczoną walidację skuteczności zapewnianej przez dostawcę redundancji,
+brak formalnego mechanizmu potwierdzania spełnienia wymogów SLA w zakresie fizycznej separacji tras.
+Słabości miały charakter operacyjno-procesowy, a nie architektoniczny.
+3. Ocena wagi słabości
+Zidentyfikowane niedoskonałości:
+dotyczą funkcji krytycznej (dostęp klientów do rachunków),
+wpływają na atrybut dostępności,
+mają charakter zależny od dostawcy zewnętrznego.
+Jednocześnie:
+mechanizmy detekcji i reakcji działały prawidłowo,
+zdarzenie miało charakter incydentalny,
+nie stwierdzono utraty danych.
+W związku z powyższym waga słabości oceniana jest jako:
+umiarkowana (z elementem podwyższonej ekspozycji w obszarze dostępności usług zależnych od dostawców ICT).
+4. Powiązanie z funkcjami krytycznymi
+Incydent dotyczył funkcji krytycznej w rozumieniu DORA – zapewnienia klientom dostępu do rachunków i realizacji operacji bankowych.
+5. Wniosek ogólny
+Ramy zarządzania ryzykiem ICT są adekwatne i skuteczne w zakresie detekcji i reagowania na incydenty.
+Incydent wskazuje na potrzebę wzmocnienia kontroli prewencyjnych w obszarze:
+weryfikacji skuteczności redundancji,
+testowania scenariuszy skrajnych,
+nadzoru nad dostawcami usług krytycznych.
+Nie stwierdzono systemowej nieskuteczności Ram.
+📌 SCHEMAT DO STOSOWANIA W KOLEJNYCH SPRAWOZDANIACH
+Możesz zawsze używać tej struktury:
+1️⃣ Stan obecny (co działało)
+Detekcja
+Reakcja
+Odtworzenie
+Brak naruszenia CIA (jeśli dotyczy)
+2️⃣ Słabości
+procesowe
+technologiczne
+organizacyjne
+związane z dostawcą
+3️⃣ Ocena wagi
+niska
+umiarkowana
+umiarkowana z podwyższonym elementem
+wysoka
+(Uzasadnienie zawsze: funkcja krytyczna + atrybut bezpieczeństwa + zależność od TPP)
+4️⃣ Powiązanie z funkcjami krytycznymi
+Obowiązkowy element pod DORA.
+5️⃣ Wniosek systemowy
+Jedno zdanie:
+Ramy skuteczne / wymagają wzmocnienia / wymagają istotnej korekty
+🎯 Najważniejsze w Twoim przypadku
+Nie wpisuj: „Ramy były niewystarczające”.
+Wpisuj: „Ramy były skuteczne w obszarze detekcji i reakcji; wymagają wzmocnienia kontroli prewencyjnych”.
+To jest właściwy balans nadzorczy.
+Jeżeli chcesz, mogę teraz:
+pomóc Ci ustalić jednolitą skalę „Wagi słabości” dla wszystkich przyszłych raportów,
+albo przejrzeć Twoją klasyfikację „umiarkowana” i sprawdzić, czy nie powinna być „umiarkowana warunkowo”..
+
