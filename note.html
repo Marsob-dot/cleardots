@@ -1,1 +1,77 @@
-.
+
+🎯 SYSTEM ICT – Bankowość internetowa
+Typ incydentu: Utrata dostępności (7h)
+🔴 I. Główna para (rdzeń incydentu)
+Aktywum:
+39–50 → Sieć
+Zagrożenie:
+43 – Sieć – Awaria urządzenia telekomunikacyjnego
+Podatność:
+43 – Pojedynczy punkt uszkodzenia
+🔎 Uzasadnienie:
+Oba łącza były traktowane jako redundantne, ale operacyjnie nie były niezależne.
+To klasyczny Single Point of Failure ukryty jako redundancja.
+To powinna być para główna.
+🔴 II. Druga para – utrata łączności jako zagrożenie systemowe
+Aktywum:
+Sieć
+Zagrożenie:
+42 – Sieć – Awaria urządzenia telekomunikacyjnego
+Podatność:
+49 – Brak zarządzania konfiguracją oraz kontami na urządzeniach sieciowych
+(jeżeli routing/failover nie był zweryfikowany)
+lub — jeżeli konfiguracja była poprawna, ale brak realnej separacji:
+50 – Niezabezpieczone połączenia z siecią publiczną
+(jeżeli VPN przez Internet był obejściem, nie planem DR)
+🔴 III. Trzecia para – poziom nadzoru nad dostawcą
+Z Twojej listy najbliżej temu:
+Aktywum:
+Oprogramowanie dziedzinowe / systemowe
+Zagrożenie:
+32 – Niewłaściwe funkcjonowanie oprogramowania
+Podatność:
+34 – Brak skutecznej kontroli zmian
+ALE — to jest wtórne.
+Wprost z listy nie ma kategorii „dostawca ICT”, więc najlepiej ująć to poprzez:
+Aktywum: Sieć
+Zagrożenie: 43 – Awaria urządzenia telekomunikacyjnego
+Podatność: 47 – Nieodpowiednie zarządzanie siecią
+To obejmuje:
+brak weryfikacji niezależności operatorów,
+brak testów failover,
+brak kontroli realnej redundancji.
+🔴 IV. Czy coś z kategorii „Oprogramowanie” pasuje?
+Nie.
+To nie był:
+błąd aplikacji,
+błąd konfiguracji systemu,
+błąd użytkownika.
+To był incydent warstwy sieciowej i dostawcy.
+✅ Najbardziej adekwatny zestaw (do arkusza)
+Jeżeli masz wskazać jedną parę główną:
+Aktywum: Sieć
+Zagrożenie: 43 – Awaria urządzenia telekomunikacyjnego
+Podatność: 43 – Pojedynczy punkt uszkodzenia
+Jeżeli możesz wskazać 2–3:
+43 / 43 – Single Point of Failure
+43 / 47 – Nieodpowiednie zarządzanie siecią
+42 / 49 – Brak kontroli konfiguracji (jeżeli routing/failover nie był testowany)
+🎯 Co bym odrzucił
+Nie pasują:
+Podatności użytkownika (23–26),
+Nadużycia praw (16–20),
+Kradzież nośników (9–13),
+Fałszowanie (27–29),
+Szpiegostwo (45–46),
+Przeciążenie (47 jako zagrożenie).
+To nie był atak ani przeciążenie.
+🔎 Najważniejsze metodologicznie
+To nie jest tylko: „Awaria łącza”.
+To jest:
+Zagrożenie: Awaria urządzenia telekomunikacyjnego
+Podatność: Ukryty pojedynczy punkt uszkodzenia przy założonej redundancji
+To jest istota tego incydentu.
+Jeżeli chcesz, mogę teraz:
+dopasować analogicznie pary dla incydentu release i certyfikatu w tej samej tabeli 1–50,
+albo wskazać, które pozycje z Twojej listy wymagają doprecyzowania pod DORA (bo brakuje kategorii TPP)..
+
