@@ -1,1 +1,562 @@
-.
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1250">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.15  (Win32)">
+	<META NAME="CREATED" CONTENT="20090416;11320264">
+	<META NAME="CHANGEDBY" CONTENT="MS ">
+	<META NAME="CHANGED" CONTENT="20260603;15473309">
+	<META NAME="Info 1" CONTENT="">
+	<META NAME="Info 2" CONTENT="">
+	<META NAME="Info 3" CONTENT="">
+	<META NAME="Info 4" CONTENT="">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { size: 21cm 29.7cm; margin: 2cm }
+		P { margin-bottom: 0.21cm; so-language: zxx }
+		A:link { color: #000080; so-language: zxx; text-decoration: underline }
+		A:visited { color: #800000; so-language: zxx; text-decoration: underline }
+		STRONG { font-weight: bold }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="de-DE" LINK="#000080" VLINK="#800000" DIR="LTR">
+<P LANG="zxx">Wymagania w zakresie przeprowadzania testów Threat-Led
+Penetration Testing (TLPT)&rdquo;, w tym:</P>
+<DIV ID="thread" DIR="LTR">
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">podstawę prawną: DORA
+		oraz Rozporządzenie Delegowane Komisji (UE) 2025/1190, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">definicje: TLPT, Organ
+		ds. TLPT, Control Team, TIP, Red Team, Blue Team, Purple Team, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">odpowiedzialności
+		Dyrektora DB, Lidera Control Team, TIP, Red Team i Blue Team, 
+		</P>
+		<LI><P LANG="zxx">wymagania dla dostawców analizy zagrożeń i
+		testerów zewnętrznych. 
+		</P>
+	</UL>
+	<P LANG="zxx">Po pierwszym przeglądzie oceniam dokument jako dość
+	dobrze osadzony w DORA i TIBER-EU, ale widzę kilka obszarów, które
+	warto dopracować zanim dokument trafi do formalnego zatwierdzenia.</P>
+	<P LANG="zxx">Najważniejsze uwagi</P>
+	<OL>
+		<LI><P LANG="zxx">Brakuje wskazania kryteriów kwalifikacji systemów
+		do TLPT 
+		</P>
+	</OL>
+	<P LANG="zxx">W &sect;1 ust. 3 wskazano jedynie częstotliwość &bdquo;nie
+	rzadziej niż raz na trzy lata&rdquo;.</P>
+	<P LANG="zxx">Nie wskazano:</P>
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">kto dokonuje
+		identyfikacji funkcji krytycznych lub istotnych, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">w jaki sposób
+		wybierane są systemy objęte TLPT, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">powiązania z BIA, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">powiązania z analizą
+		ryzyka ICT, 
+		</P>
+		<LI><P LANG="zxx">powiązania z Rejestrem Informacji DORA. 
+		</P>
+	</UL>
+	<P LANG="zxx">Proponowałbym dopisać:</P>
+	<P LANG="zxx">&bdquo;Zakres systemów, usług ICT oraz procesów
+	objętych TLPT ustalany jest na podstawie analizy funkcji krytycznych
+	lub istotnych, wyników BIA, oceny ryzyka ICT, analizy zależności od
+	dostawców ICT oraz wymagań właściwego organu ds. TLPT.&rdquo;</P>
+	<OL START=2>
+		<LI><P LANG="zxx">Za dużo odpowiedzialności skupiono w
+		Departamencie Bezpieczeństwa 
+		</P>
+	</OL>
+	<P LANG="zxx">Widzę typową konstrukcję:</P>
+	<P LANG="zxx">DB:</P>
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">inicjuje, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">wybiera dostawców, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">nadzoruje, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">raportuje, 
+		</P>
+		<LI><P LANG="zxx">odbiera wyniki. 
+		</P>
+	</UL>
+	<P LANG="zxx">Natomiast praktycznie nie występują:</P>
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">właściciele systemów, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">właściciele procesów, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Departament
+		Informatyki, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Architekci
+		Bezpieczeństwa, 
+		</P>
+		<LI><P LANG="zxx">właściciele funkcji krytycznych. 
+		</P>
+	</UL>
+	<P LANG="zxx">W realnym TLPT uczestniczą oni bardzo intensywnie.</P>
+	<P LANG="zxx">Brakuje np. odpowiedzialności za:</P>
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">przygotowanie
+		środowisk, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">analizę wpływu na
+		biznes, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">zatwierdzenie okien
+		testowych, 
+		</P>
+		<LI><P LANG="zxx">realizację działań naprawczych. 
+		</P>
+	</UL>
+	<OL START=3>
+		<LI><P LANG="zxx">Blue Team opisany zbyt wąsko 
+		</P>
+	</OL>
+	<P LANG="zxx">Odczyt:</P>
+	<P LANG="zxx">&bdquo;W Banku tę funkcję pełni Zespół SOC z
+	Departamentu Bezpieczeństwa.&rdquo;</P>
+	<P LANG="zxx">To może być problem.</P>
+	<P LANG="zxx">W praktyce Blue Team podczas TLPT to zwykle:</P>
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">SOC, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">administratorzy
+		systemów, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">administratorzy sieci,
+				</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">CSIRT, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">obsługa incydentów, 
+		</P>
+		<LI><P LANG="zxx">czasem HelpDesk. 
+		</P>
+	</UL>
+	<P LANG="zxx">SOC jest tylko częścią Blue Team.</P>
+	<P LANG="zxx">Proponowałbym:</P>
+	<P LANG="zxx">&bdquo;Funkcję Blue Team pełnią osoby odpowiedzialne
+	za monitorowanie, wykrywanie i reagowanie na incydenty
+	bezpieczeństwa, w szczególności SOC, CSIRT oraz wskazani
+	administratorzy systemów i infrastruktury ICT.&rdquo;</P>
+	<OL START=4>
+		<LI><P LANG="zxx">Purple Team 
+		</P>
+	</OL>
+	<P LANG="zxx">Aktualny zapis:</P>
+	<P LANG="zxx">&bdquo;W Banku tę funkcję pełnią osoby z Blue Team,
+	Control Team oraz testerzy Red Team.&rdquo;</P>
+	<P LANG="zxx">To jest poprawne operacyjnie.</P>
+	<P LANG="zxx">Natomiast warto dopisać cel:</P>
+	<P LANG="zxx">&bdquo;Celem działań Purple Team jest zwiększenie
+	skuteczności mechanizmów detekcyjnych, reakcyjnych oraz doskonalenie
+	zabezpieczeń poprzez analizę technik wykorzystanych podczas TLPT.&rdquo;</P>
+	<OL START=5>
+		<LI><P LANG="zxx">Brak formalnego właściciela ryzyka 
+		</P>
+	</OL>
+	<P LANG="zxx">W całym fragmencie nie widzę:</P>
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">akceptacji ryzyka, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">właściciela ryzyka, 
+		</P>
+		<LI><P LANG="zxx">eskalacji do Zarządu. 
+		</P>
+	</UL>
+	<P LANG="zxx">A TLPT może wykryć podatności krytyczne.</P>
+	<P LANG="zxx">Powinno pojawić się:</P>
+	<P LANG="zxx">&bdquo;Właściciel systemu lub procesu odpowiada za
+	akceptację ryzyka wynikającego z ustaleń TLPT oraz realizację
+	działań naprawczych.&rdquo;</P>
+	<P LANG="zxx">Jest to spójne z metodyką ryzyka Banku. 
+	</P>
+	<OL START=6>
+		<LI><P LANG="zxx">Brak powiązania z procesem zarządzania
+		podatnościami 
+		</P>
+	</OL>
+	<P LANG="zxx">W &sect;1 ust. 5 jest tylko:</P>
+	<P LANG="zxx">&bdquo;stosuje się zasady określone w Wymaganiach w
+	zakresie przeprowadzania testów penetracyjnych&rdquo;.</P>
+	<P LANG="zxx">To może być za mało.</P>
+	<P LANG="zxx">DORA oczekuje pełnego cyklu:</P>
+	<P LANG="zxx">TLPT &rarr; podatność &rarr; plan naprawczy &rarr;
+	wdrożenie &rarr; retest &rarr; zamknięcie.</P>
+	<P LANG="zxx">Dopisałbym:</P>
+	<P LANG="zxx">&bdquo;Wyniki TLPT podlegają rejestracji,
+	klasyfikacji, monitorowaniu oraz zamknięciu zgodnie z procesem
+	zarządzania podatnościami i działaniami korygującymi obowiązującym w
+	Banku.&rdquo;</P>
+	<OL START=7>
+		<LI><P LANG="zxx">Brakuje wymagań dla raportowania do Zarządu 
+		</P>
+	</OL>
+	<P LANG="zxx">Widzę raporty:</P>
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Red Team, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Blue Team, 
+		</P>
+		<LI><P LANG="zxx">raport podsumowujący. 
+		</P>
+	</UL>
+	<P LANG="zxx">Nie widzę obowiązku przekazania wyników do:</P>
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Zarządu, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Komitetu Ryzyka, 
+		</P>
+		<LI><P LANG="zxx">przeglądu Ram zarządzania ryzykiem ICT. 
+		</P>
+	</UL>
+	<P LANG="zxx">W kontekście DORA warto dopisać:</P>
+	<P LANG="zxx">&bdquo;Podsumowanie wyników TLPT oraz status
+	realizacji działań naprawczych przedstawiane są Zarządowi w ramach
+	przeglądu Ram zarządzania ryzykiem związanym z ICT.&rdquo;</P>
+	<OL START=8>
+		<LI><P LANG="zxx">Brakuje poufności wyników TLPT 
+		</P>
+	</OL>
+	<P LANG="zxx">To jeden z najczęściej audytowanych obszarów.</P>
+	<P LANG="zxx">Warto dopisać osobny paragraf:</P>
+	<P LANG="zxx">&bdquo;Dokumentacja TLPT, raporty, scenariusze ataków,
+	wyniki analiz oraz informacje o zidentyfikowanych podatnościach
+	stanowią informacje Poufne Bankowe i podlegają szczególnej ochronie
+	zgodnie z zasadami klasyfikacji informacji obowiązującymi w Banku.&rdquo;</P>
+	<OL START=9>
+		<LI><P LANG="zxx">Wymagania dla TIP i Red Team są zgodne z DORA 
+		</P>
+	</OL>
+	<P LANG="zxx">Ten fragment wygląda dobrze.</P>
+	<P LANG="zxx">Szczególnie poprawnie uwzględniono:</P>
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">niezależność, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">doświadczenie, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">konflikt interesów, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">ubezpieczenie OC, 
+		</P>
+		<LI><P LANG="zxx">wcześniejsze realizacje. 
+		</P>
+	</UL>
+	<P LANG="zxx">To są elementy wprost oczekiwane przez reżim TLPT.</P>
+	<P LANG="zxx">Moja ogólna ocena po tych 5 stronach:</P>
+	<P LANG="zxx">8/10.</P>
+	<P LANG="zxx">Dokument jest już na poziomie, który przeszedłby
+	większość kontroli zgodności DORA, ale przed zatwierdzeniem
+	dopracowałbym przede wszystkim:</P>
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">rolę właścicieli
+		systemów i procesów, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">definicję Blue Team, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">obsługę ryzyka po
+		TLPT, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">raportowanie do
+		Zarządu, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">powiązanie z BIA i
+		analizą ryzyka ICT, 
+		</P>
+		<LI><P LANG="zxx">ochronę raportów TLPT. 
+		</P>
+	</UL>
+	<P LANG="zxx">To są obecnie największe luki organizacyjne, nie
+	techniczne.</P>
+	<P LANG="zxx" STYLE="margin-bottom: 0cm"><BR>
+	</P>
+	<P LANG="zxx"><BR><BR>
+	</P>
+	<P LANG="zxx"><BR><BR>
+	</P>
+	<P LANG="zxx"><BR><BR>
+	</P>
+	<P LANG="zxx"><BR><BR>
+	</P>
+	<P LANG="zxx">Rozdział 5 &bdquo;Organizacja oraz zakres testów
+	TLPT&rdquo;<BR>Rozdział 6 &bdquo;Etap przygotowawczy&rdquo;<BR>Rozdział
+	7 &bdquo;Etap testowania: analiza zagrożeń&rdquo;<BR>Rozdział 8
+	&bdquo;Etap testowania: testy z udziałem zespołu typu Red
+	Team&rdquo;<BR>Rozdział 9 &bdquo;Etap zamykania&rdquo;<BR>Rozdział
+	10 &bdquo;Plan naprawczy&rdquo;</P>
+	<P LANG="zxx">Po przeczytaniu całości (10 rozdziałów) moja ocena
+	jest wyższa niż po pierwszych stronach. Widać, że dokument jest
+	bardzo mocno wzorowany na RTS TLPT i w wielu miejscach wręcz
+	odwzorowuje jego logikę.</P>
+	<P LANG="zxx">Najważniejsze uwagi po przeczytaniu całości:</P>
+	<OL>
+		<LI><P LANG="zxx">Największa luka nadal dotyczy właścicieli
+		systemów i właścicieli procesów 
+		</P>
+	</OL>
+	<P LANG="zxx">Przez cały dokument przewijają się:</P>
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Organ ds. TLPT, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">DB, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">BRO, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Control Team, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Red Team, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Blue Team, 
+		</P>
+		<LI><P LANG="zxx">TIP. 
+		</P>
+	</UL>
+	<P LANG="zxx">Natomiast praktycznie nie istnieją:</P>
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">właściciele funkcji
+		krytycznych, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">właściciele procesów, 
+		</P>
+		<LI><P LANG="zxx">właściciele systemów ICT. 
+		</P>
+	</UL>
+	<P LANG="zxx">Tymczasem to oni później odpowiadają za wdrożenie
+	planu naprawczego z &sect;10.</P>
+	<P LANG="zxx">W praktyce audytor może zapytać:</P>
+	<P LANG="zxx">&quot;Kto akceptuje wpływ TLPT na funkcję krytyczną?&quot;</P>
+	<P LANG="zxx">&quot;Kto zatwierdza objęcie systemu testami?&quot;</P>
+	<P LANG="zxx">&quot;Kto odpowiada za usunięcie podatności?&quot;</P>
+	<P LANG="zxx">W obecnym dokumencie odpowiedź nie jest jednoznaczna.</P>
+	<P LANG="zxx">Proponowałbym dodać definicję:</P>
+	<P LANG="zxx">&quot;Właściciel systemu ICT oraz właściciel procesu
+	biznesowego uczestniczą w określaniu zakresu TLPT, ocenie wpływu na
+	działalność Banku oraz odpowiadają za realizację działań naprawczych
+	wynikających z testów.&quot;</P>
+	<OL START=2>
+		<LI><P LANG="zxx">Bardzo dobrze rozwiązano etap zamknięcia 
+		</P>
+	</OL>
+	<P LANG="zxx">Rozdział 9 jest mocną stroną dokumentu.</P>
+	<P LANG="zxx">Szczególnie:</P>
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">raport Red Team, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">raport Blue Team, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Purple Team, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">wspólne odtworzenie
+		działań, 
+		</P>
+		<LI><P LANG="zxx">raport podsumowujący. 
+		</P>
+	</UL>
+	<P LANG="zxx">To jest zgodne z filozofią TIBER-EU.</P>
+	<P LANG="zxx">Mało organizacji opisuje to tak szczegółowo.</P>
+	<OL START=3>
+		<LI><P LANG="zxx">Brakuje formalnego retestu 
+		</P>
+	</OL>
+	<P LANG="zxx">Po &sect;10 mamy plan naprawczy.</P>
+	<P LANG="zxx">Nie ma natomiast odpowiedzi na pytanie:</P>
+	<P LANG="zxx">&quot;Skąd wiadomo, że poprawka działa?&quot;</P>
+	<P LANG="zxx">Warto dodać:</P>
+	<P LANG="zxx">&quot;Po wdrożeniu działań naprawczych Bank może
+	zlecić przeprowadzenie testów weryfikacyjnych (retest) w zakresie
+	ustaleń TLPT.&quot;</P>
+	<P LANG="zxx">Jest to częsty wymóg audytorów.</P>
+	<OL START=4>
+		<LI><P LANG="zxx">Plan naprawczy powinien być powiązany z
+		istniejącymi procesami Banku 
+		</P>
+	</OL>
+	<P LANG="zxx">W Kanonie projektu funkcjonują już:</P>
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Niezgodności i
+		Doskonalenie, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Plan postępowania, 
+		</P>
+		<LI><P LANG="zxx">Sprawozdania okresowe. 
+		</P>
+	</UL>
+	<P LANG="zxx">Z punktu widzenia SZBI warto dopisać:</P>
+	<P LANG="zxx">&quot;Ustalenia TLPT podlegają rejestracji i
+	monitorowaniu zgodnie z procesem zarządzania niezgodnościami,
+	działaniami korygującymi oraz planami postępowania obowiązującymi w
+	Banku.&quot;</P>
+	<P LANG="zxx">To zapewni spójność z obecną architekturą SZBI.</P>
+	<OL START=5>
+		<LI><P LANG="zxx">Harmonogram jest bardzo ambitny 
+		</P>
+	</OL>
+	<P LANG="zxx">Zwróciłem uwagę na:</P>
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">3 miesiące, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">6 miesięcy, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">12 tygodni, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">10 tygodni, 
+		</P>
+		<LI><P LANG="zxx">8 tygodni. 
+		</P>
+	</UL>
+	<P LANG="zxx">To są terminy zbliżone do RTS.</P>
+	<P LANG="zxx">Natomiast warto dopisać jedną klauzulę:</P>
+	<P LANG="zxx">&quot;W uzasadnionych przypadkach, po uzyskaniu zgody
+	Organu ds. TLPT, dopuszcza się zmianę terminów wynikającą z
+	charakteru testowanych funkcji, skali środowiska ICT lub działań
+	naprawczych.&quot;</P>
+	<P LANG="zxx">W przeciwnym razie każda nietypowa sytuacja będzie
+	wymagała interpretacji.</P>
+	<OL START=6>
+		<LI><P LANG="zxx">Dobrze rozwiązano niezależność TIP i Red Team 
+		</P>
+	</OL>
+	<P LANG="zxx">W &sect;4 są bardzo dobre zapisy dotyczące:</P>
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">konfliktu interesów, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">rozdzielenia TIP i Red
+		Team, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">doświadczenia, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">referencji, 
+		</P>
+		<LI><P LANG="zxx">ubezpieczenia. 
+		</P>
+	</UL>
+	<P LANG="zxx">To jest mocny punkt dokumentu.</P>
+	<P LANG="zxx">Nie widzę potrzeby zmian.</P>
+	<OL START=7>
+		<LI><P LANG="zxx">Brakuje klasyfikacji dokumentacji TLPT 
+		</P>
+	</OL>
+	<P LANG="zxx">W Rozdziale 9 pojawia się zapis:</P>
+	<P LANG="zxx">&bdquo;sprawozdanie nie powinno zawierać informacji
+	szczególnie chronionych&rdquo;.</P>
+	<P LANG="zxx">To jest dobre.</P>
+	<P LANG="zxx">Brakuje jednak wskazania:</P>
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">gdzie przechowywać
+		raporty, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">kto ma dostęp, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">jak długo je
+		przechowywać, 
+		</P>
+		<LI><P LANG="zxx">jak klasyfikować. 
+		</P>
+	</UL>
+	<P LANG="zxx">Dla Banku sugerowałbym:</P>
+	<P LANG="zxx">&quot;Dokumentacja TLPT podlega klasyfikacji co
+	najmniej jako Poufne Bankowe i jest przechowywana zgodnie z zasadami
+	ochrony informacji obowiązującymi w Banku.&quot;</P>
+	<OL START=8>
+		<LI><P LANG="zxx">Brakuje odniesienia do ryzyka ICT po zakończeniu
+		TLPT 
+		</P>
+	</OL>
+	<P LANG="zxx">Plan naprawczy jest.</P>
+	<P LANG="zxx">Nie ma natomiast:</P>
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">aktualizacji analizy
+		ryzyka ICT, 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">aktualizacji ryzyka
+		dostawców ICT, 
+		</P>
+		<LI><P LANG="zxx">aktualizacji rejestru podatności. 
+		</P>
+	</UL>
+	<P LANG="zxx">Po DORA i ISO 27005 warto dopisać:</P>
+	<P LANG="zxx">&quot;Ustalenia TLPT stanowią dane wejściowe do
+	aktualizacji ocen ryzyka ICT, ryzyka dostawców ICT, rejestru
+	podatności oraz planów postępowania z ryzykiem.&quot;</P>
+	<P LANG="zxx">To byłoby bardzo spójne z metodyką Banku.</P>
+	<OL START=9>
+		<LI><P LANG="zxx">Potencjalny problem organizacyjny 
+		</P>
+	</OL>
+	<P LANG="zxx">W kilku miejscach występuje:</P>
+	<P LANG="zxx">&bdquo;Dyrektor DB i Dyrektor BRO&rdquo;.</P>
+	<P LANG="zxx">Jeżeli kiedyś zmieni się struktura organizacyjna
+	Banku, dokument będzie wymagał nowelizacji.</P>
+	<P LANG="zxx">Z punktu widzenia trwałości regulacji lepiej byłoby
+	używać:</P>
+	<UL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">komórka bezpieczeństwa
+		informacji, 
+		</P>
+		<LI><P LANG="zxx">komórka zarządzania ryzykiem operacyjnym, 
+		</P>
+	</UL>
+	<P LANG="zxx">a szczegóły pozostawić w Regulaminie Organizacyjnym.</P>
+	<P LANG="zxx">To nie jest błąd, ale częsta uwaga audytorów ISO.</P>
+	<P LANG="zxx">Moja końcowa ocena dokumentu po przeczytaniu
+	wszystkich stron:</P>
+	<P LANG="zxx">9/10.</P>
+	<P LANG="zxx">Jest to jeden z lepiej przygotowanych projektów
+	regulacji TLPT, jakie widziałem dla instytucji finansowej.
+	Najważniejsze rzeczy, które jeszcze bym dopracował przed
+	zatwierdzeniem:</P>
+	<OL>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Właściciele systemów i
+		procesów. 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Powiązanie z analizą
+		ryzyka ICT i ryzyka dostawców. 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Powiązanie z rejestrem
+		niezgodności i planami postępowania. 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Retest po wdrożeniu
+		działań naprawczych. 
+		</P>
+		<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Klasyfikacja i
+		retencja dokumentacji TLPT. 
+		</P>
+		<LI><P LANG="zxx">Większa neutralność organizacyjna zamiast
+		wskazywania konkretnych stanowisk. 
+		</P>
+	</OL>
+	<P LANG="zxx">Jeżeli dokument ma być opiniowany przez DB przed
+	legislacją, to właśnie te 6 punktów wskazałbym jako uwagi
+	merytoryczne. Są to uwagi doskonalące, a nie niezgodności z DORA.</P>
+	<DIV ID="thread-bottom-container" DIR="LTR">
+		<P LANG="zxx" STYLE="margin-bottom: 0cm"><BR>
+		</P>
+		<DIV ID="prompt-textarea" DIR="LTR">
+			<P LANG="zxx"><BR><BR>
+			</P>
+		</DIV>
+		<DIV ID="_r_rd_" DIR="LTR">
+			<P LANG="zxx" STYLE="margin-bottom: 0cm"><BR>
+			</P>
+		</DIV>
+		<DIV ID="_r_re_" DIR="LTR">
+			<P LANG="zxx" STYLE="margin-bottom: 0cm"><BR>
+			</P>
+		</DIV>
+	</DIV>
+</DIV>
+<P LANG="zxx"><BR><BR>
+</P>
+</BODY>
+</HTML>
