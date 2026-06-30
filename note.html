@@ -1,1 +1,201 @@
-.
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1250">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.15  (Win32)">
+	<META NAME="CREATED" CONTENT="20090416;11320264">
+	<META NAME="CHANGEDBY" CONTENT="MS ">
+	<META NAME="CHANGED" CONTENT="20260630;15463098">
+	<META NAME="Info 1" CONTENT="">
+	<META NAME="Info 2" CONTENT="">
+	<META NAME="Info 3" CONTENT="">
+	<META NAME="Info 4" CONTENT="">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { size: 21cm 29.7cm; margin: 2cm }
+		P { margin-bottom: 0.21cm; so-language: zxx }
+		A:link { color: #000080; so-language: zxx; text-decoration: underline }
+		A:visited { color: #800000; so-language: zxx; text-decoration: underline }
+		STRONG { font-weight: bold }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="de-DE" LINK="#000080" VLINK="#800000" DIR="LTR">
+<P LANG="zxx">pomysł z podziałem hasła na część stałą i część SMS
+jest lepszy niż wysłanie całego hasła przez bramkę SMS, ale nie
+traktowałbym go jako rozwiązania docelowego. To nadal jest
+&bdquo;obejście&rdquo;, które zmniejsza ryzyko poznania pełnego hasła
+przez administratorów bramki SMS, ale wprowadza inne słabości: część
+stała jest przewidywalna, numer rozliczeniowy BS nie jest tajemnicą,
+a pracownik mający dostęp do SMS-a może połączyć go z wiedzą o
+odbiorcy albo z treścią maila zapowiadającego raport.</P>
+<DIV ID="thread" DIR="LTR">
+	<P LANG="zxx">Najbezpieczniej byłoby nie wysyłać hasła jako zwykłej
+	treści przez kanał, do którego mają dostęp osoby postronne wobec
+	procesu. W warunkach banku widziałbym kilka wariantów.</P>
+	<P LANG="zxx">Najprostszy wariant akceptowalny operacyjnie: hasło
+	składa się z dwóch części, ale część stała nie powinna być numerem
+	rozliczeniowym BS. Lepiej, żeby była to wcześniej uzgodniona,
+	indywidualna fraza dla danego BS, przekazana jednorazowo bezpiecznym
+	kanałem i okresowo zmieniana. SMS zawierałby tylko drugą, losową
+	część hasła. Wtedy administrator bramki SMS widzi tylko fragment
+	hasła, a nie element, który łatwo odgadnąć z danych publicznych.</P>
+	<P LANG="zxx">Przykład mechanizmu: dla każdego BS ustalona jest
+	stała &bdquo;fraza współdzielona&rdquo; przechowywana w rejestrze
+	kontaktów bezpiecznych, np. znana wyłącznie wskazanym osobom po
+	stronie Banku i BS. Do każdej kampanii generowana jest losowa część
+	jednorazowa, np. 8&ndash;12 znaków, wysyłana SMS-em. Hasło do ZIP ma
+	postać: fraza stała BS + separator + część jednorazowa z SMS. To
+	jest lepsze niż numer rozliczeniowy + SMS, bo numer rozliczeniowy
+	nie spełnia roli tajemnicy.</P>
+	<P LANG="zxx">Drugi wariant, nadal prosty: mail z raportem i hasło
+	przez oddzielny kanał, ale nie przez bramkę SMS z jawną treścią.
+	Można użyć narzędzia do wysyłki SMS, które obsługuje maskowanie
+	treści, ograniczenie dostępu administratorów do historii wiadomości
+	albo szyfrowanie treści po stronie aplikacji. Jeżeli obecna bramka
+	umożliwia podgląd treści przez marketing i administratorów, to nie
+	jest właściwy kanał do przekazywania sekretów. Minimum organizacyjne
+	to ograniczenie uprawnień do treści SMS wyłącznie do osób
+	realizujących proces, wyłączenie dostępu marketingu oraz logowanie
+	dostępu do historii wiadomości.</P>
+	<P LANG="zxx">Trzeci wariant: zamiast hasła w SMS, wysyłka linku do
+	jednorazowego sekretu. Odbiorca dostaje SMS z linkiem do strony, na
+	której po uwierzytelnieniu albo po użyciu jednorazowego tokenu może
+	odczytać hasło tylko raz. Po pierwszym odczycie sekret wygasa. To
+	ogranicza ryzyko, że ktoś później podejrzy hasło w historii SMS lub
+	panelu bramki. Wymaga jednak narzędzia typu &bdquo;one-time secret&rdquo;
+	wewnętrznie zatwierdzonego przez Bank.</P>
+	<P LANG="zxx">Czwarty wariant, bardziej bankowy i docelowy: raporty
+	nie są wysyłane mailem, tylko udostępniane w bezpiecznym portalu lub
+	repozytorium dla BS. Odbiorca loguje się swoim kontem, najlepiej z
+	MFA, pobiera raport przypisany do swojego BS, a system zapisuje kto,
+	kiedy i jaki raport pobrał. To daje najlepszą rozliczalność,
+	ogranicza ręczne błędy adresowania i usuwa problem dystrybucji
+	haseł. Jeżeli Bank ma już portal dla BS, extranetu, SharePoint B2B,
+	rozwiązanie klasy MFT/SFTP albo bezpieczną wymianę plików, to to
+	jest kierunek docelowy.</P>
+	<P LANG="zxx">Piąty wariant: szyfrowanie raportu kluczem publicznym
+	odbiorcy. Każdy BS przekazuje swój klucz publiczny, a Zespół testów
+	szyfruje raport tak, że może go odszyfrować tylko BS posiadający
+	klucz prywatny. Wtedy nie wysyła się hasła w ogóle. To jest dobre
+	kryptograficznie, ale organizacyjnie cięższe, bo BS-y muszą
+	utrzymywać klucze, osoby odpowiedzialne, procedurę zmiany klucza i
+	odzyskiwania dostępu.</P>
+	<P LANG="zxx">Szósty wariant, praktyczny kompromis: raport ZIP
+	szyfrowany silnym hasłem, hasło przekazywane telefonicznie, ale nie
+	ręcznie &bdquo;z telefonu pracownika&rdquo;, tylko zgodnie z
+	procedurą: tylko na zatwierdzony numer kontaktowy, po identyfikacji
+	odbiorcy, z odnotowaniem w rejestrze wysyłki. Ten wariant jest mniej
+	wygodny, ale przy małej liczbie raportów może być bezpieczniejszy
+	niż bramka SMS z szerokim dostępem do treści.</P>
+	<P LANG="zxx">Moja rekomendacja byłaby taka:</P>
+	<P LANG="zxx">Na teraz nie używać numeru rozliczeniowego BS jako
+	części hasła, bo to nie jest sekret. Jeżeli trzeba szybko usprawnić
+	proces, zastosować model: indywidualna tajna fraza BS + jednorazowy
+	składnik SMS. W SMS nie powinno być informacji typu &bdquo;hasło do
+	raportu testów BS X&rdquo;, tylko neutralna treść, np. &bdquo;Kod
+	jednorazowy do przesyłki: ABC123xyz&rdquo;. Mail nie powinien
+	wskazywać pełnej konstrukcji hasła w sposób, który pozwala osobie z
+	dostępem do SMS łatwo odtworzyć całość.</P>
+	<P LANG="zxx">Równolegle należy ograniczyć dostęp do treści
+	wiadomości w bramce SMS. Jeżeli marketing i administratorzy nie
+	uczestniczą w procesie dystrybucji raportów bezpieczeństwa, nie
+	powinni mieć dostępu do treści sekretów. Sam fakt, że &bdquo;mogą
+	zobaczyć hasło&rdquo;, jest sygnałem, że bramka SMS w obecnej
+	konfiguracji nie jest kanałem bezpiecznego przekazywania informacji
+	uwierzytelniających.</P>
+	<P LANG="zxx">Docelowo najlepszym rozwiązaniem jest odejście od
+	wysyłania raportów jako załączników ZIP na rzecz bezpiecznego kanału
+	wymiany plików z uwierzytelnieniem, MFA, rejestrem pobrań i
+	uprawnieniami per BS. To byłoby najbardziej spójne z zasadą wiedzy
+	koniecznej, rozliczalnością i ograniczeniem ryzyka błędnej wysyłki.</P>
+	<P LANG="zxx">Proponowałbym ocenić warianty tak:</P>
+	<P LANG="zxx">Wysyłka całego hasła SMS-em przez obecną bramkę: nie
+	rekomendować.</P>
+	<P LANG="zxx">Numer rozliczeniowy BS + SMS: lepsze niż całe hasło w
+	SMS, ale słabe, bo numer rozliczeniowy nie jest tajemnicą.</P>
+	<P LANG="zxx">Tajna fraza BS + jednorazowy SMS: dobry wariant
+	przejściowy.</P>
+	<P LANG="zxx">Jednorazowy link do sekretu: dobry wariant techniczny,
+	jeżeli narzędzie jest zatwierdzone.</P>
+	<P LANG="zxx">Bezpieczny portal/MFT/SFTP/MFA: wariant docelowy.</P>
+	<P LANG="zxx">Szyfrowanie kluczem publicznym BS: bardzo dobre
+	bezpieczeństwo, ale większy ciężar organizacyjny.</P>
+	<P LANG="zxx">Do procedury warto dopisać minimalne wymagania:</P>
+	<P LANG="zxx">Raport zawierający wyniki testów dla BS jest
+	przekazywany wyłącznie na uzgodnione adresy kontaktowe wskazane
+	przez BS.</P>
+	<P LANG="zxx">Hasło lub składnik hasła nie może być przekazywany tym
+	samym kanałem co raport.</P>
+	<P LANG="zxx">Element stały hasła nie może opierać się na danych
+	jawnych, łatwo dostępnych lub przewidywalnych, takich jak numer
+	rozliczeniowy, nazwa BS, miejscowość albo NIP.</P>
+	<P LANG="zxx">Część jednorazowa hasła powinna być generowana losowo
+	dla każdej kampanii lub każdego raportu.</P>
+	<P LANG="zxx">Dostęp do treści wiadomości zawierających składnik
+	hasła powinien być ograniczony wyłącznie do osób realizujących
+	proces wysyłki i nadzorowany przez właściciela procesu.</P>
+	<P LANG="zxx">Wysyłka raportu i przekazanie składnika hasła powinny
+	być rejestrowane, co najmniej: data, BS, adresat, kanał, osoba
+	wysyłająca, identyfikator raportu.</P>
+	<P LANG="zxx">W przypadku błędnej wysyłki raportu albo składnika
+	hasła należy niezwłocznie unieważnić hasło, wygenerować nowe
+	archiwum i ocenić, czy doszło do incydentu bezpieczeństwa
+	informacji.</P>
+	<P LANG="zxx">Do decyzji wewnętrznej można to ująć tak:</P>
+	<DIV ID="writing-block-78d3eff7-13f6-40aa-aadb-242462de02ef" DIR="LTR">
+		<P LANG="zxx">Rekomenduje się, aby nie przekazywać pełnego hasła do
+		zaszyfrowanych raportów za pośrednictwem bramki SMS, jeżeli dostęp
+		do treści wiadomości posiadają osoby nieuczestniczące w procesie
+		dystrybucji raportów. Wysyłka pełnego hasła takim kanałem powoduje
+		ryzyko ujawnienia informacji umożliwiającej dostęp do raportu
+		osobom nieuprawnionym.</P>
+		<P LANG="zxx">Jako rozwiązanie przejściowe dopuszczalne może być
+		zastosowanie hasła złożonego z dwóch niezależnych części, pod
+		warunkiem że część stała nie będzie oparta na danych jawnych lub
+		łatwo dostępnych, takich jak numer rozliczeniowy Banku
+		Spółdzielczego. Część stała powinna mieć charakter tajnej,
+		indywidualnej frazy uzgodnionej z danym Bankiem Spółdzielczym i
+		przechowywanej zgodnie z zasadą wiedzy koniecznej. Część zmienna
+		powinna być generowana losowo dla każdej wysyłki i przekazywana
+		odrębnym kanałem, np. SMS, przy zapewnieniu ograniczenia dostępu do
+		treści wiadomości oraz rejestrowania czynności wysyłki.</P>
+		<P LANG="zxx">Docelowo rekomenduje się wdrożenie bezpiecznego
+		kanału wymiany plików z Bankami Spółdzielczymi, zapewniającego
+		uwierzytelnienie odbiorcy, nadawanie uprawnień per Bank
+		Spółdzielczy, rejestrowanie pobrań raportów oraz eliminację
+		konieczności przekazywania haseł w jawnej treści wiadomości e-mail
+		lub SMS.</P>
+	</DIV>
+	<P LANG="zxx">W Kanonie SZBI warto byłoby dopisać zasadę ogólną:
+	&bdquo;Sekrety umożliwiające dostęp do informacji chronionych, w tym
+	hasła do zaszyfrowanych plików, nie powinny być przekazywane
+	kanałem, do którego dostęp posiadają osoby nieuczestniczące w
+	procesie, oraz nie powinny być oparte na danych jawnych lub łatwo
+	przewidywalnych.&rdquo;</P>
+	<DIV ID="thread-bottom-container" DIR="LTR">
+		<P LANG="zxx" STYLE="margin-bottom: 0cm"><BR>
+		</P>
+		<DIV ID="prompt-textarea" DIR="LTR">
+			<P LANG="zxx"><BR><BR>
+			</P>
+		</DIV>
+		<DIV ID="_r_o0_" DIR="LTR">
+			<P LANG="zxx" STYLE="margin-bottom: 0cm"><BR>
+			</P>
+		</DIV>
+		<DIV ID="_r_o1_" DIR="LTR">
+			<P LANG="zxx" STYLE="margin-bottom: 0cm"><BR>
+			</P>
+		</DIV>
+		<DIV ID="_r_p0_" DIR="LTR">
+			<P LANG="zxx" STYLE="margin-bottom: 0cm"><BR>
+			</P>
+		</DIV>
+	</DIV>
+</DIV>
+<P LANG="zxx"><BR><BR>
+</P>
+</BODY>
+</HTML>
