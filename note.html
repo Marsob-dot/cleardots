@@ -1,1 +1,3148 @@
-.
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1250">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.15  (Win32)">
+	<META NAME="CREATED" CONTENT="20090416;11320264">
+	<META NAME="CHANGEDBY" CONTENT="MS ">
+	<META NAME="CHANGED" CONTENT="20260710;11102292">
+	<META NAME="Info 1" CONTENT="">
+	<META NAME="Info 2" CONTENT="">
+	<META NAME="Info 3" CONTENT="">
+	<META NAME="Info 4" CONTENT="">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { size: 21cm 29.7cm; margin: 2cm }
+		P { margin-bottom: 0.21cm; so-language: zxx }
+		BLOCKQUOTE { margin-left: 1cm; margin-right: 1cm }
+		TH P { font-weight: bold; text-align: center }
+		H3 { margin-bottom: 0.21cm; page-break-after: avoid }
+		H3.western { font-family: "Times New Roman", serif; font-size: 14pt; font-weight: bold }
+		H3.cjk { font-family: "SimSun"; font-size: 14pt; font-weight: bold }
+		H3.ctl { font-family: "Lucida Sans"; font-size: 14pt; font-weight: bold }
+		A:link { color: #000080; so-language: zxx; text-decoration: underline }
+		A:visited { color: #800000; so-language: zxx; text-decoration: underline }
+		STRONG { font-weight: bold }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="de-DE" LINK="#000080" VLINK="#800000" DIR="LTR">
+<P LANG="zxx"><STRONG>na potrzeby klasyfikacji bezpieczeństwa
+informacji korzysta z katalogu Grup Danych prowadzonego przez DAI.
+Wtedy Grupa Danych staje się jednostką klasyfikacji informacji.</STRONG></P>
+<P LANG="zxx">Czyli można przyjąć roboczą zasadę:</P>
+<P LANG="zxx">&bdquo;Grupa Danych wskazana w katalogu DAI stanowi
+Grupę Informacji w rozumieniu Instrukcji Klasyfikacji Informacji,
+jeżeli opisuje logicznie powiązany zbiór informacji, ma wskazanego
+właściciela danych/informacji, jest powiązana z procesem lub
+podprocesem oraz możliwe jest określenie dla niej klasy ochrony.&rdquo;</P>
+<P LANG="zxx">To rozwiązuje spór terminologiczny, bo DAI może nadal
+mówić &bdquo;Grupy Danych&rdquo;, a DB w swojej instrukcji może
+wskazać, że dla potrzeb SZBI są one traktowane jako Grupy Informacji.</P>
+<P LANG="zxx">Natomiast widzę trzy ryzyka, które trzeba zabezpieczyć.</P>
+<P LANG="zxx">Pierwsze ryzyko: liczba grup. 160 pozycji to dużo, ale
+nie jest to jeszcze liczba niemożliwa do obsłużenia, jeżeli DB nie
+będzie tworzył 160 różnych zasad postępowania. DB może klasyfikować
+160 Grup Danych, ale zabezpieczenia powinny być przypisane do kilku
+lub kilkunastu <STRONG>profili ochrony</STRONG>, np. informacje
+ogólnodostępne, wewnętrzne, poufne, poufne bankowe, dane osobowe,
+tajemnica bankowa, dane krytyczne operacyjnie, dane regulacyjne.
+Wtedy 160 grup ma klasyfikację, ale nie tworzy 160 odrębnych reżimów
+ochrony.</P>
+<P LANG="zxx">Drugie ryzyko: jakość katalogu. W próbce widać pozycje
+z &bdquo;???&rdquo; przy właścicielu albo &bdquo;BD&rdquo; przy
+procesie krytycznym. To znaczy, że katalog DAI może być dobrym
+wejściem do klasyfikacji, ale nie powinien być automatycznie uznany
+za kompletny i zatwierdzony. DB powinno przyjąć zasadę, że
+klasyfikacja może być wykonana dopiero dla grupy, która ma minimalny
+zestaw danych: nazwę, opis, właściciela, proces/podproces, systemy
+przetwarzające albo źródło danych.</P>
+<P LANG="zxx">Trzecie ryzyko: różny poziom szczegółowości. Część grup
+jest bardzo naturalna dla klasyfikacji, np. &bdquo;Dane
+Identyfikacyjne Klientów Detalicznych&rdquo;, &bdquo;Transakcje
+Online&rdquo;, &bdquo;Raporty do KNF&rdquo;, &bdquo;Naruszenia
+Bezpieczeństwa&rdquo;. Ale część może być bardziej artefaktami
+procesowymi albo operacyjnymi, np. &bdquo;Informacje ogólne o
+projektach&rdquo;, &bdquo;Harmonogram projektu&rdquo;, &bdquo;Zasoby
+projektowe&rdquo;. To nadal mogą być Grupy Informacji, tylko trzeba
+dopuścić, że nie wszystkie będą miały taką samą wagę ochronną i nie
+wszystkie będą wpływać na klasyfikację systemów w ten sam sposób.</P>
+<P LANG="zxx">Najlepszy kompromis widzę tak:</P>
+<P LANG="zxx">DB nie walczy z katalogiem 160 Grup Danych.</P>
+<P LANG="zxx">DAI prowadzi katalog Grup Danych jako centralne źródło.</P>
+<P LANG="zxx">DB uznaje te Grupy Danych za jednostki klasyfikacji
+informacji.</P>
+<P LANG="zxx">DB nadaje im klasy ochrony zgodnie z metodyką P/I/D/A.</P>
+<P LANG="zxx">DB przypisuje każdą grupę do profilu ochrony, żeby
+później dało się praktycznie stosować zabezpieczenia.</P>
+<P LANG="zxx">DAI odpowiada za kompletność, aktualność i właścicieli
+katalogu danych.</P>
+<P LANG="zxx">DB odpowiada za metodykę i wynik klasyfikacji
+bezpieczeństwa.</P>
+<P LANG="zxx">Do instrukcji można wpisać taki zapis:</P>
+<P LANG="zxx">&bdquo;Na potrzeby niniejszej Instrukcji Grupą
+Informacji jest Grupa Danych ujęta w katalogu prowadzonym przez DAI,
+opisująca logicznie powiązany zbiór informacji przetwarzanych w
+Banku. Grupa Danych stanowi podstawową jednostkę klasyfikacji
+informacji, o ile posiada nazwę, opis, właściciela danych/informacji
+oraz powiązanie z procesem lub podprocesem Banku.&rdquo;</P>
+<P LANG="zxx">Dalej:</P>
+<P LANG="zxx">&bdquo;DAI odpowiada za prowadzenie, aktualizację i
+kompletność katalogu Grup Danych, w tym za koordynację identyfikacji
+nowych Grup Danych z właścicielami danych/informacji oraz
+właścicielami procesów. DB odpowiada za metodykę klasyfikacji
+bezpieczeństwa informacji oraz nadanie klasy ochrony Grupom Danych
+traktowanym jako Grupy Informacji.&rdquo;</P>
+<P LANG="zxx">I jeszcze bardzo ważne:</P>
+<P LANG="zxx">&bdquo;Nadanie klasy ochrony Grupie Danych nie oznacza
+przejęcia przez DB odpowiedzialności za jakość, poprawność,
+kompletność lub aktualność danych w katalogu DAI. Odpowiedzialność DB
+obejmuje ocenę wymagań ochrony informacji na podstawie danych
+wejściowych przekazanych przez DAI i właściwych właścicieli
+informacji.&rdquo;</P>
+<P LANG="zxx">To zabezpiecza DB.</P>
+<P LANG="zxx">Dla DAI też warto dodać ochronny zapis:</P>
+<P LANG="zxx">&bdquo;DAI nie odpowiada za określenie klasy ochrony
+informacji ani za dobór zabezpieczeń bezpieczeństwa informacji. DAI
+zapewnia utrzymanie katalogu Grup Danych oraz przekazuje DB
+informacje niezbędne do przeprowadzenia klasyfikacji.&rdquo;</P>
+<P LANG="zxx">Czyli DAI nie zostaje wciągnięte w ocenę
+bezpieczeństwa, a DB nie zostaje wciągnięte w jakość danych.</P>
+<P LANG="zxx">Na spotkaniu można to powiedzieć tak:</P>
+<P LANG="zxx">&bdquo;Patrząc na próbkę katalogu, widzimy, że Grupy
+Danych DAI w dużej części są już tak naprawdę logicznymi grupami
+informacji. One mają domenę, nazwę, opis, właściciela i powiązanie z
+procesem. Dlatego nie musimy tworzyć drugiego, konkurencyjnego
+katalogu Grup Informacji w DB. Możemy przyjąć, że katalog DAI jest
+źródłem Grup Informacji dla klasyfikacji bezpieczeństwa. DB
+wykorzysta ten katalog do nadania klas ochrony, natomiast DAI nadal
+będzie odpowiadać za utrzymanie katalogu danych i jego jakość.&rdquo;</P>
+<P LANG="zxx">&bdquo;Jednocześnie nie chcemy, żeby 160 Grup Danych
+oznaczało 160 różnych zasad ochrony. DB może klasyfikować grupy
+szczegółowo, ale zabezpieczenia i zasady postępowania będą
+przypisywane przez klasy i profile ochrony. Dzięki temu DAI zachowuje
+szczegółowość potrzebną do zarządzania danymi, a DB zachowuje
+praktyczność modelu ochrony.&rdquo;</P>
+<P LANG="zxx">Do KANONU warto wpisać zaktualizowane rozstrzygnięcie,
+jeśli wybierzecie ten wariant:</P>
+<P LANG="zxx">&bdquo;W Banku przyjmuje się, że katalog Grup Danych
+prowadzony przez DAI stanowi źródło Grup Informacji wykorzystywanych
+na potrzeby klasyfikacji bezpieczeństwa informacji. Grupy Danych, po
+spełnieniu minimalnych wymagań opisowych, są klasyfikowane przez DB
+jako Grupy Informacji. DAI odpowiada za utrzymanie katalogu Grup
+Danych, ich opis, właścicieli i powiązanie z procesami, natomiast DB
+odpowiada za metodykę klasyfikacji oraz nadanie klasy ochrony. Zasady
+postępowania i zabezpieczenia są przypisywane według klas i profili
+ochrony, a nie odrębnie dla każdej Grupy Danych.&rdquo;</P>
+<P LANG="zxx" STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.07cm; padding-left: 0cm; padding-right: 0cm">
+<BR><BR>
+</P>
+<P LANG="zxx"><BR><BR>
+</P>
+<P LANG="zxx"><STRONG>&bdquo;Na potrzeby klasyfikacji bezpieczeństwa
+informacji Grupy Danych prowadzone przez DAI są wykorzystywane jako
+Grupy Informacji, o ile spełniają minimalne wymagania opisowe
+umożliwiające przeprowadzenie klasyfikacji.&rdquo;</STRONG></P>
+<P LANG="zxx">To zabezpiecza DB, bo jeżeli w katalogu jest &bdquo;???&rdquo;
+przy właścicielu, nieustalone źródło albo &bdquo;BD&rdquo; przy
+procesie, to DB może powiedzieć: klasyfikacja jest możliwa dopiero po
+uzupełnieniu minimalnych danych przez DAI i właściciela informacji.</P>
+<P LANG="zxx">Moim zdaniem najlepszy model po tych zdjęciach wygląda
+tak:</P>
+<P LANG="zxx">DAI prowadzi centralny katalog Grup Danych.</P>
+<P LANG="zxx">DB przyjmuje ten katalog jako wejście do klasyfikacji
+informacji.</P>
+<P LANG="zxx">Grupa Danych z katalogu DAI staje się jednostką
+klasyfikacji bezpieczeństwa informacji, czyli w praktyce Grupą
+Informacji w rozumieniu instrukcji DB.</P>
+<P LANG="zxx">DB klasyfikuje te grupy według P/I/D/A i nadaje klasę
+ochrony.</P>
+<P LANG="zxx">Zasady postępowania i zabezpieczenia nie są tworzone
+oddzielnie dla każdej ze 160 grup, tylko wynikają z klasy ochrony
+oraz profilu ochrony.</P>
+<P LANG="zxx">To rozwiązuje największą obawę specjalistów DB. Nawet
+jeśli grup jest 160, to nie oznacza 160 różnych modeli zabezpieczeń.
+Będzie 160 pozycji w rejestrze klasyfikacji, ale kilka klas i profili
+ochrony.</P>
+<P LANG="zxx">Przykładowo:</P>
+<P LANG="zxx">&bdquo;Dane Identyfikacyjne Klientów Detalicznych&rdquo;,
+&bdquo;Dane Identyfikacyjne Klientów Korporacyjnych&rdquo;, &bdquo;Rejestr
+PESEL&rdquo;, &bdquo;Dane pracowników / Informacje personalne&rdquo;
+mogą mieć różne domeny i właścicieli, ale finalnie będą wpadały w
+podobny profil ochrony: dane osobowe / poufne / wysokie wymagania
+poufności i integralności.</P>
+<P LANG="zxx">&bdquo;Raporty COREP&rdquo;, &bdquo;Raporty FINREP&rdquo;,
+&bdquo;Raporty do KNF&rdquo; mogą mieć profil: informacje regulacyjne
+/ sprawozdawcze / wysokie wymagania integralności i autentyczności.</P>
+<P LANG="zxx">&bdquo;Informacje ogólne o projektach&rdquo;,
+&bdquo;Harmonogram projektu&rdquo;, &bdquo;Status i raportowanie&rdquo;
+mogą mieć profil: informacje projektowe / wewnętrzne / umiarkowane
+wymagania poufności, chyba że projekt dotyczy obszaru wrażliwego.</P>
+<P LANG="zxx">&bdquo;Transakcje Online&rdquo;, &bdquo;Transakcje
+Mobilne&rdquo;, &bdquo;Płatności wychodzące&rdquo;, &bdquo;Operacje
+kartowe&rdquo; będą miały profil: informacje transakcyjne / krytyczne
+operacyjnie / wysokie wymagania integralności, dostępności i
+autentyczności.</P>
+<P LANG="zxx">Do Instrukcji Klasyfikacji Informacji wpisałbym taki
+model:</P>
+<P LANG="zxx">&bdquo;Na potrzeby niniejszej Instrukcji Grupą
+Informacji jest Grupa Danych ujęta w katalogu Grup Danych prowadzonym
+przez DAI, opisująca logicznie powiązany zbiór informacji
+przetwarzanych w Banku. Grupa Danych stanowi podstawową jednostkę
+klasyfikacji informacji, o ile posiada nazwę, opis, właściciela
+danych albo informacji, źródło danych oraz powiązanie z procesem lub
+podprocesem Banku.&rdquo;</P>
+<P LANG="zxx">Dalej:</P>
+<P LANG="zxx">&bdquo;DAI odpowiada za prowadzenie, aktualizację i
+kompletność katalogu Grup Danych, w tym za koordynację identyfikacji
+nowych Grup Danych z właścicielami danych, właścicielami informacji,
+właścicielami procesów oraz właściwymi komórkami organizacyjnymi.&rdquo;</P>
+<P LANG="zxx">Dalej:</P>
+<P LANG="zxx">&bdquo;DB odpowiada za metodykę klasyfikacji
+bezpieczeństwa informacji oraz nadanie klasy ochrony Grupom Danych
+traktowanym jako Grupy Informacji. Klasyfikacja jest wykonywana przy
+udziale Właściciela Informacji oraz, jeżeli dotyczy, DAI, właściciela
+procesu, właściciela systemu lub innej właściwej komórki
+organizacyjnej.&rdquo;</P>
+<P LANG="zxx">I zapis zabezpieczający DB:</P>
+<P LANG="zxx">&bdquo;Nadanie klasy ochrony Grupie Danych nie oznacza
+przejęcia przez DB odpowiedzialności za jakość, kompletność,
+poprawność, aktualność lub definicję biznesową danych w katalogu DAI.
+Odpowiedzialność DB obejmuje ocenę wymagań ochrony informacji na
+podstawie danych wejściowych przekazanych przez DAI oraz właściwych
+właścicieli informacji.&rdquo;</P>
+<P LANG="zxx">Zapis zabezpieczający DAI:</P>
+<P LANG="zxx">&bdquo;DAI nie odpowiada za określenie klasy ochrony
+informacji ani za dobór zabezpieczeń bezpieczeństwa informacji. DAI
+zapewnia utrzymanie katalogu Grup Danych oraz przekazuje DB
+informacje niezbędne do przeprowadzenia klasyfikacji.&rdquo;</P>
+<P LANG="zxx">Dodałbym jeszcze warunek jakościowy:</P>
+<P LANG="zxx">&bdquo;Grupy Danych oznaczone jako niekompletne, w
+szczególności bez wskazanego właściciela, źródła danych, procesu lub
+podprocesu, podlegają uzupełnieniu przed klasyfikacją albo są
+klasyfikowane warunkowo z obowiązkiem późniejszej weryfikacji.&rdquo;</P>
+<P LANG="zxx">To jest ważne, bo na zdjęciach widać &bdquo;???&rdquo;,
+&bdquo;BD&rdquo;, puste pola i niepewne przypisania. Audytorowi można
+wtedy pokazać, że Bank świadomie rozróżnia katalog roboczy od
+zatwierdzonego wejścia do klasyfikacji.</P>
+<P LANG="zxx">Na spotkaniu z DAI powiedziałbym to tak:</P>
+<P LANG="zxx">&bdquo;Po przejrzeniu próbki widzimy, że katalog DAI
+jest dla DB bardzo wartościowy. W wielu przypadkach Grupy Danych są
+opisane na tyle biznesowo, że mogą być użyte jako Grupy Informacji do
+klasyfikacji bezpieczeństwa. Nie chcemy tworzyć drugiego,
+konkurencyjnego katalogu w DB, bo to zwiększyłoby chaos i ryzyko
+niespójności. Proponujemy więc, żeby katalog Grup Danych DAI był
+źródłem Grup Informacji dla DB.&rdquo;</P>
+<P LANG="zxx">&bdquo;Jednocześnie musimy zabezpieczyć dwie rzeczy. Po
+pierwsze, DB nie może odpowiadać za kompletność i jakość katalogu
+danych, bo to jest proces DAI i właścicieli danych. Po drugie, DAI
+nie powinno odpowiadać za klasyfikację bezpieczeństwa, bo to jest
+rola DB. Dlatego DAI utrzymuje katalog, a DB nadaje klasę ochrony na
+podstawie tego katalogu.&rdquo;</P>
+<P LANG="zxx">&bdquo;Liczba 160 grup nie musi być problemem, jeżeli
+ustalimy, że klasyfikujemy grupy szczegółowo, ale zabezpieczenia
+przypisujemy według klas i profili ochrony. Czyli nie tworzymy 160
+różnych zasad postępowania, tylko kilka spójnych profili ochronnych.&rdquo;</P>
+<P LANG="zxx">Moja rekomendacja: ten wariant jest obecnie chyba
+najbardziej pragmatyczny. Wymaga najmniejszego sporu z DAI, najlepiej
+wspiera U01.1 i U01.2 oraz daje jedno źródło danych do klasyfikacji.
+Warunek jest taki, że w Instrukcji trzeba bardzo jasno rozdzielić
+odpowiedzialność za katalog od odpowiedzialności za klasyfikację.</P>
+<P LANG="zxx">Do KANONU proponuję wpisać:</P>
+<P LANG="zxx">&bdquo;Katalog Grup Danych prowadzony przez DAI stanowi
+źródło Grup Informacji wykorzystywanych w procesie klasyfikacji
+bezpieczeństwa informacji. Grupy Danych spełniające minimalne
+wymagania opisowe są klasyfikowane przez DB jako Grupy Informacji.
+DAI odpowiada za prowadzenie i aktualność katalogu Grup Danych, w tym
+za nazwę, opis, właściciela, źródło i powiązanie z procesem. DB
+odpowiada za metodykę klasyfikacji i nadanie klasy ochrony. Zasady
+postępowania i zabezpieczenia są przypisywane według klas i profili
+ochrony, a nie indywidualnie dla każdej Grupy Danych.&rdquo;</P>
+<P LANG="zxx"><BR><BR>
+</P>
+<P LANG="zxx" STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.07cm; padding-left: 0cm; padding-right: 0cm">
+<BR><BR>
+</P>
+<P LANG="zxx"><BR><BR>
+</P>
+<H3 CLASS="western"><STRONG>Cel spotkania</STRONG></H3>
+<P LANG="zxx">Celem spotkania nie jest rozstrzygnięcie, czy &bdquo;racja
+jest po stronie DB czy DAI&rdquo;, tylko uporządkowanie procesu tak,
+aby Bank mógł skutecznie zrealizować zalecenie
+228/P/BPS/IT/2025-U01.1 i jednocześnie nie stworzyć dwóch
+konkurencyjnych katalogów informacji.</P>
+<P LANG="zxx">Zalecenie wymaga od DB doprecyzowania obowiązków
+właścicieli informacji i dysponentów systemów w taki sposób, aby
+klasyfikacja nowych zbiorów informacji i nowych systemów była
+wykonywana na etapie projektowym i przed produkcyjnym uruchomieniem.
+Żeby to było realnie wykonalne, DB potrzebuje stabilnego wejścia do
+procesu, czyli katalogu grup informacji/danych, właścicieli, procesów
+i źródeł danych.</P>
+<P LANG="zxx">Z tego, co widzimy po materiale DAI, katalog Grup
+Danych jest bardzo dobrym punktem wyjścia. Zawiera domeny danych,
+grupy danych, opisy, przykładowe atrybuty, właścicieli, źródła danych
+oraz powiązania z procesami. To oznacza, że zamiast tworzyć drugi,
+osobny katalog Grup Informacji w DB, można oprzeć się na katalogu
+DAI.</P>
+<H3 CLASS="western">Propozycja głównego uzgodnienia</H3>
+<P LANG="zxx">Proponujemy przyjąć, że katalog Grup Danych prowadzony
+przez DAI stanowi źródło Grup Informacji wykorzystywanych przez DB do
+klasyfikacji bezpieczeństwa informacji.</P>
+<P LANG="zxx">W praktyce oznacza to, że DB nie tworzy osobnego
+katalogu 10&ndash;30 Grup Informacji konkurencyjnego wobec katalogu
+DAI. DB przyjmuje Grupy Danych jako jednostki klasyfikacji
+informacji, o ile dana Grupa Danych ma minimalny opis pozwalający na
+klasyfikację, czyli nazwę, opis, właściciela, źródło danych oraz
+powiązanie z procesem albo podprocesem.</P>
+<P LANG="zxx">Jednocześnie trzeba jasno rozdzielić odpowiedzialności.
+DAI odpowiada za katalog Grup Danych jako artefakt zarządzania
+danymi. DB odpowiada za klasyfikację bezpieczeństwa tych grup. DAI
+nie przejmuje odpowiedzialności za ocenę P/I/D/A i klasę ochrony. DB
+nie przejmuje odpowiedzialności za jakość, kompletność i aktualność
+katalogu danych.</P>
+<H3 CLASS="western">Jak to wyjaśnić prostym językiem</H3>
+<P LANG="zxx">Można powiedzieć tak:</P>
+<P LANG="zxx">&bdquo;Nie chcemy tworzyć dwóch równoległych światów:
+katalogu Grup Danych w DAI i katalogu Grup Informacji w DB. To byłoby
+trudne do utrzymania i szybko doprowadziłoby do niespójności. Skoro
+DAI ma katalog Grup Danych z opisami, właścicielami, źródłami i
+procesami, to DB może używać tego katalogu jako źródła Grup
+Informacji do klasyfikacji bezpieczeństwa.&rdquo;</P>
+<P LANG="zxx">&bdquo;Dla DAI to nadal pozostaje katalog danych
+potrzebny do jakości danych, integracji, źródeł danych i zarządzania
+danymi. Dla DB te same pozycje są jednostkami klasyfikacji
+bezpieczeństwa informacji. Czyli jeden katalog może obsługiwać dwa
+porządki: zarządzanie danymi po stronie DAI i klasyfikację ochronną
+po stronie DB.&rdquo;</P>
+<P LANG="zxx">&bdquo;Nie oznacza to, że 160 Grup Danych będzie miało
+160 różnych zasad ochrony. Klasyfikujemy grupy szczegółowo, ale
+zabezpieczenia i sposób postępowania przypisujemy według klas i
+profili ochrony. Dzięki temu katalog może być szczegółowy, a model
+zabezpieczeń pozostaje możliwy do zarządzania.&rdquo;</P>
+<H3 CLASS="western">Proponowany model procesu</H3>
+<P LANG="zxx">Proces można ułożyć w następujący sposób:</P>
+<P LANG="zxx">Etap 1. DAI prowadzi katalog Grup Danych.</P>
+<P LANG="zxx">DAI utrzymuje katalog Grup Danych obejmujący co
+najmniej: domenę danych, nazwę Grupy Danych, opis, przykładowe
+atrybuty, właściciela danych/informacji, źródło danych, powiązanie z
+procesem lub podprocesem oraz informację, czy proces jest krytyczny.</P>
+<P LANG="zxx">Etap 2. DB wykorzystuje katalog Grup Danych jako
+wejście do klasyfikacji.</P>
+<P LANG="zxx">DB przyjmuje Grupę Danych jako Grupę Informacji na
+potrzeby klasyfikacji bezpieczeństwa. DB nie ocenia jakości danych
+jako takiej, tylko ustala wymagania ochrony informacji, czyli
+poufność, integralność, dostępność i autentyczność.</P>
+<P LANG="zxx">Etap 3. Właściciel informacji bierze udział w
+klasyfikacji.</P>
+<P LANG="zxx">Właściciel wskazany w katalogu DAI albo właściciel
+procesu/podprocesu wiodącego potwierdza znaczenie informacji, skutki
+jej ujawnienia, modyfikacji, niedostępności lub braku pewności co do
+źródła.</P>
+<P LANG="zxx">Etap 4. DB nadaje klasę ochrony i profil ochrony.</P>
+<P LANG="zxx">DB nadaje klasę ochrony zgodnie z Instrukcją
+Klasyfikacji Informacji. Dodatkowo można przypisać profil ochrony,
+np. dane osobowe klientów, tajemnica bankowa, informacje
+transakcyjne, informacje regulacyjne, informacje kadrowe, informacje
+projektowe, informacje techniczne, informacje wewnętrzne.</P>
+<P LANG="zxx">Etap 5. Wynik klasyfikacji wraca do katalogu.</P>
+<P LANG="zxx">Wynik klasyfikacji powinien zostać odnotowany w
+rejestrze klasyfikacji albo przekazany do DAI do uzupełnienia
+katalogu Grup Danych o klasę ochrony i datę klasyfikacji. Dzięki temu
+katalog DAI staje się jednocześnie źródłem informacji dla procesów
+danych i dla SZBI.</P>
+<P LANG="zxx">Etap 6. Klasyfikacja informacji zasila klasyfikację
+systemów.</P>
+<P LANG="zxx">Jeżeli system przetwarza określone Grupy Danych/Grupy
+Informacji, to wynik klasyfikacji tych grup jest wejściem do
+klasyfikacji systemu. Właściciel systemu odpowiada za system i za
+spełnienie wymagań wynikających z klasyfikacji informacji, ale nie
+staje się automatycznie właścicielem informacji.</P>
+<H3 CLASS="western">Podział ról i odpowiedzialności</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Rola</P>
+			</TH>
+			<TH>
+				<P>Odpowiedzialność</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>DAI</P>
+			</TD>
+			<TD>
+				<P>Prowadzi i aktualizuje katalog Grup Danych, koordynuje
+				uzupełnianie nazw, opisów, atrybutów, źródeł, właścicieli i
+				powiązań z procesami.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DB</P>
+			</TD>
+			<TD>
+				<P>Określa metodykę klasyfikacji informacji, nadaje klasę ochrony
+				Grupom Danych traktowanym jako Grupy Informacji, określa
+				wymagania bezpieczeństwa i profile ochrony.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Właściciel informacji / właściciel danych</P>
+			</TD>
+			<TD>
+				<P>Potwierdza znaczenie biznesowe informacji, zakres informacji,
+				skutki naruszenia P/I/D/A oraz bierze udział w klasyfikacji.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Właściciel procesu / podprocesu</P>
+			</TD>
+			<TD>
+				<P>Wskazuje kontekst biznesowy przetwarzania informacji i
+				potwierdza, czy proces jest źródłowy albo wykorzystujący daną
+				informację.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Właściciel systemu / dysponent systemu</P>
+			</TD>
+			<TD>
+				<P>Wskazuje, jakie Grupy Danych/Informacji są przetwarzane w
+				systemie i zapewnia spełnienie wymagań wynikających z
+				klasyfikacji.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DIR / proces projektowy</P>
+			</TD>
+			<TD>
+				<P>Powinien zapewnić przekazywanie do DB informacji o nowych
+				inicjatywach, projektach i systemach wymagających klasyfikacji,
+				ale szczegółowy tryb powinien wynikać z regulacji projektowych, a
+				nie z instrukcji klasyfikacji informacji.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">Co zabezpiecza interes DB</H3>
+<P LANG="zxx">DB nie tworzy drugiego katalogu informacji, który
+trzeba byłoby potem utrzymywać równolegle z katalogiem DAI.</P>
+<P LANG="zxx">DB nie odpowiada za jakość, kompletność i aktualność
+katalogu Grup Danych.</P>
+<P LANG="zxx">DB może wykazać realizację zalecenia, bo przygotowuje
+Instrukcję Klasyfikacji Informacji, opisuje role, metodykę, wejścia
+do procesu i zasady klasyfikacji.</P>
+<P LANG="zxx">DB może oprzeć klasyfikację na istniejącym katalogu
+DAI, co jest praktyczne i audytowalne.</P>
+<P LANG="zxx">DB nie musi tworzyć 160 różnych zasad zabezpieczeń, bo
+zabezpieczenia będą wynikały z klas i profili ochrony.</P>
+<H3 CLASS="western">Co zabezpiecza interes DAI</H3>
+<P LANG="zxx">DAI nie odpowiada za klasyfikację bezpieczeństwa
+informacji.</P>
+<P LANG="zxx">DAI nie musi zmniejszać swojego katalogu do 10&ndash;30
+pozycji, jeżeli do zarządzania danymi potrzebuje większej
+szczegółowości.</P>
+<P LANG="zxx">DAI zachowuje swój katalog jako narzędzie zarządzania
+danymi, jakością, integracją i źródłami danych.</P>
+<P LANG="zxx">DAI nie musi projektować wymagań bezpieczeństwa ani
+oceniać P/I/D/A.</P>
+<P LANG="zxx">DAI dostaje od DB klasę ochrony, która może być później
+używana w zarządzaniu danymi, integracją, retencją, udostępnianiem i
+wymaganiami dla systemów.</P>
+<H3 CLASS="western">Proponowane zapisy do Instrukcji Klasyfikacji
+Informacji</H3>
+<P LANG="zxx">&bdquo;Na potrzeby niniejszej Instrukcji Grupą
+Informacji jest Grupa Danych ujęta w katalogu Grup Danych prowadzonym
+przez DAI, opisująca logicznie powiązany zbiór informacji
+przetwarzanych w Banku. Grupa Danych stanowi podstawową jednostkę
+klasyfikacji informacji, o ile posiada nazwę, opis, właściciela
+danych albo informacji, źródło danych oraz powiązanie z procesem lub
+podprocesem Banku.&rdquo;</P>
+<P LANG="zxx">&bdquo;DAI odpowiada za prowadzenie, aktualizację i
+kompletność katalogu Grup Danych, w tym za koordynację identyfikacji
+nowych Grup Danych z właścicielami danych, właścicielami informacji,
+właścicielami procesów oraz właściwymi komórkami organizacyjnymi.&rdquo;</P>
+<P LANG="zxx">&bdquo;DB odpowiada za metodykę klasyfikacji
+bezpieczeństwa informacji oraz nadanie klasy ochrony Grupom Danych
+traktowanym jako Grupy Informacji. Klasyfikacja jest wykonywana przy
+udziale Właściciela Informacji oraz, jeżeli dotyczy, DAI, właściciela
+procesu, właściciela systemu lub innej właściwej komórki
+organizacyjnej.&rdquo;</P>
+<P LANG="zxx">&bdquo;Nadanie klasy ochrony Grupie Danych nie oznacza
+przejęcia przez DB odpowiedzialności za jakość, kompletność,
+poprawność, aktualność lub definicję biznesową danych w katalogu DAI.
+Odpowiedzialność DB obejmuje ocenę wymagań ochrony informacji na
+podstawie danych wejściowych przekazanych przez DAI oraz właściwych
+właścicieli informacji.&rdquo;</P>
+<P LANG="zxx">&bdquo;DAI nie odpowiada za określenie klasy ochrony
+informacji ani za dobór zabezpieczeń bezpieczeństwa informacji. DAI
+zapewnia utrzymanie katalogu Grup Danych oraz przekazuje DB
+informacje niezbędne do przeprowadzenia klasyfikacji.&rdquo;</P>
+<P LANG="zxx">&bdquo;Grupy Danych oznaczone jako niekompletne, w
+szczególności bez wskazanego właściciela, źródła danych, procesu lub
+podprocesu, podlegają uzupełnieniu przed klasyfikacją albo są
+klasyfikowane warunkowo z obowiązkiem późniejszej weryfikacji.&rdquo;</P>
+<H3 CLASS="western">Różnice w postrzeganiu, które warto omówić na
+spotkaniu</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Temat</P>
+			</TH>
+			<TH>
+				<P>Perspektywa DB</P>
+			</TH>
+			<TH>
+				<P>Perspektywa DAI</P>
+			</TH>
+			<TH>
+				<P>Proponowane uzgodnienie</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>Liczba grup</P>
+			</TD>
+			<TD>
+				<P>DB obawia się, że 160 grup będzie trudne do zabezpieczania.</P>
+			</TD>
+			<TD>
+				<P>DAI potrzebuje szczegółowości do zarządzania danymi.</P>
+			</TD>
+			<TD>
+				<P>Przyjmujemy 160 grup jako jednostki klasyfikacji, ale
+				zabezpieczenia przypisujemy według klas i profili ochrony.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Nazwa &bdquo;Grupa Danych&rdquo; vs &bdquo;Grupa Informacji&rdquo;</P>
+			</TD>
+			<TD>
+				<P>DB używa pojęcia Grupa Informacji w SZBI.</P>
+			</TD>
+			<TD>
+				<P>DAI używa pojęcia Grupa Danych.</P>
+			</TD>
+			<TD>
+				<P>Grupa Danych z katalogu DAI jest traktowana jako Grupa
+				Informacji na potrzeby klasyfikacji bezpieczeństwa.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Właściciel</P>
+			</TD>
+			<TD>
+				<P>DB potrzebuje właściciela do potwierdzenia klasyfikacji.</P>
+			</TD>
+			<TD>
+				<P>DAI wskazuje właściciela danych, ale część pozycji ma &bdquo;???&rdquo;.</P>
+			</TD>
+			<TD>
+				<P>Pozycje bez właściciela są uzupełniane albo klasyfikowane
+				warunkowo.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Procesy</P>
+			</TD>
+			<TD>
+				<P>DB potrzebuje powiązania z procesem/podprocesem.</P>
+			</TD>
+			<TD>
+				<P>DAI ma powiązania z procesami, ale część pozycji ma &bdquo;BD&rdquo;
+				lub puste pola.</P>
+			</TD>
+			<TD>
+				<P>Minimalnym wymaganiem dla klasyfikacji docelowej jest
+				powiązanie z procesem/podprocesem.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Odpowiedzialność</P>
+			</TD>
+			<TD>
+				<P>DB nie chce odpowiadać za katalog danych.</P>
+			</TD>
+			<TD>
+				<P>DAI nie chce odpowiadać za klasyfikację bezpieczeństwa.</P>
+			</TD>
+			<TD>
+				<P>DAI odpowiada za katalog, DB za klasyfikację.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">Harmonogram do 30.09</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Termin</P>
+			</TH>
+			<TH>
+				<P>Działanie</P>
+			</TH>
+			<TH>
+				<P>Odpowiedzialny</P>
+			</TH>
+			<TH>
+				<P>Efekt</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>Do połowy lipca</P>
+			</TD>
+			<TD>
+				<P>Uzgodnienie z DAI modelu: Grupy Danych jako źródło Grup
+				Informacji dla DB.</P>
+			</TD>
+			<TD>
+				<P>DB + DAI</P>
+			</TD>
+			<TD>
+				<P>Notatka ze spotkania / potwierdzenie kierunku.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Do końca lipca</P>
+			</TD>
+			<TD>
+				<P>Ustalenie minimalnych pól wymaganych do klasyfikacji: nazwa,
+				opis, właściciel, źródło, proces/podproces, ewentualnie systemy.</P>
+			</TD>
+			<TD>
+				<P>DB + DAI</P>
+			</TD>
+			<TD>
+				<P>Lista minimalnych wymagań dla katalogu.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Sierpień</P>
+			</TD>
+			<TD>
+				<P>Dostosowanie projektu Instrukcji Klasyfikacji Informacji do
+				uzgodnionego modelu.</P>
+			</TD>
+			<TD>
+				<P>DB</P>
+			</TD>
+			<TD>
+				<P>Projekt regulacji gotowy do dalszego opiniowania.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Sierpień / wrzesień</P>
+			</TD>
+			<TD>
+				<P>Uzgodnienie sposobu postępowania z pozycjami niekompletnymi:
+				&bdquo;???&rdquo;, &bdquo;BD&rdquo;, brak właściciela, brak
+				procesu.</P>
+			</TD>
+			<TD>
+				<P>DAI + DB</P>
+			</TD>
+			<TD>
+				<P>Zasada klasyfikacji warunkowej albo lista uzupełnień.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Do 30.09</P>
+			</TD>
+			<TD>
+				<P>Wydanie Instrukcji Klasyfikacji Informacji oraz opisanie
+				interfejsu z katalogiem DAI.</P>
+			</TD>
+			<TD>
+				<P>DB</P>
+			</TD>
+			<TD>
+				<P>Realizacja części formalnej U01.1.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Do 30.09</P>
+			</TD>
+			<TD>
+				<P>Uzgodnienie, że pełna inwentaryzacja i docelowe czyszczenie
+				katalogu będą realizowane dalej jako działanie po wdrożeniu
+				instrukcji.</P>
+			</TD>
+			<TD>
+				<P>DB + DAI</P>
+			</TD>
+			<TD>
+				<P>Harmonogram dalszych prac po 30.09.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">Co powinno być gotowe na zamknięcie zalecenia
+U01.1</H3>
+<P LANG="zxx">Na potrzeby zamknięcia zalecenia po stronie DB warto
+mieć następujące dowody:</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Dowód</P>
+			</TH>
+			<TH>
+				<P>Znaczenie</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>Wydana Instrukcja Klasyfikacji Informacji</P>
+			</TD>
+			<TD>
+				<P>Pokazuje formalne doprecyzowanie zasad i ról.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Wydana albo procedowana Instrukcja Klasyfikacji Systemów</P>
+			</TD>
+			<TD>
+				<P>Pokazuje rozdzielenie klasyfikacji informacji i systemów.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Notatka z uzgodnienia DB&ndash;DAI</P>
+			</TD>
+			<TD>
+				<P>Pokazuje, że Bank przyjął model współpracy i źródło danych do
+				klasyfikacji.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Wskazanie katalogu Grup Danych DAI jako wejścia do
+				klasyfikacji</P>
+			</TD>
+			<TD>
+				<P>Pokazuje, że proces ma realne źródło danych.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Opis ról: DAI, DB, właściciel informacji, właściciel systemu</P>
+			</TD>
+			<TD>
+				<P>Pokazuje doprecyzowanie odpowiedzialności wymagane przez
+				zalecenie.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Plan dalszego uzupełnienia katalogu i klasyfikacji</P>
+			</TD>
+			<TD>
+				<P>Pokazuje, że Bank nie traktuje instrukcji jako końca prac,
+				tylko jako uruchomienie procesu.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">Działania po 30.09</H3>
+<P LANG="zxx">Po 30.09 celem nie powinno być już samo wydanie
+instrukcji, tylko uruchomienie cyklu utrzymania klasyfikacji.</P>
+<P LANG="zxx">Proponuję przyjąć następujące działania:</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Okres</P>
+			</TH>
+			<TH>
+				<P>Działanie</P>
+			</TH>
+			<TH>
+				<P>Cel</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>IV kwartał 2026</P>
+			</TD>
+			<TD>
+				<P>Przegląd katalogu Grup Danych pod kątem braków: właściciel,
+				źródło, proces, systemy, &bdquo;BD&rdquo;, &bdquo;???&rdquo;.</P>
+			</TD>
+			<TD>
+				<P>Oczyszczenie danych wejściowych do klasyfikacji.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>IV kwartał 2026</P>
+			</TD>
+			<TD>
+				<P>Priorytetyzacja Grup Danych do klasyfikacji, np. najpierw dane
+				klientów, transakcje, pracownicy, raportowanie regulacyjne,
+				systemy krytyczne.</P>
+			</TD>
+			<TD>
+				<P>Uniknięcie próby klasyfikacji wszystkiego naraz.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>IV kwartał 2026 / I kwartał 2027</P>
+			</TD>
+			<TD>
+				<P>Pierwsza fala klasyfikacji Grup Danych/Informacji.</P>
+			</TD>
+			<TD>
+				<P>Nadanie klas ochrony najważniejszym grupom.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>I kwartał 2027</P>
+			</TD>
+			<TD>
+				<P>Powiązanie wyników klasyfikacji informacji z klasyfikacją
+				systemów.</P>
+			</TD>
+			<TD>
+				<P>Zapewnienie, że systemy dziedziczą wymagania ochronne
+				informacji.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>I&ndash;II kwartał 2027</P>
+			</TD>
+			<TD>
+				<P>Włączenie klasyfikacji do procesu projektowego i zmianowego z
+				DIR.</P>
+			</TD>
+			<TD>
+				<P>Zapewnienie klasyfikacji nowych informacji i systemów przed
+				produkcją.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Dalej cyklicznie</P>
+			</TD>
+			<TD>
+				<P>Coroczny przegląd klasyfikacji oraz aktualizacja po istotnych
+				zmianach.</P>
+			</TD>
+			<TD>
+				<P>Utrzymanie zgodności i aktualności procesu.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">Proponowane ustalenie końcowe ze spotkania</H3>
+<P LANG="zxx">&bdquo;DB i DAI uzgadniają, że katalog Grup Danych
+prowadzony przez DAI będzie stanowił źródło Grup Informacji
+wykorzystywanych w procesie klasyfikacji bezpieczeństwa informacji.
+DB nie będzie tworzyć odrębnego, konkurencyjnego katalogu Grup
+Informacji, natomiast będzie wykorzystywać katalog DAI jako podstawę
+klasyfikacji, pod warunkiem zapewnienia minimalnych danych opisowych
+dla poszczególnych Grup Danych.&rdquo;</P>
+<P LANG="zxx">&bdquo;DAI odpowiada za prowadzenie i aktualizację
+katalogu Grup Danych, w tym za koordynację uzupełniania informacji o
+właścicielach, źródłach i procesach. DB odpowiada za metodykę
+klasyfikacji bezpieczeństwa informacji oraz nadanie klas ochrony.
+Właściciele informacji uczestniczą w klasyfikacji poprzez
+potwierdzenie znaczenia biznesowego informacji i skutków naruszenia
+jej poufności, integralności, dostępności i autentyczności.&rdquo;</P>
+<P LANG="zxx">&bdquo;Do 30.09 celem jest wydanie regulacji DB
+porządkującej proces klasyfikacji i opisującej interfejs z katalogiem
+DAI. Po 30.09 prowadzone będą dalsze działania operacyjne obejmujące
+uzupełnienie katalogu, klasyfikację priorytetowych Grup
+Danych/Informacji oraz powiązanie wyników klasyfikacji z klasyfikacją
+systemów i procesem projektowym.&rdquo;</P>
+<H3 CLASS="western">Krótka wersja do powiedzenia dyrektorowi</H3>
+<P LANG="zxx" STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.07cm; padding-left: 0cm; padding-right: 0cm">
+&bdquo;Proponujemy nie budować drugiego katalogu Grup Informacji w
+DB, tylko wykorzystać katalog Grup Danych DAI jako źródło do
+klasyfikacji bezpieczeństwa. DAI utrzymuje katalog, a DB klasyfikuje
+bezpieczeństwo. Dzięki temu nie mnożymy bytów, nie tworzymy dwóch
+rejestrów i możemy pokazać audytorowi jeden spójny proces. Do 30.09
+chcemy wydać instrukcję DB, która opisze ten model, role i minimalne
+wymagania. Po 30.09 trzeba będzie już operacyjnie uzupełnić braki w
+katalogu, sklasyfikować priorytetowe grupy i podłączyć wynik
+klasyfikacji do klasyfikacji systemów oraz procesu projektowego.&rdquo;</P>
+<P LANG="zxx"><BR><BR>
+</P>
+<P LANG="zxx"><STRONG>Właściciel informacji nie był zostawiony sam z
+tabelą i skalami P/I/D/A. On powinien potwierdzać i rozstrzygać
+biznesowo, a nie samodzielnie prowadzić klasyfikację. Sam proces
+powinny organizować wspólnie DAI i DB, ale każdy w swoim zakresie.</STRONG></P>
+<P LANG="zxx">Proponowany podział jest taki:</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Czynność</P>
+			</TH>
+			<TH>
+				<P>Kto wykonuje</P>
+			</TH>
+			<TH>
+				<P>Udział Właściciela informacji</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>Przygotowanie katalogu Grup Danych/Informacji</P>
+			</TD>
+			<TD>
+				<P>DAI</P>
+			</TD>
+			<TD>
+				<P>Nie musi uczestniczyć na początku, chyba że trzeba ustalić
+				właściciela lub zakres grupy.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Uzupełnienie nazwy, opisu, atrybutów, źródła danych, procesu</P>
+			</TD>
+			<TD>
+				<P>DAI z właścicielem danych/procesu</P>
+			</TD>
+			<TD>
+				<P>Potwierdza, że opis grupy jest poprawny biznesowo.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Przygotowanie wstępnej propozycji klasyfikacji</P>
+			</TD>
+			<TD>
+				<P>DB</P>
+			</TD>
+			<TD>
+				<P>Nie wykonuje sam, ale dostaje propozycję do omówienia.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Warsztat klasyfikacyjny</P>
+			</TD>
+			<TD>
+				<P>DB prowadzi, DAI uczestniczy</P>
+			</TD>
+			<TD>
+				<P>Potwierdza skutki naruszenia poufności, integralności,
+				dostępności i autentyczności.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Zatwierdzenie klasy ochrony</P>
+			</TD>
+			<TD>
+				<P>Właściciel informacji, przy wsparciu DB</P>
+			</TD>
+			<TD>
+				<P>Akceptuje albo zgłasza uwagi.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Wpisanie wyniku do katalogu/rejestru</P>
+			</TD>
+			<TD>
+				<P>DAI albo DB, zależnie od ustalonego repozytorium</P>
+			</TD>
+			<TD>
+				<P>Nie wykonuje technicznie, tylko zatwierdza wynik.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Powiązanie wyniku z systemami</P>
+			</TD>
+			<TD>
+				<P>DB + właściciel systemu</P>
+			</TD>
+			<TD>
+				<P>Właściciel informacji może potwierdzić, czy dana informacja
+				jest faktycznie przetwarzana w danym systemie.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P LANG="zxx">Czyli odpowiedź na pytanie &bdquo;który departament to
+wykonuje&rdquo; powinna brzmieć:</P>
+<P LANG="zxx"><STRONG>DAI organizuje i utrzymuje katalog Grup Danych
+oraz kontaktuje się z właścicielami w sprawie zakresu, opisu, źródeł
+i powiązania z procesami. DB organizuje i prowadzi klasyfikację
+bezpieczeństwa informacji. Właściciel informacji uczestniczy w
+klasyfikacji jako osoba potwierdzająca znaczenie biznesowe informacji
+i skutki naruszenia jej ochrony.</STRONG></P>
+<P LANG="zxx">Nie robiłbym tego jako 160 osobnych spotkań z
+właścicielami. To zabije proces. Lepiej zrobić to falami i
+warsztatami domenowymi.</P>
+<H3 CLASS="western">Jak to zaplanować praktycznie</H3>
+<P LANG="zxx"><STRONG>Krok 1. DAI przygotowuje paczkę do klasyfikacji</STRONG></P>
+<P LANG="zxx">DAI przygotowuje dla danej domeny danych zestaw Grup
+Danych, np. &bdquo;Klienci Detaliczni&rdquo;, &bdquo;Klienci
+Korporacyjni&rdquo;, &bdquo;Produkty Detaliczne&rdquo;, &bdquo;Operacje
+i transakcje&rdquo;, &bdquo;Rachunkowość&rdquo;, &bdquo;Zasoby
+Ludzkie&rdquo;.</P>
+<P LANG="zxx">Dla każdej grupy powinny być minimum:</P>
+<P LANG="zxx">nazwa Grupy Danych,</P>
+<P LANG="zxx">opis,</P>
+<P LANG="zxx">przykładowe atrybuty,</P>
+<P LANG="zxx">właściciel danych/informacji,</P>
+<P LANG="zxx">proces albo podproces,</P>
+<P LANG="zxx">źródło danych/system źródłowy,</P>
+<P LANG="zxx">informacja, czy proces jest krytyczny.</P>
+<P LANG="zxx">Jeżeli są pola &bdquo;???&rdquo;, &bdquo;BD&rdquo; albo
+brak właściciela, to taka grupa trafia najpierw do wyjaśnienia po
+stronie DAI z właściwymi departamentami. DB może pomóc, ale nie
+powinien przejmować odpowiedzialności za ustalenie właściciela.</P>
+<P LANG="zxx"><STRONG>Krok 2. DB robi wstępną klasyfikację roboczą</STRONG></P>
+<P LANG="zxx">DB bierze przygotowaną paczkę i robi propozycję
+klasyfikacji, np.:</P>
+<P LANG="zxx">Poufność: 3 albo 4,</P>
+<P LANG="zxx">Integralność: 3 albo 4,</P>
+<P LANG="zxx">Dostępność: 2 albo 3,</P>
+<P LANG="zxx">Autentyczność: 2 albo 3,</P>
+<P LANG="zxx">proponowana klasa ochrony,</P>
+<P LANG="zxx">proponowany profil ochrony.</P>
+<P LANG="zxx">To powinno być przygotowane jako materiał na warsztat,
+żeby Właściciel informacji nie musiał zaczynać od pustej tabeli.</P>
+<P LANG="zxx"><STRONG>Krok 3. Warsztat z Właścicielem informacji</STRONG></P>
+<P LANG="zxx">Spotkanie prowadzi DB, a DAI uczestniczy jako
+właściciel katalogu danych.</P>
+<P LANG="zxx">Uczestnicy:</P>
+<P LANG="zxx">Właściciel informacji / właściciel danych,</P>
+<P LANG="zxx">przedstawiciel DAI,</P>
+<P LANG="zxx">specjalista DB ds. klasyfikacji informacji,</P>
+<P LANG="zxx">w razie potrzeby właściciel procesu albo podprocesu,</P>
+<P LANG="zxx">w razie potrzeby właściciel systemu,</P>
+<P LANG="zxx">opcjonalnie IOD, DP, compliance albo ryzyko, jeżeli
+grupa dotyczy danych osobowych, tajemnicy bankowej, raportowania
+regulacyjnego albo ryzyk prawnych.</P>
+<P LANG="zxx">Na spotkaniu nie trzeba omawiać wszystkiego akademicko.
+Właściciel powinien odpowiedzieć na kilka prostych pytań:</P>
+<P LANG="zxx">Co obejmuje ta grupa informacji?</P>
+<P LANG="zxx">Czy opis i przykładowe atrybuty są poprawne?</P>
+<P LANG="zxx">Czy ta informacja zawiera dane klientów, pracowników,
+tajemnicę bankową, dane osobowe, dane regulacyjne albo informacje
+strategiczne?</P>
+<P LANG="zxx">Co się stanie, jeśli informacja zostanie ujawniona
+osobie nieuprawnionej?</P>
+<P LANG="zxx">Co się stanie, jeśli informacja zostanie błędnie
+zmieniona?</P>
+<P LANG="zxx">Co się stanie, jeśli informacja będzie niedostępna?</P>
+<P LANG="zxx">Co się stanie, jeśli nie będzie pewności, skąd pochodzi
+informacja albo kto ją zatwierdził?</P>
+<P LANG="zxx">Czy są systemy albo procesy, w których ta informacja ma
+szczególne znaczenie?</P>
+<P LANG="zxx">DB na tej podstawie doprecyzowuje P/I/D/A.</P>
+<P LANG="zxx"><STRONG>Krok 4. Potwierdzenie wyniku</STRONG></P>
+<P LANG="zxx">Po warsztacie DB przygotowuje krótką kartę klasyfikacji
+albo wpis w rejestrze.</P>
+<P LANG="zxx">Właściciel informacji nie musi podpisywać długiego
+dokumentu. Wystarczy akceptacja w workflow, mailu albo rejestrze,
+np.:</P>
+<P LANG="zxx">&bdquo;Potwierdzam zakres Grupy Danych/Informacji oraz
+akceptuję zaproponowaną klasę ochrony.&rdquo;</P>
+<P LANG="zxx">Jeżeli właściciel się nie zgadza, wpisuje uwagę i
+uzasadnienie. Spór rozstrzyga DB z DAI, a w trudnych przypadkach
+Pełnomocnik ds. Bezpieczeństwa Informacji z właściwym dyrektorem
+obszaru.</P>
+<H3 CLASS="western">Jak to ująć na spotkaniu z DAI</H3>
+<P LANG="zxx">Powiedziałbym to tak:</P>
+<P LANG="zxx">&bdquo;Nie chcemy, żeby właściciele informacji sami
+klasyfikowali dane według metodyki bezpieczeństwa. To byłoby
+nierealne i szybko skończyłoby się chaosem. Właściciel ma potwierdzić
+znaczenie biznesowe informacji i skutki jej naruszenia. DAI
+przygotowuje katalog i zapewnia poprawność opisu danych. DB prowadzi
+klasyfikację bezpieczeństwa i przekłada odpowiedzi właściciela na
+P/I/D/A oraz klasę ochrony.&rdquo;</P>
+<P LANG="zxx">&bdquo;Właściciel informacji nie spotyka się osobno z
+każdym departamentem. Spotkanie powinno być prowadzone przez DB, z
+udziałem DAI. Jeżeli trzeba wyjaśnić proces, zapraszamy właściciela
+procesu. Jeżeli trzeba wyjaśnić system, zapraszamy właściciela
+systemu. Ale gospodarzem klasyfikacji jest DB, a gospodarzem katalogu
+danych jest DAI.&rdquo;</P>
+<H3 CLASS="western">Proponowany zapis do instrukcji</H3>
+<BLOCKQUOTE>Klasyfikacja Grupy Informacji jest realizowana przez DB
+przy udziale Właściciela Informacji oraz, jeżeli dotyczy, DAI,
+właściciela procesu, właściciela systemu lub innych właściwych
+komórek organizacyjnych.</BLOCKQUOTE>
+<BLOCKQUOTE>DAI zapewnia przygotowanie i utrzymanie danych
+wejściowych do klasyfikacji, w szczególności nazwy Grupy Danych,
+opisu, przykładowych atrybutów, źródła danych, właściciela
+danych/informacji oraz powiązania z procesem lub podprocesem.</BLOCKQUOTE>
+<BLOCKQUOTE>Właściciel Informacji potwierdza zakres i znaczenie
+biznesowe informacji oraz skutki naruszenia jej poufności,
+integralności, dostępności i autentyczności.</BLOCKQUOTE>
+<BLOCKQUOTE>DB odpowiada za przełożenie ustaleń z Właścicielem
+Informacji na wartości klasyfikacyjne oraz za nadanie klasy ochrony
+zgodnie z metodyką określoną w Instrukcji.</BLOCKQUOTE>
+<H3 CLASS="western">Harmonogram operacyjny</H3>
+<P LANG="zxx">Do 30.09 nie próbowałbym klasyfikować wszystkich 160
+grup. Do zamknięcia zalecenia ważniejsze jest wydanie instrukcji,
+opisanie ról i pokazanie, że proces jest uruchamiany.</P>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Termin</P>
+			</TH>
+			<TH>
+				<P>Działanie</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>Do 30.09</P>
+			</TD>
+			<TD>
+				<P>Uzgodnienie modelu DB&ndash;DAI, wydanie Instrukcji
+				Klasyfikacji Informacji, wskazanie katalogu Grup Danych DAI jako
+				wejścia do klasyfikacji.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Do 30.09</P>
+			</TD>
+			<TD>
+				<P>Ustalenie wzoru karty klasyfikacji i minimalnych danych
+				wymaganych od DAI.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Po 30.09</P>
+			</TD>
+			<TD>
+				<P>Pilotaż klasyfikacji na 2&ndash;3 domenach, np. Klienci,
+				Operacje i transakcje, Zasoby Ludzkie.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>IV kwartał</P>
+			</TD>
+			<TD>
+				<P>Uzupełnienie braków w katalogu: właściciele, źródła, procesy,
+				&bdquo;BD&rdquo;, &bdquo;???&rdquo;.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>IV kwartał / I kwartał</P>
+			</TD>
+			<TD>
+				<P>Klasyfikacja priorytetowych Grup Danych/Informacji.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Dalej</P>
+			</TD>
+			<TD>
+				<P>Cykliczny przegląd i klasyfikacja nowych grup w procesie
+				projektowym i zmianowym.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P LANG="zxx">Najważniejsze zdanie do zapamiętania na spotkanie:</P>
+<P LANG="zxx"><STRONG>DAI przygotowuje i utrzymuje katalog danych, DB
+prowadzi klasyfikację bezpieczeństwa, a Właściciel informacji
+potwierdza znaczenie biznesowe i skutki naruszenia informacji.</STRONG></P>
+<P LANG="zxx"><BR><BR>
+</P>
+<P LANG="zxx" STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.07cm; padding-left: 0cm; padding-right: 0cm">
+<BR><BR>
+</P>
+<P LANG="zxx"><BR><BR>
+</P>
+<P LANG="zxx"><STRONG>warto to zoptymalizować, ale nie przez prostą
+zasadę &bdquo;DIR wysyła wszystko tylko do DAI&rdquo;. Optymalna
+ścieżka powinna być wspólna, bo inicjatywa projektowa może uruchamiać
+dwa różne skutki:</STRONG></P>
+<P LANG="zxx">powstaje nowa lub zmieniona Grupa Danych / Grupa
+Informacji &mdash; wtedy potrzebne jest DAI,</P>
+<P LANG="zxx">powstaje nowy lub zmieniony system &mdash; wtedy
+potrzebne jest DB, bo DB prowadzi klasyfikację systemów i
+klasyfikację bezpieczeństwa informacji.</P>
+<P LANG="zxx">Najlepszy model to nie &bdquo;DIR &rarr; DB&rdquo; ani
+nie &bdquo;DIR &rarr; DAI&rdquo;, tylko:</P>
+<P LANG="zxx"><STRONG>DIR &rarr; wspólne zgłoszenie klasyfikacyjne
+dostępne dla DAI i DB</STRONG></P>
+<P LANG="zxx">Czyli jeden formularz, jedna bramka w procesie
+projektowym, jeden rejestr albo workflow, ale z rozdzieleniem ról po
+stronie obsługi.</P>
+<H3 CLASS="western">Optymalna ścieżka</H3>
+<P LANG="zxx">Najlepiej, żeby DIR na etapie inicjatywy/projektu
+wypełniał krótką checklistę:</P>
+<P LANG="zxx">Czy projekt tworzy nowy system albo istotnie zmienia
+istniejący system?</P>
+<P LANG="zxx">Czy projekt tworzy nowe dane, nową Grupę Danych, nowy
+raport, nowy rejestr, nową integrację albo nowy sposób przetwarzania
+informacji?</P>
+<P LANG="zxx">Czy projekt zmienia źródło danych, zakres danych,
+przepływ danych albo odbiorców danych?</P>
+<P LANG="zxx">Czy projekt dotyczy danych klientów, pracowników,
+transakcji, raportowania regulacyjnego, tajemnicy bankowej, danych
+osobowych albo informacji poufnych?</P>
+<P LANG="zxx">Czy rozwiązanie będzie uruchamiane produkcyjnie?</P>
+<P LANG="zxx">Jeżeli odpowiedź na którekolwiek pytanie jest &bdquo;tak&rdquo;,
+zgłoszenie trafia do wspólnego obiegu DAI/DB.</P>
+<H3 CLASS="western">Jak rozdzielić obsługę zgłoszenia</H3>
+<P LANG="zxx">DAI powinno być pierwszym adresatem w zakresie katalogu
+danych, czyli sprawdza:</P>
+<P LANG="zxx">czy dana Grupa Danych już istnieje,</P>
+<P LANG="zxx">czy trzeba utworzyć nową Grupę Danych,</P>
+<P LANG="zxx">czy trzeba zmienić opis, atrybuty, źródło danych,
+właściciela albo proces,</P>
+<P LANG="zxx">czy katalog DAI wymaga aktualizacji.</P>
+<P LANG="zxx">DB powinno być równolegle adresatem w zakresie
+klasyfikacji, czyli sprawdza:</P>
+<P LANG="zxx">czy wymagana jest klasyfikacja informacji,</P>
+<P LANG="zxx">czy wymagana jest klasyfikacja systemu,</P>
+<P LANG="zxx">czy projekt wpływa na klasę ochrony istniejących Grup
+Danych/Informacji,</P>
+<P LANG="zxx">czy przed produkcją trzeba wydać potwierdzenie
+klasyfikacji albo potwierdzenie braku obowiązku klasyfikacji.</P>
+<P LANG="zxx">DIR powinien odpowiadać za to, żeby projekt nie
+przeszedł do produkcji bez statusu z DAI i DB.</P>
+<H3 CLASS="western">Czy informacja powinna iść bezpośrednio do DAI?</H3>
+<P LANG="zxx">Tak, ale nie wyłącznie do DAI.</P>
+<P LANG="zxx">Można przyjąć zasadę:</P>
+<P LANG="zxx"><STRONG>DIR przekazuje zgłoszenie do DAI jako
+gospodarza katalogu Grup Danych oraz do DB jako gospodarza
+klasyfikacji bezpieczeństwa informacji i systemów.</STRONG></P>
+<P LANG="zxx">To zabezpiecza oba procesy.</P>
+<P LANG="zxx">Gdyby zgłoszenie szło tylko do DAI, DB może nie mieć
+dowodu, że klasyfikacja została uruchomiona na etapie projektowym. To
+byłoby ryzykowne dla zamknięcia U01.1, bo zalecenie dotyczy DB i
+klasyfikacji nowych zbiorów informacji oraz nowych systemów.</P>
+<P LANG="zxx">Gdyby zgłoszenie szło tylko do DB, DB musiałoby samo
+ustalać, czy powstała nowa Grupa Danych i czy katalog DAI wymaga
+aktualizacji. To nie jest rola DB i mogłoby powodować spór
+kompetencyjny.</P>
+<P LANG="zxx">Dlatego optymalnie:</P>
+<P LANG="zxx"><STRONG>jedno zgłoszenie z DIR, wspólny obieg DAI/DB,
+rozdzielone odpowiedzialności.</STRONG></P>
+<H3 CLASS="western">Proponowana ścieżka docelowa</H3>
+<P LANG="zxx">DIR rejestruje inicjatywę lub projekt.</P>
+<P LANG="zxx">W karcie inicjatywy pojawia się sekcja: &bdquo;Wpływ na
+dane, informacje i systemy&rdquo;.</P>
+<P LANG="zxx">Jeżeli projekt dotyczy danych, informacji lub systemów,
+zgłoszenie trafia automatycznie do DAI i DB.</P>
+<P LANG="zxx">DAI nadaje status: &bdquo;brak wpływu na katalog Grup
+Danych&rdquo;, &bdquo;wymagana aktualizacja istniejącej Grupy Danych&rdquo;
+albo &bdquo;wymagane utworzenie nowej Grupy Danych&rdquo;.</P>
+<P LANG="zxx">DB nadaje status: &bdquo;klasyfikacja niewymagana&rdquo;,
+&bdquo;wymagana klasyfikacja informacji&rdquo;, &bdquo;wymagana
+klasyfikacja systemu&rdquo; albo &bdquo;wymagana klasyfikacja
+informacji i systemu&rdquo;.</P>
+<P LANG="zxx">Przed uruchomieniem produkcyjnym DIR sprawdza, czy
+status DAI i DB jest zamknięty.</P>
+<H3 CLASS="western">Proponowane statusy do rejestru projektowego</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Obszar</P>
+			</TH>
+			<TH>
+				<P>Status</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>DAI</P>
+			</TD>
+			<TD>
+				<P>Brak wpływu na katalog Grup Danych</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DAI</P>
+			</TD>
+			<TD>
+				<P>Aktualizacja istniejącej Grupy Danych</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DAI</P>
+			</TD>
+			<TD>
+				<P>Utworzenie nowej Grupy Danych</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DAI</P>
+			</TD>
+			<TD>
+				<P>Wymagane uzupełnienie właściciela/procesu/źródła danych</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DB</P>
+			</TD>
+			<TD>
+				<P>Klasyfikacja informacji niewymagana</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DB</P>
+			</TD>
+			<TD>
+				<P>Klasyfikacja informacji wymagana</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DB</P>
+			</TD>
+			<TD>
+				<P>Klasyfikacja systemu wymagana</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DB</P>
+			</TD>
+			<TD>
+				<P>Klasyfikacja informacji i systemu wykonana</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DB</P>
+			</TD>
+			<TD>
+				<P>Warunkowe dopuszczenie do produkcji, klasyfikacja do
+				uzupełnienia</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">Zapis do ustalenia z DIR i DAI</H3>
+<P LANG="zxx">Proponowałbym takie brzmienie:</P>
+<P LANG="zxx">&bdquo;W przypadku inicjatyw, projektów lub zmian
+dotyczących utworzenia, modyfikacji lub wdrożenia systemu
+informatycznego, Grupy Danych, Grupy Informacji, źródła danych,
+przepływu danych lub sposobu przetwarzania informacji, DIR zapewnia
+przekazanie zgłoszenia do DAI i DB w celu oceny wpływu na katalog
+Grup Danych oraz konieczności przeprowadzenia klasyfikacji informacji
+lub systemu.&rdquo;</P>
+<P LANG="zxx">Dalej:</P>
+<P LANG="zxx">&bdquo;DAI odpowiada za ocenę wpływu inicjatywy na
+katalog Grup Danych oraz za jego aktualizację. DB odpowiada za ocenę
+konieczności przeprowadzenia klasyfikacji informacji lub systemu oraz
+za przeprowadzenie klasyfikacji zgodnie z właściwymi instrukcjami
+DB.&rdquo;</P>
+<P LANG="zxx">I najważniejsze:</P>
+<P LANG="zxx">&bdquo;Produkcyjne uruchomienie rozwiązania powinno być
+poprzedzone potwierdzeniem przez DAI zakończenia oceny wpływu na
+katalog Grup Danych oraz potwierdzeniem przez DB wykonania
+klasyfikacji albo braku obowiązku jej wykonania.&rdquo;</P>
+<H3 CLASS="western">Rekomendacja</H3>
+<P LANG="zxx">Najlepsza ścieżka to:</P>
+<P LANG="zxx"><STRONG>DIR &rarr; wspólne zgłoszenie do DAI i DB &rarr;
+DAI aktualizuje katalog danych &rarr; DB klasyfikuje
+informację/system &rarr; DIR zamyka bramkę przedprodukcyjną.</STRONG></P>
+<P LANG="zxx" STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.07cm; padding-left: 0cm; padding-right: 0cm">
+To nie miesza porządków, bo Instrukcja Klasyfikacji Informacji nie
+musi opisywać szczegółowo procedury DIR. Wystarczy, że wskaże, że
+wejściem do klasyfikacji są zgłoszenia z procesu projektowego lub
+zmianowego. Szczegółowy obowiązek zgłoszenia powinien zostać dopisany
+w regulacjach DIR albo w karcie inicjatywy/projektu.</P>
+<P LANG="zxx"><STRONG>Jeżeli trzeba wskazać jednego konkretnego
+odbiorcę w danym czasie, to najlepszy model nie powinien być &bdquo;DIR
+przekazuje do DAI i DB&rdquo;, tylko model sekwencyjny:</STRONG></P>
+<P LANG="zxx">DIR &rarr; DAI &rarr; DB &rarr; DAI &rarr; DIR</P>
+<P LANG="zxx">Czyli w sprawie jest zawsze jeden aktualny właściciel
+etapu, a nie dwie równoległe jednostki odpowiedzialne.</P>
+<P LANG="zxx">Najbardziej optymalnie widziałbym to tak:</P>
+<P LANG="zxx">Na wejściu z procesu projektowego odbiorcą powinno być
+DAI, nie DB.</P>
+<P LANG="zxx">Dlaczego? Bo pierwszym pytaniem przy nowej inicjatywie
+powinno być: czy projekt tworzy nowe dane, zmienia istniejącą Grupę
+Danych, zmienia źródło danych, przepływ danych, właściciela danych
+albo proces przetwarzania. To jest naturalny obszar DAI. DB nie
+powinno na tym etapie samodzielnie ustalać, czy dana Grupa Danych
+istnieje, czy jest nowa, czy ma właściciela i gdzie jest źródło
+danych.</P>
+<P LANG="zxx">DAI po analizie przygotowuje &bdquo;pakiet
+klasyfikacyjny&rdquo; i przekazuje go do DB. Dopiero wtedy DB
+wykonuje swoją część, czyli ocenę potrzeby klasyfikacji informacji
+i/lub systemu oraz nadanie klasy ochrony.</P>
+<P LANG="zxx">Proponowana ścieżka wyglądałaby tak:</P>
+<P LANG="zxx">Etap 1. DIR przekazuje zgłoszenie do DAI</P>
+<P LANG="zxx">DIR, w ramach karty inicjatywy/projektu, przekazuje do
+DAI informację o projekcie, jeżeli projekt dotyczy nowego systemu,
+istotnej zmiany systemu, nowych danych, nowej integracji, nowego
+raportu, nowego rejestru, nowego źródła danych albo zmiany sposobu
+przetwarzania informacji.</P>
+<P LANG="zxx">Na tym etapie jedynym odbiorcą jest DAI.</P>
+<P LANG="zxx">DAI nie klasyfikuje bezpieczeństwa. DAI tylko ustala
+wpływ projektu na katalog Grup Danych.</P>
+<P LANG="zxx">Etap 2. DAI przygotowuje pakiet dla DB</P>
+<P LANG="zxx">DAI sprawdza, czy projekt dotyczy istniejącej Grupy
+Danych, czy trzeba utworzyć nową Grupę Danych, czy trzeba zmienić
+opis, źródło, właściciela, proces albo atrybuty.</P>
+<P LANG="zxx">DAI przygotowuje minimum informacji dla DB:</P>
+<P LANG="zxx">nazwa Grupy Danych,</P>
+<P LANG="zxx">opis,</P>
+<P LANG="zxx">przykładowe atrybuty,</P>
+<P LANG="zxx">właściciel danych/informacji,</P>
+<P LANG="zxx">proces lub podproces,</P>
+<P LANG="zxx">źródło danych,</P>
+<P LANG="zxx">systemy lub planowane systemy przetwarzające,</P>
+<P LANG="zxx">informacja, czy proces jest krytyczny,</P>
+<P LANG="zxx">informacja, czy jest to nowa grupa, zmiana istniejącej
+grupy czy brak wpływu na katalog.</P>
+<P LANG="zxx">Po przygotowaniu pakietu DAI przekazuje sprawę do DB.</P>
+<P LANG="zxx">Od tego momentu aktualnym odbiorcą i właścicielem etapu
+jest DB.</P>
+<P LANG="zxx">Etap 3. DB wykonuje ocenę klasyfikacyjną</P>
+<P LANG="zxx">DB ocenia, czy wymagana jest:</P>
+<P LANG="zxx">klasyfikacja informacji,</P>
+<P LANG="zxx">aktualizacja klasyfikacji istniejącej Grupy
+Informacji/Grupy Danych,</P>
+<P LANG="zxx">klasyfikacja systemu,</P>
+<P LANG="zxx">aktualizacja klasyfikacji systemu,</P>
+<P LANG="zxx">czy wystarczy potwierdzenie braku wpływu na
+klasyfikację.</P>
+<P LANG="zxx">DB prowadzi klasyfikację przy udziale właściciela
+informacji, a jeżeli trzeba, także właściciela systemu, właściciela
+procesu, IOD, DP albo innej komórki.</P>
+<P LANG="zxx">DB nadaje klasę ochrony albo potwierdza, że
+klasyfikacja nie jest wymagana.</P>
+<P LANG="zxx">Etap 4. DB przekazuje wynik do DAI</P>
+<P LANG="zxx">Po klasyfikacji DB przekazuje wynik do DAI, aby DAI
+mogło uzupełnić katalog Grup Danych o wynik klasyfikacji, klasę
+ochrony, datę klasyfikacji i ewentualne uwagi.</P>
+<P LANG="zxx">Na tym etapie aktualnym odbiorcą znowu jest DAI.</P>
+<P LANG="zxx">DAI nie zmienia klasy ochrony. DAI tylko aktualizuje
+katalog.</P>
+<P LANG="zxx">Etap 5. DAI zamyka część katalogową i przekazuje status
+do DIR</P>
+<P LANG="zxx">Po uzupełnieniu katalogu DAI przekazuje do DIR status,
+że wpływ na katalog Grup Danych został obsłużony, a wynik
+klasyfikacji DB został odnotowany.</P>
+<P LANG="zxx">Na tym etapie odbiorcą jest DIR, który wykorzystuje
+status jako warunek przejścia do kolejnych etapów projektu albo do
+bramki przedprodukcyjnej.</P>
+<P LANG="zxx">Przy takim modelu każda sprawa ma jednego właściciela w
+danym czasie:</P>
+<P LANG="zxx">DIR tworzy zgłoszenie.</P>
+<P LANG="zxx">DAI przyjmuje i przygotowuje dane wejściowe.</P>
+<P LANG="zxx">DB klasyfikuje.</P>
+<P LANG="zxx">DAI aktualizuje katalog.</P>
+<P LANG="zxx">DIR zamyka bramkę projektową.</P>
+<P LANG="zxx">To jest dużo czystsze niż równoległe wysyłanie do DAI i
+DB.</P>
+<P LANG="zxx">Można to opisać jednym zdaniem:</P>
+<P LANG="zxx">&bdquo;DIR przekazuje zgłoszenie do DAI jako
+właściciela katalogu Grup Danych. DAI, po ustaleniu wpływu projektu
+na katalog danych, przekazuje do DB pakiet klasyfikacyjny. DB
+wykonuje ocenę klasyfikacyjną i przekazuje wynik do DAI w celu
+aktualizacji katalogu. DAI przekazuje do DIR status zakończenia
+obsługi wpływu na dane i klasyfikację.&rdquo;</P>
+<P LANG="zxx">Do procedury DIR można zaproponować taki zapis:</P>
+<P LANG="zxx">&bdquo;W przypadku inicjatyw, projektów lub zmian
+dotyczących utworzenia, modyfikacji lub wdrożenia systemu
+informatycznego, Grupy Danych, źródła danych, przepływu danych,
+raportu, rejestru lub sposobu przetwarzania informacji, DIR
+przekazuje zgłoszenie do DAI w celu oceny wpływu na katalog Grup
+Danych.&rdquo;</P>
+<P LANG="zxx">Dalej:</P>
+<P LANG="zxx">&bdquo;DAI, po dokonaniu oceny wpływu na katalog Grup
+Danych, przekazuje do DB pakiet klasyfikacyjny w przypadku
+stwierdzenia konieczności przeprowadzenia albo aktualizacji
+klasyfikacji informacji lub systemu.&rdquo;</P>
+<P LANG="zxx">Dalej:</P>
+<P LANG="zxx">&bdquo;Produkcyjne uruchomienie rozwiązania wymaga
+uzyskania statusu zakończenia obsługi zgłoszenia przez DAI,
+obejmującego odpowiednio wynik klasyfikacji DB albo potwierdzenie
+braku obowiązku klasyfikacji.&rdquo;</P>
+<P LANG="zxx">W Instrukcji Klasyfikacji Informacji DB można to ująć
+delikatniej, bez regulowania procesu DIR:</P>
+<P LANG="zxx">&bdquo;Wejściem do klasyfikacji informacji jest pakiet
+klasyfikacyjny przekazany przez DAI na podstawie katalogu Grup Danych
+oraz informacji uzyskanych w procesach inicjatyw, projektów, rozwoju
+systemów lub zarządzania zmianą.&rdquo;</P>
+<P LANG="zxx">W Instrukcji Klasyfikacji Systemów można dodać:</P>
+<P LANG="zxx">&bdquo;W przypadku nowych lub istotnie zmienianych
+systemów informatycznych klasyfikacja systemu jest wykonywana przez
+DB na podstawie informacji o systemie oraz Grupach Danych/Grupach
+Informacji przetwarzanych w systemie. Informacje te są przekazywane
+do DB w formie pakietu klasyfikacyjnego przygotowanego przez DAI lub
+w innym trybie określonym w regulacjach dotyczących prowadzenia
+inicjatyw, projektów, rozwoju systemów lub zarządzania zmianą.&rdquo;</P>
+<P LANG="zxx">Największa zaleta tej ścieżki jest taka, że DB nie
+staje się punktem kancelaryjnym dla wszystkich projektów, a DAI nie
+staje się jednostką odpowiedzialną za bezpieczeństwową klasyfikację.
+DAI jest pierwszym odbiorcą, bo porządkuje dane. DB jest kolejnym
+odbiorcą, bo klasyfikuje bezpieczeństwo. DIR jest właścicielem
+procesu projektowego i pilnuje, żeby sprawa była zamknięta przed
+produkcją.</P>
+<P LANG="zxx">Na spotkaniu powiedziałbym to tak:</P>
+<P LANG="zxx">&bdquo;Jeżeli mamy wskazać jednego odbiorcę, to
+proponuję, żeby pierwszym odbiorcą było DAI. Projekt najpierw musi
+zostać oceniony pod kątem tego, czy tworzy albo zmienia Grupy Danych.
+Dopiero po takim uporządkowaniu DAI przekazuje do DB pakiet
+klasyfikacyjny. DB nie powinno dostawać surowego zgłoszenia
+projektowego i samo ustalać, jakie dane powstają. DB powinno dostać
+komplet informacji potrzebnych do klasyfikacji. Po klasyfikacji wynik
+wraca do DAI do katalogu, a DIR dostaje status do zamknięcia bramki
+projektowej.&rdquo;</P>
+<P LANG="zxx" STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.07cm; padding-left: 0cm; padding-right: 0cm">
+To będzie najbardziej obronne i organizacyjnie najczystsze.</P>
+<P LANG="zxx"><BR><BR>
+</P>
+<P LANG="zxx"><BR><BR>
+</P>
+<H3 CLASS="western"><STRONG>Podsumowanie na spotkanie DB&ndash;DAI</STRONG></H3>
+<P LANG="zxx"><STRONG>Temat: model współpracy przy klasyfikacji
+informacji, Grup Danych i systemów w ramach realizacji zalecenia
+228/P/BPS/IT/2025-U01.1</STRONG></P>
+<H3 CLASS="western">1. Cel spotkania</H3>
+<P LANG="zxx">Celem spotkania jest uzgodnienie praktycznego modelu
+współpracy pomiędzy DB i DAI przy klasyfikacji informacji oraz
+wykorzystaniu katalogu Grup Danych prowadzonego przez DAI.</P>
+<P LANG="zxx">Chcemy uniknąć tworzenia dwóch równoległych katalogów:
+osobnego katalogu Grup Danych w DAI i osobnego katalogu Grup
+Informacji w DB. Takie podejście mogłoby prowadzić do niespójności,
+sporów o właścicieli i problemów z utrzymaniem aktualności.</P>
+<P LANG="zxx">Proponujemy przyjąć, że katalog Grup Danych prowadzony
+przez DAI będzie źródłem Grup Informacji wykorzystywanych przez DB do
+klasyfikacji bezpieczeństwa informacji.</P>
+<H3 CLASS="western">2. Uzgodniony kierunek</H3>
+<P LANG="zxx">DAI prowadzi katalog Grup Danych jako narzędzie
+zarządzania danymi, jakością danych, źródłami danych, integracją i
+powiązaniem z procesami.</P>
+<P LANG="zxx">DB wykorzystuje ten katalog jako wejście do
+klasyfikacji bezpieczeństwa informacji.</P>
+<P LANG="zxx">Na potrzeby Instrukcji Klasyfikacji Informacji Grupa
+Danych z katalogu DAI będzie traktowana jako Grupa Informacji, o ile
+posiada minimalny opis pozwalający na klasyfikację, czyli nazwę,
+opis, właściciela, źródło danych oraz powiązanie z procesem albo
+podprocesem.</P>
+<P LANG="zxx">DB nie tworzy odrębnego, konkurencyjnego katalogu Grup
+Informacji.</P>
+<P LANG="zxx">DAI nie przejmuje odpowiedzialności za klasyfikację
+bezpieczeństwa informacji.</P>
+<P LANG="zxx">DB nie przejmuje odpowiedzialności za jakość,
+kompletność i aktualność katalogu Grup Danych.</P>
+<H3 CLASS="western">3. Rozumienie różnicy między Grupą Danych a Grupą
+Informacji</H3>
+<P LANG="zxx">Z punktu widzenia DAI dana pozycja jest Grupą Danych,
+ponieważ służy do zarządzania danymi, ich jakością, źródłami,
+atrybutami, integracją i powiązaniem z procesami.</P>
+<P LANG="zxx">Z punktu widzenia DB ta sama pozycja może być
+traktowana jako Grupa Informacji, ponieważ stanowi logicznie
+powiązany zbiór informacji, któremu można nadać klasę ochrony.</P>
+<P LANG="zxx">Czyli nie tworzymy dwóch różnych bytów. Przyjmujemy
+jeden katalog, ale używany do dwóch celów: przez DAI do zarządzania
+danymi, przez DB do klasyfikacji bezpieczeństwa informacji.</P>
+<H3 CLASS="western">4. Liczba Grup Danych</H3>
+<P LANG="zxx">DAI posiada katalog obejmujący około 160 Grup Danych. Z
+punktu widzenia DAI taka szczegółowość może być potrzebna i
+uzasadniona.</P>
+<P LANG="zxx">Z punktu widzenia DB nie oznacza to konieczności
+tworzenia 160 różnych zasad ochrony.</P>
+<P LANG="zxx">DB może klasyfikować 160 Grup Danych jako jednostki
+klasyfikacji, ale zabezpieczenia i zasady postępowania powinny
+wynikać z klas ochrony i profili ochrony.</P>
+<P LANG="zxx">Przykładowo wiele różnych Grup Danych może trafić do
+tego samego profilu ochrony, np. dane osobowe klientów, tajemnica
+bankowa, informacje transakcyjne, informacje regulacyjne, informacje
+kadrowe, informacje projektowe, informacje techniczne albo informacje
+wewnętrzne.</P>
+<P LANG="zxx">Dzięki temu katalog może pozostać szczegółowy, a model
+zabezpieczeń pozostaje możliwy do zarządzania.</P>
+<H3 CLASS="western">5. Role i odpowiedzialności</H3>
+<P LANG="zxx">DAI odpowiada za prowadzenie i aktualizację katalogu
+Grup Danych. Obejmuje to nazwę grupy, opis, przykładowe atrybuty,
+źródła danych, właściciela, proces lub podproces oraz oznaczenie, czy
+proces jest krytyczny.</P>
+<P LANG="zxx">DB odpowiada za metodykę klasyfikacji bezpieczeństwa
+informacji, ocenę P/I/D/A, nadanie klasy ochrony oraz określenie
+profilu ochrony.</P>
+<P LANG="zxx">Właściciel informacji albo właściciel danych potwierdza
+znaczenie biznesowe informacji, zakres informacji oraz skutki
+naruszenia poufności, integralności, dostępności i autentyczności.</P>
+<P LANG="zxx">Właściciel procesu lub podprocesu potwierdza kontekst
+biznesowy przetwarzania informacji i pomaga ustalić, czy dany proces
+jest źródłowy albo wykorzystujący daną informację.</P>
+<P LANG="zxx">Właściciel systemu albo dysponent systemu wskazuje,
+jakie Grupy Danych lub Grupy Informacji są przetwarzane w systemie i
+odpowiada za zapewnienie, że system spełnia wymagania wynikające z
+klasyfikacji informacji.</P>
+<P LANG="zxx">DIR odpowiada za proces projektowy i powinien zapewnić,
+aby nowe inicjatywy, projekty i systemy były zgłaszane na właściwym
+etapie do oceny wpływu na dane i klasyfikację.</P>
+<H3 CLASS="western">6. Rola właściciela informacji</H3>
+<P LANG="zxx">Właściciel informacji nie powinien samodzielnie
+prowadzić klasyfikacji ani wypełniać tabeli bezpieczeństwa bez
+wsparcia.</P>
+<P LANG="zxx">Właściciel informacji powinien potwierdzić, czym jest
+dana informacja, jaki ma zakres, gdzie jest wykorzystywana i jakie
+skutki mogłoby spowodować jej ujawnienie, błędna modyfikacja,
+niedostępność albo brak pewności co do źródła.</P>
+<P LANG="zxx">Proces klasyfikacji prowadzi DB. DAI uczestniczy jako
+właściciel katalogu Grup Danych. Właściciel informacji uczestniczy
+jako osoba potwierdzająca znaczenie biznesowe i skutki naruszenia
+ochrony informacji.</P>
+<P LANG="zxx">Praktycznie powinno to być realizowane w formie
+warsztatów domenowych, a nie 160 osobnych spotkań. Najpierw można
+objąć domeny priorytetowe, np. klienci, operacje i transakcje,
+pracownicy, raportowanie regulacyjne, systemy krytyczne.</P>
+<H3 CLASS="western">7. Ścieżka dla nowych inicjatyw i projektów</H3>
+<P LANG="zxx">Uzgodniony kierunek zakłada ścieżkę sekwencyjną, aby w
+danym momencie był jeden odpowiedzialny odbiorca sprawy.</P>
+<P LANG="zxx">Ścieżka docelowa:</P>
+<P LANG="zxx">DIR przekazuje zgłoszenie do DAI.</P>
+<P LANG="zxx">DAI ocenia wpływ projektu na katalog Grup Danych.</P>
+<P LANG="zxx">DAI przygotowuje pakiet klasyfikacyjny i przekazuje go
+do DB.</P>
+<P LANG="zxx">DB wykonuje ocenę klasyfikacyjną informacji i, jeżeli
+dotyczy, systemu.</P>
+<P LANG="zxx">DB przekazuje wynik klasyfikacji do DAI.</P>
+<P LANG="zxx">DAI aktualizuje katalog Grup Danych o wynik
+klasyfikacji.</P>
+<P LANG="zxx">DAI przekazuje do DIR status zakończenia obsługi
+zgłoszenia.</P>
+<P LANG="zxx">Taka ścieżka zapewnia, że DB nie staje się punktem
+odbioru wszystkich surowych zgłoszeń projektowych, a DAI nie
+przejmuje klasyfikacji bezpieczeństwa informacji. Każdy departament
+wykonuje swoją część procesu.</P>
+<H3 CLASS="western">8. DB wydaje dwie odrębne instrukcje</H3>
+<P LANG="zxx">DB przygotowuje dwie odrębne regulacje.</P>
+<P LANG="zxx">Pierwsza to Instrukcja Klasyfikacji Informacji. Będzie
+dotyczyć klasyfikacji Grup Danych traktowanych jako Grupy Informacji,
+ról właścicieli informacji, DAI, DB oraz zasad nadawania klas
+ochrony.</P>
+<P LANG="zxx">Druga to Instrukcja Klasyfikacji Systemów. Będzie
+dotyczyć klasyfikacji nowych i istotnie zmienianych systemów
+informatycznych, z uwzględnieniem informacji przetwarzanych w tych
+systemach, ich krytyczności, właścicieli systemów i wymagań
+przedprodukcyjnych.</P>
+<P LANG="zxx">Obie instrukcje są powiązane, ale mają odrębny zakres.
+Klasyfikacja informacji odpowiada na pytanie, co chronimy.
+Klasyfikacja systemów odpowiada na pytanie, jakie wymagania powinien
+spełniać system, który te informacje przetwarza.</P>
+<H3 CLASS="western">9. Minimalne wymagania dla Grupy Danych przed
+klasyfikacją</H3>
+<P LANG="zxx">Dla docelowej klasyfikacji Grupa Danych powinna mieć co
+najmniej:</P>
+<P LANG="zxx">Nazwę Grupy Danych.</P>
+<P LANG="zxx">Opis Grupy Danych.</P>
+<P LANG="zxx">Przykładowe atrybuty.</P>
+<P LANG="zxx">Właściciela danych albo informacji.</P>
+<P LANG="zxx">Źródło danych.</P>
+<P LANG="zxx">Proces albo podproces.</P>
+<P LANG="zxx">Informację o systemach przetwarzających, jeżeli jest
+dostępna.</P>
+<P LANG="zxx">Informację, czy proces jest krytyczny, jeżeli ma to
+zastosowanie.</P>
+<P LANG="zxx">Pozycje oznaczone jako &bdquo;???&rdquo;, &bdquo;BD&rdquo;
+albo bez właściciela, źródła lub procesu powinny zostać uzupełnione
+przed klasyfikacją albo sklasyfikowane warunkowo z obowiązkiem
+późniejszej weryfikacji.</P>
+<H3 CLASS="western">10. Proponowany harmonogram do 30.09</H3>
+<P LANG="zxx">Do 30.09 celem nie jest pełna klasyfikacja wszystkich
+160 Grup Danych. Celem jest formalne i organizacyjne uruchomienie
+procesu oraz stworzenie podstaw do zamknięcia zalecenia po stronie
+DB.</P>
+<P LANG="zxx">Do połowy lipca warto uzgodnić model DB&ndash;DAI:
+katalog Grup Danych DAI jako źródło Grup Informacji dla DB.</P>
+<P LANG="zxx">Do końca lipca warto uzgodnić minimalne pola wymagane
+do klasyfikacji oraz zasady postępowania z pozycjami niekompletnymi.</P>
+<P LANG="zxx">W sierpniu DB dostosuje projekt Instrukcji Klasyfikacji
+Informacji do uzgodnionego modelu.</P>
+<P LANG="zxx">W sierpniu i wrześniu DB oraz DAI powinny uzgodnić tryb
+pilotażu oraz sposób dokumentowania wyniku klasyfikacji.</P>
+<P LANG="zxx">Do 30.09 DB powinno wydać Instrukcję Klasyfikacji
+Informacji oraz opisać interfejs z katalogiem Grup Danych DAI.</P>
+<P LANG="zxx">Równolegle DB powinno procedować Instrukcję
+Klasyfikacji Systemów, tak aby wykazać, że zalecenie dotyczące nowych
+systemów jest również zaadresowane.</P>
+<H3 CLASS="western">11. Działania po 30.09</H3>
+<P LANG="zxx">Po 30.09 prace powinny przejść z etapu regulacyjnego do
+etapu operacyjnego.</P>
+<P LANG="zxx">W IV kwartale należy przeprowadzić przegląd katalogu
+Grup Danych pod kątem braków, takich jak właściciel, źródło, proces,
+podproces, systemy, oznaczenia &bdquo;BD&rdquo; i &bdquo;???&rdquo;.</P>
+<P LANG="zxx">Następnie należy przeprowadzić pilotaż klasyfikacji na
+wybranych domenach, np. klienci, operacje i transakcje, zasoby
+ludzkie, raportowanie regulacyjne.</P>
+<P LANG="zxx">Po pilotażu można rozpocząć klasyfikację priorytetowych
+Grup Danych/Informacji.</P>
+<P LANG="zxx">Kolejnym krokiem powinno być powiązanie wyników
+klasyfikacji informacji z klasyfikacją systemów.</P>
+<P LANG="zxx">Docelowo proces powinien zostać włączony w proces
+projektowy i zmianowy, tak aby nowe Grupy Danych, nowe informacje i
+nowe systemy były oceniane przed uruchomieniem produkcyjnym.</P>
+<H3 CLASS="western">12. Proponowane ustalenie ze spotkania</H3>
+<P LANG="zxx">DB i DAI uzgadniają, że katalog Grup Danych prowadzony
+przez DAI będzie stanowił źródło Grup Informacji wykorzystywanych w
+procesie klasyfikacji bezpieczeństwa informacji.</P>
+<P LANG="zxx">DAI odpowiada za prowadzenie i aktualizację katalogu
+Grup Danych, w tym za koordynację uzupełniania informacji o
+właścicielach, źródłach, atrybutach i procesach.</P>
+<P LANG="zxx">DB odpowiada za metodykę klasyfikacji bezpieczeństwa
+informacji oraz nadanie klas ochrony Grupom Danych traktowanym jako
+Grupy Informacji.</P>
+<P LANG="zxx">Właściciele informacji uczestniczą w klasyfikacji
+poprzez potwierdzenie zakresu informacji, znaczenia biznesowego i
+skutków naruszenia P/I/D/A.</P>
+<P LANG="zxx">Do 30.09 celem jest wydanie regulacji DB porządkującej
+proces klasyfikacji oraz opisującej interfejs z katalogiem DAI.</P>
+<P LANG="zxx">Po 30.09 celem jest uzupełnienie katalogu, pilotaż
+klasyfikacji, klasyfikacja priorytetowych grup oraz powiązanie
+wyników klasyfikacji z klasyfikacją systemów i procesem projektowym.</P>
+<H3 CLASS="western">13. Krótka wersja do powiedzenia na początku
+spotkania</H3>
+<P LANG="zxx" STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.07cm; padding-left: 0cm; padding-right: 0cm">
+Proponujemy nie tworzyć drugiego katalogu Grup Informacji w DB.
+Chcemy wykorzystać katalog Grup Danych DAI jako źródło do
+klasyfikacji bezpieczeństwa informacji. DAI utrzymuje katalog danych,
+DB nadaje klasy ochrony, a właściciele informacji potwierdzają
+znaczenie biznesowe i skutki naruszenia informacji. Do 30.09 chcemy
+wydać instrukcję DB, która opisze ten model, role i minimalne
+wymagania. Po 30.09 trzeba będzie uzupełnić braki w katalogu,
+przeprowadzić pilotaż klasyfikacji i podłączyć wynik klasyfikacji do
+klasyfikacji systemów oraz procesu projektowego.</P>
+<P LANG="zxx"><BR><BR>
+</P>
+<P LANG="zxx"><BR><BR>
+</P>
+<H3 CLASS="western"><STRONG>Ścieżka docelowa obsługi nowych
+inicjatyw, projektów i systemów</STRONG></H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Etap</P>
+			</TH>
+			<TH>
+				<P>Proponowane ustalenie</P>
+			</TH>
+			<TH>
+				<P>Uzasadnienie do dyskusji</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>1</P>
+			</TD>
+			<TD>
+				<P>DIR przekazuje zgłoszenie do DAI.</P>
+			</TD>
+			<TD>
+				<P>Pierwszym pytaniem przy nowej inicjatywie jest to, czy projekt
+				tworzy nowe dane, zmienia istniejące Grupy Danych, źródła danych,
+				przepływy danych albo sposób ich przetwarzania. To jest naturalny
+				obszar DAI jako właściciela katalogu Grup Danych. DB nie powinno
+				otrzymywać &bdquo;surowego&rdquo; zgłoszenia projektowego i
+				samodzielnie ustalać, jakie dane powstają lub zmieniają się w
+				projekcie.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>2</P>
+			</TD>
+			<TD>
+				<P>DAI ocenia wpływ projektu na katalog Grup Danych.</P>
+			</TD>
+			<TD>
+				<P>DAI sprawdza, czy projekt dotyczy istniejącej Grupy Danych,
+				wymaga utworzenia nowej Grupy Danych albo aktualizacji opisu,
+				właściciela, źródła, procesu lub atrybutów. Dzięki temu do DB
+				trafia już uporządkowana informacja, a nie ogólny opis projektu.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>3</P>
+			</TD>
+			<TD>
+				<P>DAI przygotowuje pakiet klasyfikacyjny i przekazuje go do DB.</P>
+			</TD>
+			<TD>
+				<P>DB potrzebuje do klasyfikacji konkretnych danych wejściowych:
+				nazwy grupy, opisu, atrybutów, właściciela, procesu, źródła
+				danych i systemów przetwarzających. Pakiet przygotowany przez DAI
+				zapewnia kompletność wejścia do klasyfikacji i ogranicza ryzyko
+				błędnej oceny przez DB.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>4</P>
+			</TD>
+			<TD>
+				<P>DB wykonuje ocenę klasyfikacyjną informacji i, jeżeli dotyczy,
+				systemu.</P>
+			</TD>
+			<TD>
+				<P>To jest właściwa rola DB. DB odpowiada za metodykę
+				klasyfikacji, ocenę P/I/D/A, klasę ochrony, profil ochrony oraz
+				wymagania bezpieczeństwa. DAI nie powinno przejmować
+				odpowiedzialności za klasyfikację bezpieczeństwa, bo nie jest
+				właścicielem tej metodyki.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>5</P>
+			</TD>
+			<TD>
+				<P>DB przekazuje wynik klasyfikacji do DAI.</P>
+			</TD>
+			<TD>
+				<P>Skoro katalog Grup Danych DAI jest źródłem Grup Informacji dla
+				DB, to wynik klasyfikacji powinien wrócić do tego katalogu. W
+				przeciwnym razie powstaną dwa rozbieżne rejestry: jeden katalog
+				danych w DAI i osobny wynik klasyfikacji w DB.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>6</P>
+			</TD>
+			<TD>
+				<P>DAI aktualizuje katalog Grup Danych o wynik klasyfikacji.</P>
+			</TD>
+			<TD>
+				<P>DAI pozostaje właścicielem katalogu i utrzymuje jego
+				aktualność. DB nie przejmuje technicznego utrzymania katalogu,
+				ale wynik klasyfikacji staje się jego elementem. Dzięki temu
+				katalog DAI może służyć zarówno zarządzaniu danymi, jak i SZBI.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>7</P>
+			</TD>
+			<TD>
+				<P>DAI przekazuje status zakończenia obsługi zgłoszenia do DIR.</P>
+			</TD>
+			<TD>
+				<P>DIR potrzebuje jednego statusu do procesu projektowego. Skoro
+				pierwszym odbiorcą zgłoszenia było DAI, to DAI zamyka obieg wobec
+				DIR, uwzględniając wynik klasyfikacji DB. Dzięki temu w procesie
+				projektowym nie ma dwóch równoległych ścieżek zamykanych osobno
+				przez DAI i DB.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">Najważniejsze uzasadnienie całego modelu</H3>
+<P LANG="zxx">Ten model opiera się na zasadzie, że w danym momencie
+sprawa ma jednego gospodarza etapu. DIR nie musi równolegle pilnować
+dwóch ścieżek do DAI i DB. DAI najpierw porządkuje temat danych, DB
+wykonuje klasyfikację bezpieczeństwa, a wynik wraca do katalogu DAI.
+Dzięki temu nie mieszamy odpowiedzialności, ale zachowujemy ciągłość
+procesu.</P>
+<H3 CLASS="western">Argument, gdyby ktoś zapytał: dlaczego pierwszym
+odbiorcą jest DAI, a nie DB?</H3>
+<P LANG="zxx">Ponieważ DB klasyfikuje informację, ale nie prowadzi
+katalogu danych i nie powinno samodzielnie rozstrzygać, czy projekt
+tworzy nową Grupę Danych, zmienia źródło danych albo wymaga
+aktualizacji katalogu. To powinno zostać ustalone przez DAI. Dopiero
+po takim uporządkowaniu DB może poprawnie wykonać klasyfikację.</P>
+<H3 CLASS="western">Argument, gdyby ktoś zapytał: czy DAI nie
+przejmuje przez to odpowiedzialności za bezpieczeństwo?</H3>
+<P LANG="zxx">Nie. DAI nie ocenia klasy ochrony, nie ustala P/I/D/A i
+nie dobiera zabezpieczeń. DAI tylko przygotowuje dane wejściowe do
+klasyfikacji i aktualizuje katalog. Odpowiedzialność za klasyfikację
+bezpieczeństwa pozostaje po stronie DB.</P>
+<H3 CLASS="western">Argument, gdyby ktoś zapytał: czy DB nie traci
+kontroli nad zaleceniem?</H3>
+<P LANG="zxx">Nie. DB zachowuje kontrolę nad metodyką i wynikiem
+klasyfikacji. Model porządkuje jedynie wejście do procesu. DB nie
+musi być pierwszym odbiorcą każdego projektu, żeby skutecznie
+realizować zalecenie. Ważne jest, aby przed produkcyjnym
+uruchomieniem DB otrzymało pakiet klasyfikacyjny i wykonało ocenę
+albo potwierdziło brak obowiązku klasyfikacji.</P>
+<H3 CLASS="western">Proponowany zapis do podsumowania spotkania</H3>
+<P LANG="zxx" STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.07cm; padding-left: 0cm; padding-right: 0cm">
+Przyjęto roboczo, że dla nowych inicjatyw, projektów i zmian właściwą
+ścieżką będzie model sekwencyjny: DIR &rarr; DAI &rarr; DB &rarr; DAI
+&rarr; DIR. DAI jest pierwszym odbiorcą zgłoszenia, ponieważ ocenia
+wpływ projektu na katalog Grup Danych i przygotowuje pakiet
+klasyfikacyjny. DB wykonuje klasyfikację bezpieczeństwa informacji i,
+jeżeli dotyczy, systemu. Wynik klasyfikacji wraca do DAI w celu
+aktualizacji katalogu, a DAI przekazuje do DIR status zakończenia
+obsługi zgłoszenia. Taki model zapewnia jednego gospodarza sprawy na
+każdym etapie, ogranicza ryzyko dublowania rejestrów i rozdziela
+odpowiedzialność DAI za katalog danych od odpowiedzialności DB za
+klasyfikację bezpieczeństwa.</P>
+<P LANG="zxx"><BR><BR>
+</P>
+<H3 CLASS="western"><STRONG>Podsumowanie na spotkanie DB&ndash;DAI</STRONG></H3>
+<P LANG="zxx"><STRONG>Temat: model współpracy przy klasyfikacji
+informacji, Grup Danych i systemów w ramach realizacji zalecenia
+228/P/BPS/IT/2025-U01.1</STRONG></P>
+<H3 CLASS="western">1. Cel spotkania</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Proponowane ustalenie</P>
+			</TH>
+			<TH>
+				<P>Uzasadnienie do dyskusji</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>Celem spotkania jest uzgodnienie praktycznego modelu
+				współpracy pomiędzy DB i DAI przy klasyfikacji informacji oraz
+				wykorzystaniu katalogu Grup Danych prowadzonego przez DAI.</P>
+			</TD>
+			<TD>
+				<P>Bez wspólnego modelu DB może przygotować instrukcję
+				klasyfikacji, ale proces będzie trudny do wykonania, bo DB nie
+				prowadzi katalogu danych i nie ma samodzielnego źródła informacji
+				o wszystkich Grupach Danych, właścicielach, procesach i źródłach
+				danych.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Spotkanie ma doprowadzić do ustalenia ról, odpowiedzialności,
+				ścieżki obsługi nowych inicjatyw oraz harmonogramu działań do
+				30.09 i po 30.09.</P>
+			</TD>
+			<TD>
+				<P>Zalecenie wymaga nie tylko zmiany dokumentu, ale realnego
+				doprecyzowania obowiązków właścicieli informacji i dysponentów
+				systemów. Dlatego potrzebne jest ustalenie procesu, a nie tylko
+				zapisów w instrukcji DB.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Nie zakładamy sporu &bdquo;DB kontra DAI&rdquo;, tylko próbę
+				połączenia dwóch porządków: zarządzania danymi po stronie DAI i
+				klasyfikacji bezpieczeństwa informacji po stronie DB.</P>
+			</TD>
+			<TD>
+				<P>DAI i DB patrzą na te same informacje z różnych perspektyw.
+				DAI potrzebuje szczegółowości do jakości danych, źródeł,
+				atrybutów i integracji. DB potrzebuje klasy ochrony, profilu
+				ochrony i zasad postępowania z informacją. Oba podejścia mogą
+				działać na jednym katalogu.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">2. Główna propozycja rozwiązania</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Proponowane ustalenie</P>
+			</TH>
+			<TH>
+				<P>Uzasadnienie do dyskusji</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>Katalog Grup Danych prowadzony przez DAI będzie źródłem Grup
+				Informacji wykorzystywanych przez DB do klasyfikacji
+				bezpieczeństwa informacji.</P>
+			</TD>
+			<TD>
+				<P>Nie ma sensu tworzyć dwóch równoległych katalogów: jednego w
+				DAI i drugiego w DB. To prowadziłoby do rozbieżności, dublowania
+				pracy i sporów o właścicieli. Katalog DAI już zawiera domeny,
+				grupy, opisy, atrybuty, właścicieli, źródła i procesy, więc może
+				być naturalnym wejściem do klasyfikacji DB.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DB nie tworzy odrębnego, konkurencyjnego katalogu Grup
+				Informacji.</P>
+			</TD>
+			<TD>
+				<P>Dzięki temu DB nie przejmuje odpowiedzialności za utrzymanie
+				katalogu danych i nie buduje równoległego rejestru, który po
+				kilku miesiącach mógłby przestać być spójny z katalogiem DAI.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Grupa Danych z katalogu DAI będzie traktowana jako Grupa
+				Informacji na potrzeby Instrukcji Klasyfikacji Informacji, o ile
+				posiada minimalny opis pozwalający na klasyfikację.</P>
+			</TD>
+			<TD>
+				<P>To pozwala pogodzić nazewnictwo. DAI może nadal używać pojęcia
+				&bdquo;Grupa Danych&rdquo;, a DB w swoim procesie może traktować
+				tę samą pozycję jako jednostkę klasyfikacji informacji. Warunek
+				minimalnego opisu zabezpiecza DB przed klasyfikowaniem pozycji
+				niekompletnych, np. bez właściciela albo bez procesu.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DB klasyfikuje Grupy Danych według metodyki bezpieczeństwa
+				informacji i nadaje im klasę ochrony oraz profil ochrony.</P>
+			</TD>
+			<TD>
+				<P>To pozostaje właściwą rolą DB. DAI nie powinno odpowiadać za
+				ocenę P/I/D/A ani za wymagania bezpieczeństwa, bo to jest domena
+				SZBI i DB.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">3. Rozumienie różnicy między Grupą Danych a Grupą
+Informacji</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Proponowane ustalenie</P>
+			</TH>
+			<TH>
+				<P>Uzasadnienie do dyskusji</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>Z punktu widzenia DAI dana pozycja jest Grupą Danych, bo służy
+				zarządzaniu danymi, jakością danych, atrybutami, źródłami,
+				integracją i procesami.</P>
+			</TD>
+			<TD>
+				<P>DAI potrzebuje szczegółowości i techniczno-biznesowego opisu
+				danych. Dlatego 160 Grup Danych może być uzasadnione w procesie
+				zarządzania danymi.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Z punktu widzenia DB ta sama pozycja może być Grupą
+				Informacji, bo stanowi logiczny zbiór informacji, któremu można
+				nadać klasę ochrony.</P>
+			</TD>
+			<TD>
+				<P>DB nie musi zmieniać katalogu DAI, tylko wykorzystuje go do
+				swojego celu: klasyfikacji bezpieczeństwa informacji.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Jeden katalog może obsługiwać dwa cele: zarządzanie danymi po
+				stronie DAI i klasyfikację ochronną po stronie DB.</P>
+			</TD>
+			<TD>
+				<P>To ogranicza chaos organizacyjny. Użytkownicy i właściciele
+				informacji nie będą pytani osobno o &bdquo;Grupy Danych&rdquo;
+				dla DAI i osobno o &bdquo;Grupy Informacji&rdquo; dla DB.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">4. Liczba Grup Danych</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Proponowane ustalenie</P>
+			</TH>
+			<TH>
+				<P>Uzasadnienie do dyskusji</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>Przyjmujemy, że katalog DAI może zawierać około 160 Grup
+				Danych i że ta liczba może być uzasadniona z punktu widzenia
+				zarządzania danymi.</P>
+			</TD>
+			<TD>
+				<P>DAI potrzebuje bardziej szczegółowego podziału do jakości
+				danych, źródeł, atrybutów, właścicieli, integracji i powiązań
+				procesowych. Redukowanie katalogu DAI do 10&ndash;30 pozycji
+				mogłoby utrudnić DAI realizację własnych zadań.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DB może klasyfikować 160 Grup Danych jako jednostki
+				klasyfikacji, ale nie będzie tworzyć 160 różnych zasad
+				postępowania ani 160 zestawów zabezpieczeń.</P>
+			</TD>
+			<TD>
+				<P>To zabezpiecza interes DB. Duża liczba grup jest akceptowalna,
+				jeżeli wyniki klasyfikacji są agregowane do klas i profili
+				ochrony. Problemem byłoby dopiero tworzenie odrębnego reżimu
+				ochronnego dla każdej grupy.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Zabezpieczenia i zasady postępowania będą wynikały z klasy
+				ochrony oraz profilu ochrony, a nie z indywidualnej nazwy każdej
+				Grupy Danych.</P>
+			</TD>
+			<TD>
+				<P>Dzięki temu model pozostaje zarządzalny. Przykładowo różne
+				Grupy Danych dotyczące klientów mogą trafić do tego samego
+				profilu ochrony, np. dane osobowe klientów / tajemnica bankowa /
+				wysoka poufność i integralność.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">5. Minimalne wymagania dla Grupy Danych przed
+klasyfikacją</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Proponowane ustalenie</P>
+			</TH>
+			<TH>
+				<P>Uzasadnienie do dyskusji</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>Dla docelowej klasyfikacji Grupa Danych powinna mieć co
+				najmniej: nazwę, opis, przykładowe atrybuty, właściciela danych
+				albo informacji, źródło danych oraz powiązanie z procesem lub
+				podprocesem.</P>
+			</TD>
+			<TD>
+				<P>Bez tych danych DB nie będzie w stanie rzetelnie ocenić
+				skutków naruszenia poufności, integralności, dostępności i
+				autentyczności.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Dodatkowo, jeżeli jest to możliwe, katalog powinien wskazywać
+				systemy przetwarzające oraz informację, czy proces jest
+				krytyczny.</P>
+			</TD>
+			<TD>
+				<P>Te informacje są potrzebne do powiązania klasyfikacji
+				informacji z klasyfikacją systemów oraz z wymaganiami dotyczącymi
+				ciągłości działania i odporności operacyjnej.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Pozycje oznaczone jako &bdquo;???&rdquo;, &bdquo;BD&rdquo;
+				albo bez właściciela, źródła lub procesu powinny zostać
+				uzupełnione przed klasyfikacją albo sklasyfikowane warunkowo z
+				obowiązkiem późniejszej weryfikacji.</P>
+			</TD>
+			<TD>
+				<P>To zabezpiecza DB i DAI. DB nie będzie zmuszony do pełnej
+				klasyfikacji na podstawie niepełnych danych, a DAI może etapowo
+				uzupełniać katalog bez blokowania całego procesu.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">6. Podział ról i odpowiedzialności</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Rola</P>
+			</TH>
+			<TH>
+				<P>Proponowane ustalenie</P>
+			</TH>
+			<TH>
+				<P>Uzasadnienie do dyskusji</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>DAI</P>
+			</TD>
+			<TD>
+				<P>Prowadzi i aktualizuje katalog Grup Danych, w tym nazwy,
+				opisy, atrybuty, źródła, właścicieli, procesy i podprocesy.</P>
+			</TD>
+			<TD>
+				<P>DAI jest naturalnym gospodarzem katalogu danych. DB nie
+				powinno przejmować utrzymania katalogu, bo nie odpowiada za
+				jakość danych, źródła, integracje i definicje danych.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DB</P>
+			</TD>
+			<TD>
+				<P>Określa metodykę klasyfikacji bezpieczeństwa informacji,
+				ocenia P/I/D/A, nadaje klasę ochrony i profil ochrony.</P>
+			</TD>
+			<TD>
+				<P>To jest właściwa rola DB w SZBI. Klasyfikacja bezpieczeństwa
+				informacji i wymagania ochronne powinny pozostać w
+				odpowiedzialności DB.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Właściciel informacji / właściciel danych</P>
+			</TD>
+			<TD>
+				<P>Potwierdza znaczenie biznesowe informacji, zakres informacji i
+				skutki naruszenia P/I/D/A.</P>
+			</TD>
+			<TD>
+				<P>Właściciel zna znaczenie informacji w procesie. Nie powinien
+				jednak sam prowadzić klasyfikacji bezpieczeństwa, bo nie musi
+				znać metodyki SZBI.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Właściciel procesu / podprocesu</P>
+			</TD>
+			<TD>
+				<P>Potwierdza kontekst biznesowy przetwarzania informacji i
+				wskazuje, czy proces jest źródłowy albo wykorzystujący.</P>
+			</TD>
+			<TD>
+				<P>To pomaga ustalić właściciela informacji oraz wpływ informacji
+				na działalność Banku.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Właściciel systemu / dysponent systemu</P>
+			</TD>
+			<TD>
+				<P>Wskazuje, jakie Grupy Danych lub Grupy Informacji są
+				przetwarzane w systemie i zapewnia spełnienie wymagań
+				wynikających z klasyfikacji.</P>
+			</TD>
+			<TD>
+				<P>Właściciel systemu odpowiada za system, ale nie staje się
+				automatycznie właścicielem informacji. Klasyfikacja informacji
+				jest wejściem do klasyfikacji systemu.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DIR / proces projektowy</P>
+			</TD>
+			<TD>
+				<P>Zapewnia zgłaszanie nowych inicjatyw, projektów i systemów do
+				DAI na właściwym etapie procesu.</P>
+			</TD>
+			<TD>
+				<P>DIR jest właścicielem procesu projektowego, więc to w jego
+				procesie powinien pojawić się punkt kontrolny. DB nie powinno
+				regulować procedur projektowych w swojej instrukcji.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">7. Rola właściciela informacji w praktyce</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Proponowane ustalenie</P>
+			</TH>
+			<TH>
+				<P>Uzasadnienie do dyskusji</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>Właściciel informacji nie klasyfikuje samodzielnie informacji,
+				tylko bierze udział w klasyfikacji prowadzonej przez DB.</P>
+			</TD>
+			<TD>
+				<P>Właściciel informacji nie musi znać metodyki bezpieczeństwa
+				ani skal P/I/D/A. Jego rolą jest potwierdzenie znaczenia
+				biznesowego i skutków naruszenia informacji.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DB prowadzi warsztat klasyfikacyjny, DAI uczestniczy jako
+				gospodarz katalogu danych, a właściciel informacji potwierdza
+				zakres i znaczenie informacji.</P>
+			</TD>
+			<TD>
+				<P>Taki model nie zostawia właściciela samego z tabelą.
+				Jednocześnie DB uzyskuje potrzebne informacje do oceny
+				bezpieczeństwa, a DAI może aktualizować katalog danych.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Warsztaty powinny być prowadzone domenowo, a nie jako 160
+				oddzielnych spotkań.</P>
+			</TD>
+			<TD>
+				<P>To jest bardziej wykonalne organizacyjnie. Można zacząć od
+				najważniejszych domen, np. klienci, operacje i transakcje,
+				pracownicy, raportowanie regulacyjne, systemy krytyczne.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Po warsztacie właściciel informacji potwierdza wynik
+				klasyfikacji w uproszczony sposób, np. mailowo, w rejestrze albo
+				workflow.</P>
+			</TD>
+			<TD>
+				<P>Nie trzeba tworzyć rozbudowanej ścieżki podpisów. Ważny jest
+				dowód, że właściciel potwierdził zakres informacji i przyjął
+				wynik klasyfikacji albo zgłosił uwagę.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">8. Ścieżka docelowa dla nowych inicjatyw,
+projektów i systemów</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Etap</P>
+			</TH>
+			<TH>
+				<P>Proponowane ustalenie</P>
+			</TH>
+			<TH>
+				<P>Uzasadnienie do dyskusji</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>1</P>
+			</TD>
+			<TD>
+				<P>DIR przekazuje zgłoszenie do DAI.</P>
+			</TD>
+			<TD>
+				<P>Pierwszym pytaniem przy nowej inicjatywie jest to, czy projekt
+				tworzy nowe dane, zmienia istniejące Grupy Danych, źródła danych,
+				przepływy danych albo sposób ich przetwarzania. To jest naturalny
+				obszar DAI jako właściciela katalogu Grup Danych. DB nie powinno
+				otrzymywać &bdquo;surowego&rdquo; zgłoszenia projektowego i
+				samodzielnie ustalać, jakie dane powstają lub zmieniają się w
+				projekcie.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>2</P>
+			</TD>
+			<TD>
+				<P>DAI ocenia wpływ projektu na katalog Grup Danych.</P>
+			</TD>
+			<TD>
+				<P>DAI sprawdza, czy projekt dotyczy istniejącej Grupy Danych,
+				wymaga utworzenia nowej Grupy Danych albo aktualizacji opisu,
+				właściciela, źródła, procesu lub atrybutów. Dzięki temu do DB
+				trafia uporządkowana informacja, a nie ogólny opis projektu.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>3</P>
+			</TD>
+			<TD>
+				<P>DAI przygotowuje pakiet klasyfikacyjny i przekazuje go do DB.</P>
+			</TD>
+			<TD>
+				<P>DB potrzebuje konkretnych danych wejściowych: nazwy grupy,
+				opisu, atrybutów, właściciela, procesu, źródła danych i systemów
+				przetwarzających. Pakiet przygotowany przez DAI zapewnia
+				kompletność wejścia do klasyfikacji i ogranicza ryzyko błędnej
+				oceny przez DB.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>4</P>
+			</TD>
+			<TD>
+				<P>DB wykonuje ocenę klasyfikacyjną informacji i, jeżeli dotyczy,
+				systemu.</P>
+			</TD>
+			<TD>
+				<P>To jest właściwa rola DB. DB odpowiada za metodykę
+				klasyfikacji, ocenę P/I/D/A, klasę ochrony, profil ochrony oraz
+				wymagania bezpieczeństwa. DAI nie powinno przejmować
+				odpowiedzialności za klasyfikację bezpieczeństwa.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>5</P>
+			</TD>
+			<TD>
+				<P>DB przekazuje wynik klasyfikacji do DAI.</P>
+			</TD>
+			<TD>
+				<P>Skoro katalog Grup Danych DAI jest źródłem Grup Informacji dla
+				DB, to wynik klasyfikacji powinien wrócić do tego katalogu. W
+				przeciwnym razie powstaną dwa rozbieżne rejestry: katalog danych
+				w DAI i osobny wynik klasyfikacji w DB.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>6</P>
+			</TD>
+			<TD>
+				<P>DAI aktualizuje katalog Grup Danych o wynik klasyfikacji.</P>
+			</TD>
+			<TD>
+				<P>DAI pozostaje właścicielem katalogu i utrzymuje jego
+				aktualność. DB nie przejmuje technicznego utrzymania katalogu,
+				ale wynik klasyfikacji staje się jego elementem. Dzięki temu
+				katalog DAI może służyć zarówno zarządzaniu danymi, jak i SZBI.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>7</P>
+			</TD>
+			<TD>
+				<P>DAI przekazuje status zakończenia obsługi zgłoszenia do DIR.</P>
+			</TD>
+			<TD>
+				<P>DIR potrzebuje jednego statusu do procesu projektowego. Skoro
+				pierwszym odbiorcą zgłoszenia było DAI, to DAI zamyka obieg wobec
+				DIR, uwzględniając wynik klasyfikacji DB. Dzięki temu w procesie
+				projektowym nie ma dwóch równoległych ścieżek zamykanych osobno
+				przez DAI i DB.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">9. Dlaczego ścieżka jest sekwencyjna, a nie
+równoległa</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Proponowane ustalenie</P>
+			</TH>
+			<TH>
+				<P>Uzasadnienie do dyskusji</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>Przyjmujemy model DIR &rarr; DAI &rarr; DB &rarr; DAI &rarr;
+				DIR.</P>
+			</TD>
+			<TD>
+				<P>W takim modelu w danym czasie jest jeden gospodarz etapu.
+				Unikamy sytuacji, w której DIR wysyła zgłoszenie jednocześnie do
+				DAI i DB, a potem musi pilnować dwóch niezależnych ścieżek.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Pierwszym odbiorcą jest DAI.</P>
+			</TD>
+			<TD>
+				<P>DAI najpierw porządkuje temat danych. DB powinno dostać pakiet
+				klasyfikacyjny, a nie ogólny opis projektu.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DB otrzymuje sprawę dopiero po przygotowaniu pakietu przez
+				DAI.</P>
+			</TD>
+			<TD>
+				<P>To ogranicza ryzyko, że DB będzie samodzielnie ustalać, czy
+				Grupa Danych istnieje, kto jest właścicielem, jakie są źródła i
+				które procesy są powiązane.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Wynik wraca do DAI, a nie jest utrzymywany wyłącznie w DB.</P>
+			</TD>
+			<TD>
+				<P>Dzięki temu jeden katalog zawiera zarówno dane zarządcze DAI,
+				jak i wynik klasyfikacji bezpieczeństwa DB.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">10. DB wydaje dwie odrębne instrukcje</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Proponowane ustalenie</P>
+			</TH>
+			<TH>
+				<P>Uzasadnienie do dyskusji</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>DB wydaje Instrukcję Klasyfikacji Informacji.</P>
+			</TD>
+			<TD>
+				<P>Ta instrukcja odpowiada na pytanie, jak klasyfikowane są Grupy
+				Danych traktowane jako Grupy Informacji, jakie są role
+				właścicieli informacji, DAI i DB oraz jak nadawana jest klasa
+				ochrony.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DB wydaje Instrukcję Klasyfikacji Systemów.</P>
+			</TD>
+			<TD>
+				<P>Klasyfikacja systemów to odrębny przedmiot. System może
+				przetwarzać wiele Grup Informacji, mieć własną krytyczność,
+				właściciela, powiązania techniczne i wymagania przedprodukcyjne.
+				Nie warto mieszać tego w jednej instrukcji z klasyfikacją
+				informacji.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Obie instrukcje są powiązane, ale mają odrębny zakres.</P>
+			</TD>
+			<TD>
+				<P>Klasyfikacja informacji odpowiada na pytanie, co chronimy.
+				Klasyfikacja systemów odpowiada na pytanie, jakie wymagania
+				powinien spełniać system, który te informacje przetwarza.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>W Instrukcji Klasyfikacji Informacji nie wpisujemy
+				szczegółowych obowiązków DIR.</P>
+			</TD>
+			<TD>
+				<P>Szczegółowy tryb zgłaszania inicjatyw powinien wynikać z
+				regulacji projektowych DIR, a nie z instrukcji DB. Instrukcja DB
+				może wskazać wejście do procesu, ale nie powinna regulować
+				procesu projektowego.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">11. Co powinno znaleźć się w Instrukcji
+Klasyfikacji Informacji</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Proponowane ustalenie</P>
+			</TH>
+			<TH>
+				<P>Uzasadnienie do dyskusji</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>Instrukcja powinna wskazywać, że Grupą Informacji jest Grupa
+				Danych z katalogu DAI, jeżeli posiada minimalne dane opisowe.</P>
+			</TD>
+			<TD>
+				<P>To formalizuje wykorzystanie katalogu DAI jako źródła
+				klasyfikacji DB i eliminuje potrzebę tworzenia osobnego katalogu
+				DB.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Instrukcja powinna wskazywać, że DAI odpowiada za katalog, a
+				DB za klasyfikację.</P>
+			</TD>
+			<TD>
+				<P>To zabezpiecza interes obu stron i ogranicza ryzyko sporu
+				kompetencyjnego.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Instrukcja powinna opisać udział właściciela informacji.</P>
+			</TD>
+			<TD>
+				<P>Zalecenie wymaga doprecyzowania obowiązków właścicieli
+				informacji, więc instrukcja musi jasno pokazać, że właściciel nie
+				jest biernym odbiorcą wyniku, tylko uczestniczy w klasyfikacji.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Instrukcja powinna wskazywać, że pozycje niekompletne mogą być
+				klasyfikowane warunkowo albo kierowane do uzupełnienia.</P>
+			</TD>
+			<TD>
+				<P>W katalogu są pozycje robocze, z brakami albo niepewnymi
+				przypisaniami. Instrukcja powinna umożliwiać pracę etapową, bez
+				blokowania całego procesu.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Instrukcja powinna wskazywać, że wynik klasyfikacji wraca do
+				katalogu DAI.</P>
+			</TD>
+			<TD>
+				<P>To zapewnia jedno źródło danych i ogranicza ryzyko
+				rozbieżności pomiędzy rejestrem DB i katalogiem DAI.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">12. Proponowane zapisy do Instrukcji Klasyfikacji
+Informacji</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Proponowany zapis</P>
+			</TH>
+			<TH>
+				<P>Uzasadnienie do dyskusji</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>&bdquo;Na potrzeby niniejszej Instrukcji Grupą Informacji jest
+				Grupa Danych ujęta w katalogu Grup Danych prowadzonym przez DAI,
+				opisująca logicznie powiązany zbiór informacji przetwarzanych w
+				Banku. Grupa Danych stanowi podstawową jednostkę klasyfikacji
+				informacji, o ile posiada nazwę, opis, właściciela danych albo
+				informacji, źródło danych oraz powiązanie z procesem lub
+				podprocesem Banku.&rdquo;</P>
+			</TD>
+			<TD>
+				<P>Ten zapis pozwala przyjąć katalog DAI jako wejście do
+				klasyfikacji DB, ale zabezpiecza DB warunkiem minimalnej
+				kompletności danych.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>&bdquo;DAI odpowiada za prowadzenie, aktualizację i
+				kompletność katalogu Grup Danych, w tym za koordynację
+				identyfikacji nowych Grup Danych z właścicielami danych,
+				właścicielami informacji, właścicielami procesów oraz właściwymi
+				komórkami organizacyjnymi.&rdquo;</P>
+			</TD>
+			<TD>
+				<P>Ten zapis potwierdza rolę DAI jako gospodarza katalogu, bez
+				przenoszenia na DAI odpowiedzialności za klasyfikację
+				bezpieczeństwa.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>&bdquo;DB odpowiada za metodykę klasyfikacji bezpieczeństwa
+				informacji oraz nadanie klasy ochrony Grupom Danych traktowanym
+				jako Grupy Informacji.&rdquo;</P>
+			</TD>
+			<TD>
+				<P>Ten zapis potwierdza odpowiedzialność DB za SZBI i wynik
+				klasyfikacji.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>&bdquo;Klasyfikacja jest wykonywana przez DB przy udziale
+				Właściciela Informacji oraz, jeżeli dotyczy, DAI, właściciela
+				procesu, właściciela systemu lub innej właściwej komórki
+				organizacyjnej.&rdquo;</P>
+			</TD>
+			<TD>
+				<P>Ten zapis pokazuje, że klasyfikacja nie jest wykonywana w
+				oderwaniu od właścicieli biznesowych i danych wejściowych DAI.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>&bdquo;Nadanie klasy ochrony Grupie Danych nie oznacza
+				przejęcia przez DB odpowiedzialności za jakość, kompletność,
+				poprawność, aktualność lub definicję biznesową danych w katalogu
+				DAI.&rdquo;</P>
+			</TD>
+			<TD>
+				<P>Ten zapis zabezpiecza DB przed rozszerzeniem odpowiedzialności
+				poza klasyfikację bezpieczeństwa.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>&bdquo;DAI nie odpowiada za określenie klasy ochrony
+				informacji ani za dobór zabezpieczeń bezpieczeństwa informacji.&rdquo;</P>
+			</TD>
+			<TD>
+				<P>Ten zapis zabezpiecza DAI przed przejęciem odpowiedzialności
+				za metodykę i decyzje bezpieczeństwa.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>&bdquo;Grupy Danych oznaczone jako niekompletne, w
+				szczególności bez wskazanego właściciela, źródła danych, procesu
+				lub podprocesu, podlegają uzupełnieniu przed klasyfikacją albo są
+				klasyfikowane warunkowo z obowiązkiem późniejszej weryfikacji.&rdquo;</P>
+			</TD>
+			<TD>
+				<P>Ten zapis umożliwia start procesu mimo braków w katalogu, ale
+				jednocześnie wymusza ich późniejsze uzupełnienie.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">13. Harmonogram do 30.09</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Termin</P>
+			</TH>
+			<TH>
+				<P>Proponowane działanie</P>
+			</TH>
+			<TH>
+				<P>Uzasadnienie do dyskusji</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>Do połowy lipca</P>
+			</TD>
+			<TD>
+				<P>Uzgodnienie modelu DB&ndash;DAI: katalog Grup Danych DAI jako
+				źródło Grup Informacji dla DB.</P>
+			</TD>
+			<TD>
+				<P>Bez tego uzgodnienia trudno będzie zakończyć opiniowanie
+				instrukcji i uniknąć sporu o to, czy DB ma własne Grupy
+				Informacji, czy korzysta z katalogu DAI.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Do końca lipca</P>
+			</TD>
+			<TD>
+				<P>Uzgodnienie minimalnych pól wymaganych do klasyfikacji.</P>
+			</TD>
+			<TD>
+				<P>DB musi wiedzieć, jakie dane wejściowe są obowiązkowe, a DAI
+				musi wiedzieć, jakie braki w katalogu uniemożliwiają pełną
+				klasyfikację.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Sierpień</P>
+			</TD>
+			<TD>
+				<P>Dostosowanie projektu Instrukcji Klasyfikacji Informacji do
+				uzgodnionego modelu.</P>
+			</TD>
+			<TD>
+				<P>To jest główny formalny dowód realizacji części zalecenia
+				dotyczącej obowiązków właścicieli informacji.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Sierpień / wrzesień</P>
+			</TD>
+			<TD>
+				<P>Uzgodnienie trybu pilotażu i sposobu dokumentowania wyniku
+				klasyfikacji.</P>
+			</TD>
+			<TD>
+				<P>Pilotaż pozwoli pokazać, że instrukcja jest wykonalna i że DB
+				oraz DAI mają wspólny sposób pracy.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Do 30.09</P>
+			</TD>
+			<TD>
+				<P>Wydanie Instrukcji Klasyfikacji Informacji.</P>
+			</TD>
+			<TD>
+				<P>To jest kluczowy element zamknięcia U01.1 w części dotyczącej
+				klasyfikacji informacji.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Do 30.09</P>
+			</TD>
+			<TD>
+				<P>Procedowanie Instrukcji Klasyfikacji Systemów albo
+				potwierdzenie harmonogramu jej wydania.</P>
+			</TD>
+			<TD>
+				<P>Zalecenie dotyczy również nowych systemów, więc trzeba
+				pokazać, że ten obszar jest objęty odrębną regulacją DB.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Do 30.09</P>
+			</TD>
+			<TD>
+				<P>Przygotowanie planu dalszych działań po 30.09.</P>
+			</TD>
+			<TD>
+				<P>Audytowo ważne jest pokazanie, że instrukcja uruchamia proces,
+				a nie kończy wszystkie prace operacyjne.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">14. Co powinno być gotowe na zamknięcie zalecenia
+U01.1</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Dowód</P>
+			</TH>
+			<TH>
+				<P>Uzasadnienie do dyskusji</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>Wydana Instrukcja Klasyfikacji Informacji.</P>
+			</TD>
+			<TD>
+				<P>Pokazuje formalne doprecyzowanie zasad klasyfikacji informacji
+				i roli właścicieli informacji.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Projekt albo wydana Instrukcja Klasyfikacji Systemów.</P>
+			</TD>
+			<TD>
+				<P>Pokazuje, że DB rozdzielił klasyfikację informacji i systemów
+				oraz zaadresował obowiązki dysponentów systemów.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Notatka z uzgodnienia DB&ndash;DAI.</P>
+			</TD>
+			<TD>
+				<P>Pokazuje, że model współpracy został uzgodniony, a katalog DAI
+				jest formalnie traktowany jako wejście do klasyfikacji DB.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Lista minimalnych pól wymaganych do klasyfikacji.</P>
+			</TD>
+			<TD>
+				<P>Pokazuje, że proces jest wykonalny i że DB określiło, jakiego
+				wejścia potrzebuje do klasyfikacji.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Plan działań po 30.09.</P>
+			</TD>
+			<TD>
+				<P>Pokazuje, że pełna klasyfikacja i czyszczenie katalogu będą
+				realizowane etapowo, a nie odkładane bez terminu.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">15. Działania po 30.09</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Okres</P>
+			</TH>
+			<TH>
+				<P>Proponowane działanie</P>
+			</TH>
+			<TH>
+				<P>Uzasadnienie do dyskusji</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>IV kwartał 2026</P>
+			</TD>
+			<TD>
+				<P>Przegląd katalogu Grup Danych pod kątem braków: właściciel,
+				źródło, proces, podproces, systemy, &bdquo;BD&rdquo;, &bdquo;???&rdquo;.</P>
+			</TD>
+			<TD>
+				<P>Pełna klasyfikacja wymaga uporządkowanego katalogu. Nie
+				wszystkie braki muszą blokować wydanie instrukcji, ale powinny
+				zostać objęte planem.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>IV kwartał 2026</P>
+			</TD>
+			<TD>
+				<P>Pilotaż klasyfikacji na wybranych domenach, np. klienci,
+				operacje i transakcje, zasoby ludzkie, raportowanie regulacyjne.</P>
+			</TD>
+			<TD>
+				<P>Pilotaż pozwoli sprawdzić metodykę, czasochłonność i sposób
+				współpracy z właścicielami informacji.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>IV kwartał 2026 / I kwartał 2027</P>
+			</TD>
+			<TD>
+				<P>Klasyfikacja priorytetowych Grup Danych/Informacji.</P>
+			</TD>
+			<TD>
+				<P>Nie trzeba klasyfikować wszystkiego naraz. Najpierw powinny
+				zostać objęte grupy o największym znaczeniu regulacyjnym,
+				operacyjnym i bezpieczeństwa.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>I kwartał 2027</P>
+			</TD>
+			<TD>
+				<P>Powiązanie wyników klasyfikacji informacji z klasyfikacją
+				systemów.</P>
+			</TD>
+			<TD>
+				<P>Systemy powinny dziedziczyć wymagania wynikające z informacji,
+				które przetwarzają. To łączy dwie instrukcje DB.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>I&ndash;II kwartał 2027</P>
+			</TD>
+			<TD>
+				<P>Włączenie klasyfikacji do procesu projektowego i zmianowego z
+				DIR.</P>
+			</TD>
+			<TD>
+				<P>Zalecenie wymaga klasyfikacji nowych zbiorów informacji i
+				nowych systemów na etapie projektowym i przedprodukcyjnym. To
+				wymaga bramki w procesie DIR.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Dalej cyklicznie</P>
+			</TD>
+			<TD>
+				<P>Coroczny przegląd klasyfikacji oraz aktualizacja po istotnych
+				zmianach.</P>
+			</TD>
+			<TD>
+				<P>Klasyfikacja nie może być jednorazowym ćwiczeniem. Musi być
+				utrzymywana w cyklu życia informacji i systemów.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">16. Proponowane ustalenie końcowe ze spotkania</H3>
+<TABLE CELLPADDING=2 CELLSPACING=2>
+	<THEAD>
+		<TR>
+			<TH>
+				<P>Proponowane ustalenie</P>
+			</TH>
+			<TH>
+				<P>Uzasadnienie do dyskusji</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD>
+				<P>DB i DAI uzgadniają, że katalog Grup Danych prowadzony przez
+				DAI będzie stanowił źródło Grup Informacji wykorzystywanych w
+				procesie klasyfikacji bezpieczeństwa informacji.</P>
+			</TD>
+			<TD>
+				<P>To ogranicza dublowanie katalogów i pozwala oprzeć proces DB
+				na istniejącym katalogu DAI.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DAI odpowiada za prowadzenie i aktualizację katalogu Grup
+				Danych.</P>
+			</TD>
+			<TD>
+				<P>DAI jest właścicielem procesu zarządzania danymi i powinno
+				utrzymywać katalog jako źródło prawdy o danych.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>DB odpowiada za metodykę klasyfikacji i nadanie klas ochrony.</P>
+			</TD>
+			<TD>
+				<P>DB odpowiada za SZBI i bezpieczeństwo informacji, więc
+				klasyfikacja ochronna powinna pozostać po stronie DB.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Właściciele informacji uczestniczą w klasyfikacji poprzez
+				potwierdzenie zakresu, znaczenia biznesowego i skutków naruszenia
+				P/I/D/A.</P>
+			</TD>
+			<TD>
+				<P>Właściciele informacji są potrzebni do oceny skutków
+				biznesowych, ale nie powinni być pozostawieni sami z metodyką
+				bezpieczeństwa.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Do 30.09 celem jest wydanie regulacji DB i opisanie interfejsu
+				z katalogiem DAI.</P>
+			</TD>
+			<TD>
+				<P>To pozwala wykazać realizację formalnej części zalecenia.</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Po 30.09 celem jest uzupełnienie katalogu, pilotaż
+				klasyfikacji, klasyfikacja priorytetowych grup oraz powiązanie
+				wyników z klasyfikacją systemów i procesem projektowym.</P>
+			</TD>
+			<TD>
+				<P>To pokazuje, że Bank traktuje klasyfikację jako proces ciągły,
+				a nie jednorazowe zamknięcie zalecenia.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H3 CLASS="western">17. Krótka wersja do powiedzenia na początku
+spotkania</H3>
+<P LANG="zxx">Proponujemy nie tworzyć drugiego katalogu Grup
+Informacji w DB. Chcemy wykorzystać katalog Grup Danych DAI jako
+źródło do klasyfikacji bezpieczeństwa informacji. DAI utrzymuje
+katalog danych, DB nadaje klasy ochrony, a właściciele informacji
+potwierdzają znaczenie biznesowe i skutki naruszenia informacji. Do
+30.09 chcemy wydać instrukcję DB, która opisze ten model, role i
+minimalne wymagania. Po 30.09 trzeba będzie uzupełnić braki w
+katalogu, przeprowadzić pilotaż klasyfikacji i podłączyć wynik
+klasyfikacji do klasyfikacji systemów oraz procesu projektowego.</P>
+<P LANG="zxx"><BR><BR>
+</P>
+<P LANG="zxx"><BR><BR>
+</P>
+</BODY>
+</HTML>
