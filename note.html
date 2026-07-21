@@ -6,7 +6,7 @@
 	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.15  (Win32)">
 	<META NAME="CREATED" CONTENT="20090416;11320264">
 	<META NAME="CHANGEDBY" CONTENT="MS ">
-	<META NAME="CHANGED" CONTENT="20260721;9014577">
+	<META NAME="CHANGED" CONTENT="20260721;13330453">
 	<META NAME="Info 1" CONTENT="">
 	<META NAME="Info 2" CONTENT="">
 	<META NAME="Info 3" CONTENT="">
@@ -15,45 +15,305 @@
 	<!--
 		@page { size: 21cm 29.7cm; margin: 2cm }
 		P { margin-bottom: 0.21cm; so-language: zxx }
-		H2 { margin-bottom: 0.21cm; page-break-after: avoid }
-		H2.western { font-family: "Times New Roman", serif; font-size: 18pt; font-weight: bold }
-		H2.cjk { font-family: "SimSun"; font-size: 18pt; font-weight: bold }
-		H2.ctl { font-family: "Lucida Sans"; font-size: 18pt; font-weight: bold }
+		BLOCKQUOTE { margin-left: 1cm; margin-right: 1cm }
+		STRONG { font-weight: bold }
 		A:link { color: #000080; so-language: zxx; text-decoration: underline }
 		A:visited { color: #800000; so-language: zxx; text-decoration: underline }
-		STRONG { font-weight: bold }
+		EM { font-style: italic }
 	-->
 	</STYLE>
 </HEAD>
-<BODY LANG="de-DE" LINK="#000080" VLINK="#800000" DIR="LTR">
-<H2 CLASS="western">Cel dokumentu</H2>
-<P LANG="zxx">Celem dokumentu jest rozwinięcie i uporządkowanie prac
-prowadzonych przez nieformalny zespół DB&ndash;BRO, powołany na
-polecenie Prezesa Zarządu w celu optymalizacji działań związanych z
-oceną dostawców, z uwzględnieniem luk i możliwości doskonalenia
-zidentyfikowanych w Raporcie z kontroli SZBI/2026/2.</P>
-<P LANG="zxx">Dokument ma połączyć dotychczasowe wnioski zespołu
-DB&ndash;BRO, w tym potrzebę ustanowienia funkcji koordynującej i
-nadzorującej proces, z wynikami kontroli ram regulacyjnych oraz
-trwającą optymalizacją ankiet bezpieczeństwa prowadzoną przez WAiUB.
-Na tej podstawie zostanie określony docelowy kierunek zmian, zakres
-dalszych prac oraz rekomendowane działania wdrożeniowe wraz z
-odpowiedzialnościami, priorytetami i harmonogramem realizacji.</P>
-<P LANG="zxx">Efektem dokumentu powinno być przedstawienie spójnej
-propozycji optymalizacji procesu zarządzania bezpieczeństwem
-informacji w relacjach z dostawcami, obejmującej w szczególności
-integrację procesów outsourcingu i zarządzania dostawcami usług ICT,
-jednoznaczne rozdzielenie odpowiedzialności BRO, DI, DB, jednostek
-koordynujących i pozostałych uczestników procesu, ograniczenie
-dublowania ocen i dokumentacji oraz ustanowienie wspólnych zasad
-kwalifikacji relacji, oceny ryzyka, due diligence, monitorowania,
-zarządzania zmianami, podwykonawcami i planami wyjścia.</P>
-<P LANG="zxx">Dokument będzie stanowił podstawę do podjęcia decyzji
-dotyczących docelowego modelu organizacyjnego i procesowego oraz do
-formalnego zaplanowania wdrożenia zmian wynikających zarówno z
-dotychczasowych prac zespołu DB&ndash;BRO, jak i ustaleń kontroli
-SZBI/2026/2.</P>
+<BODY LANG="pl-PL" LINK="#000080" VLINK="#800000" DIR="LTR">
+<P LANG="zxx">Możesz powiedzieć np.:</P>
+<P LANG="zxx">&bdquo;Intencją zapisu było wskazanie pełnego zestawu
+usług kryptograficznych, tj. zapewnienia poufności poprzez
+szyfrowanie oraz &ndash; w razie potrzeby &ndash; autentyczności i
+integralności poprzez podpis elektroniczny. Spójnik &raquo;i&laquo;
+został użyty jako wskazanie katalogu możliwych środków ochrony
+kryptograficznej, a nie jako wymóg bezwzględnego jednoczesnego
+stosowania obu mechanizmów w każdym przypadku.&rdquo;</P>
+<P LANG="zxx">Natomiast, gdyby audytor przeczytał ten zapis
+literalnie, najprawdopodobniej uzna, że:</P>
+<UL>
+	<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">każda wiadomość
+	zawierająca tajemnicę musi być szyfrowana, 
+	</P>
+	<LI><P LANG="zxx">i jednocześnie każda musi być podpisana
+	elektronicznie. 
+	</P>
+</UL>
+<P LANG="zxx">Taka interpretacja jest naturalna w języku prawnym i
+regulacyjnym.</P>
+<P LANG="zxx">Dlatego, jeśli dokument nie został jeszcze formalnie
+zatwierdzony, warto zmienić zapis. Jeżeli już obowiązuje, Twoje
+wyjaśnienie może obronić intencję autora, ale przy najbliższej
+aktualizacji zalecałbym zastąpić &bdquo;i&rdquo; sformułowaniem
+typu:<BR>&bdquo;...z zastosowaniem ochrony kryptograficznej, a w
+uzasadnionych przypadkach również podpisu elektronicznego&rdquo;<BR>albo<BR>&bdquo;...z
+zastosowaniem mechanizmów kryptograficznych zapewniających wymagane
+atrybuty bezpieczeństwa (poufność, integralność i autentyczność).&rdquo;</P>
+<P LANG="zxx">To drugie brzmienie jest najbardziej zgodne z
+podejściem ISO 27001 i DORA, ponieważ nie narzuca konkretnego
+mechanizmu, lecz wymaga osiągnięcia odpowiednich celów
+bezpieczeństwa. 
+</P>
+<P LANG="zxx">A można szyfrować podpisem?</P>
+<P LANG="zxx">Nie. To bardzo częste nieporozumienie.</P>
+<P LANG="zxx">Podpis elektroniczny <STRONG>nie szyfruje treści
+wiadomości</STRONG>. Jego zadaniem jest:</P>
+<UL>
+	<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">potwierdzenie, kto jest
+	nadawcą (autentyczność), 
+	</P>
+	<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">potwierdzenie, że treść
+	nie została zmieniona (integralność), 
+	</P>
+	<LI><P LANG="zxx">zapewnienie niezaprzeczalności. 
+	</P>
+</UL>
+<P LANG="zxx">Natomiast <STRONG>szyfrowanie</STRONG> zapewnia:</P>
+<UL>
+	<LI><P LANG="zxx">poufność &ndash; czyli tylko uprawniony odbiorca
+	może odczytać wiadomość. 
+	</P>
+</UL>
+<P LANG="zxx">Przykładowo w S/MIME lub PGP można zastosować:</P>
+<UL>
+	<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">tylko podpis &ndash;
+	wiadomość jest czytelna dla każdego, ale wiadomo, od kogo pochodzi i
+	że nie została zmieniona, 
+	</P>
+	<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">tylko szyfrowanie &ndash;
+	wiadomość jest tajna, ale odbiorca nie ma kryptograficznego
+	potwierdzenia nadawcy, 
+	</P>
+	<LI><P LANG="zxx">podpis i szyfrowanie jednocześnie &ndash;
+	zapewnione są poufność, integralność i autentyczność. 
+	</P>
+</UL>
+<P LANG="zxx">Dlatego w Twoim zapisie użycie słów &bdquo;ochrona
+kryptograficzna i podpis elektroniczny&rdquo; sugeruje dwa odrębne
+mechanizmy, a nie jeden. Jeśli celem było zapewnienie poufności,
+wystarczy wymagać <STRONG>ochrony kryptograficznej</STRONG>. Jeżeli
+dodatkowo w określonych sytuacjach wymagane jest potwierdzenie
+nadawcy, wtedy należy dodać wymóg <STRONG>podpisu elektronicznego</STRONG>.</P>
+<P LANG="zxx" STYLE="margin-bottom: 0cm">A czy pamiętasz czy w
+którejś polityce jest wprost zapisany w obowiązek stosowania wydanych
+standardów, bo DI broni się, ze do standardów nie było wytycznych z
+DI?</P>
 <P LANG="zxx"><BR><BR>
+</P>
+<P LANG="zxx">T</P>
+<BLOCKQUOTE>&bdquo;&sect; 13. Bezpieczeństwo sprzętu i oprogramowania</BLOCKQUOTE>
+<OL START=12>
+	<LI><BLOCKQUOTE STYLE="margin-bottom: 0cm">Za określanie oraz zmiany
+	w obowiązujących standardach sprzętu i oprogramowania odpowiada
+	Dyrektor DI. 
+	</BLOCKQUOTE>
+	<LI><BLOCKQUOTE STYLE="margin-bottom: 0cm">Standard sprzętu i
+	oprogramowania musi być zgodny z wymaganiami biznesowymi,
+	uwzględniać opłacalność ekonomiczną oraz wymagania w zakresie
+	bezpieczeństwa. 
+	</BLOCKQUOTE>
+	<LI><BLOCKQUOTE STYLE="margin-bottom: 0cm">Odstępstwa od
+	obowiązujących w Banku standardów wymagają postępowania zgodnie z
+	&bdquo;Instrukcją stosowania odstępstw od obowiązujących w Banku
+	regulacji oraz wymaganych mechanizmów kontrolnych w Banku&rdquo;. 
+	</BLOCKQUOTE>
+	<LI><BLOCKQUOTE>Za określenie standardów i szczegółowych procedur
+	bezpieczeństwa fizycznego odpowiada Dyrektor DB.&rdquo; 
+	</BLOCKQUOTE>
+</OL>
+<P LANG="zxx">Moim zdaniem ten paragraf daje <STRONG>dość mocny
+argument</STRONG>, choć nie jest to zapis wprost.</P>
+<P LANG="zxx">Najważniejsze są trzy elementy:</P>
+<OL>
+	<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">W pkt 14 użyto
+	sformułowania <STRONG>&bdquo;obowiązujące w Banku standardy&rdquo;</STRONG>,
+	a nie &bdquo;standardy DI&rdquo;. To oznacza, że regulacja
+	rozpoznaje istnienie standardów ustanawianych również poza DI. 
+	</P>
+	<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">W pkt 17 wprost
+	wskazano, że <STRONG>Dyrektor DB odpowiada za określenie standardów
+	bezpieczeństwa fizycznego</STRONG>. Skoro regulacja przyznaje DB
+	kompetencję do ustanawiania standardów, to trudno twierdzić, że DI
+	nie ma obowiązku ich stosowania. 
+	</P>
+	<LI><P LANG="zxx">W pkt 13 zapisano, że standardy sprzętu i
+	oprogramowania mają <STRONG>uwzględniać wymagania w zakresie
+	bezpieczeństwa</STRONG>. Jeżeli DB, jako właściciel obszaru
+	bezpieczeństwa, ustanawia standardy bezpieczeństwa (np.
+	kryptograficzne, architektury bezpieczeństwa, utwardzania systemów),
+	to standardy DI powinny być z nimi zgodne. 
+	</P>
+</OL>
+<P LANG="zxx">Natomiast nie wyciągałbym z tego jeszcze wniosku, że <STRONG>DI
+ma obowiązek stosować każdy standard wydany przez DB</STRONG>. Ten
+paragraf raczej prowadzi do następującej interpretacji:</P>
+<UL>
+	<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">DB jest właściwe do
+	ustanawiania standardów bezpieczeństwa w powierzonych obszarach. 
+	</P>
+	<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">DI, realizując swoje
+	zadania, ma obowiązek uwzględniać wymagania bezpieczeństwa oraz
+	obowiązujące w Banku standardy. 
+	</P>
+	<LI><P LANG="zxx">Jeżeli DI chce od nich odstąpić, powinno
+	zastosować procedurę odstępstw, o której mowa w pkt 14. 
+	</P>
+</UL>
+<P LANG="zxx">To jest już mocny argument systemowy.</P>
+<P LANG="zxx">Ja natomiast poszukałbym jeszcze jednego zapisu &ndash;
+w Polityce bezpieczeństwa informacji albo w Instrukcji zarządzania
+SZBI &ndash; który mówi, że <STRONG>regulacje lub standardy
+ustanowione przez właściciela danego obszaru są obowiązujące dla
+wszystkich komórek organizacyjnych</STRONG>. Taki zapis całkowicie
+zamknąłby dyskusję, bo połączyłby kompetencję DB do ustanawiania
+standardów z obowiązkiem ich stosowania przez DI. Z tego co pamiętam
+z wcześniejszych analiz Waszych regulacji, jest duża szansa, że taki
+zapis gdzieś występuje, tylko trzeba go odnaleźć.</P>
+<P LANG="zxx"><BR><BR>
+</P>
+<P LANG="zxx">Ta</P>
+<BLOCKQUOTE>&bdquo;&sect; 3.</BLOCKQUOTE>
+<OL>
+	<LI><BLOCKQUOTE STYLE="margin-bottom: 0cm">Regulacje wykonawcze,
+	standardy w zakresie zarządzania informatyką wprowadza zarządzeniem
+	Dyrektor DI. 
+	</BLOCKQUOTE>
+	<LI><BLOCKQUOTE STYLE="margin-bottom: 0cm">Regulacje wykonawcze,
+	standardy w zakresie bezpieczeństwa systemów informatycznych
+	wprowadza zarządzeniem Dyrektor DB. 
+	</BLOCKQUOTE>
+	<LI><BLOCKQUOTE>Zarządzenia, o których mowa w ust. 1 i ust. 2,
+	obowiązują wszystkich pracowników Banku oraz podmioty zarządzające
+	systemami IT na zlecenie Banku.&rdquo; 
+	</BLOCKQUOTE>
+</OL>
+<P LANG="zxx">To jest moim zdaniem <STRONG>bardzo mocny zapis</STRONG>,
+który praktycznie rozstrzyga spór.</P>
+<P LANG="zxx">Wynika z niego jednoznacznie, że:</P>
+<OL>
+	<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Dyrektor DB ma
+	kompetencję do wydawania regulacji wykonawczych i standardów
+	dotyczących bezpieczeństwa systemów informatycznych. 
+	</P>
+	<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Zarządzenia Dyrektora
+	DB mają charakter obowiązujący. 
+	</P>
+	<LI><P LANG="zxx">Obowiązują <STRONG>wszystkich pracowników Banku</STRONG>,
+	a więc również pracowników i Dyrektora DI. Regulacja nie przewiduje
+	żadnego wyłączenia dla DI. 
+	</P>
+</OL>
+<P LANG="zxx">Jeżeli więc Standardy kryptograficzne, Standard
+architektury bezpieczeństwa sieci czy inne standardy bezpieczeństwa
+zostały wydane zarządzeniem Dyrektora DB na podstawie tego przepisu,
+to DI nie może twierdzić, że:</P>
+<UL>
+	<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">&bdquo;nie było
+	wytycznych do ich stosowania&rdquo; albo 
+	</P>
+	<LI><P LANG="zxx">&bdquo;nas one nie obowiązują&rdquo;. 
+	</P>
+</UL>
+<P LANG="zxx">Wytyczną jest właśnie zarządzenie wydające standard.</P>
+<P LANG="zxx">Dodatkowo ten zapis bardzo dobrze koresponduje z
+wcześniejszym paragrafem, który pokazałeś:</P>
+<UL>
+	<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">DI odpowiada za
+	standardy informatyczne, 
+	</P>
+	<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">DB odpowiada za
+	standardy bezpieczeństwa, 
+	</P>
+	<LI><P LANG="zxx">obie grupy standardów obowiązują wszystkich
+	pracowników Banku. 
+	</P>
+</UL>
+<P LANG="zxx">To oznacza, że regulacja świadomie rozdziela
+kompetencje, ale <STRONG>nie rozdziela obowiązywania</STRONG>.</P>
+<P LANG="zxx">Gdybym miał przygotować argument dla Dyrektora lub
+audytora, napisałbym go tak:</P>
+<BLOCKQUOTE>Zgodnie z &sect; 3 ust. 2 i 3 Instrukcji zarządzania
+systemami informatycznymi w Banku, regulacje wykonawcze i standardy w
+zakresie bezpieczeństwa systemów informatycznych są ustanawiane
+zarządzeniem Dyrektora DB, a zarządzenia te obowiązują wszystkich
+pracowników Banku oraz podmioty zarządzające systemami IT na zlecenie
+Banku. Oznacza to, że standardy bezpieczeństwa wydane przez Dyrektora
+DB mają charakter obowiązujących regulacji wewnętrznych i podlegają
+stosowaniu również przez Departament Informatyki. Nie jest wymagane
+wydawanie odrębnych wytycznych nakazujących ich stosowanie, ponieważ
+obowiązek ten wynika bezpośrednio z treści Instrukcji.</BLOCKQUOTE>
+<P LANG="zxx">Te standardy były wprowadzone uchwała Zarządu i boję
+się że powiedzą że nie zarządzaniem.</P>
+<P LANG="zxx">Rozumiem Twoją obawę, ale moim zdaniem jest wręcz
+odwrotnie &ndash; <STRONG>uchwała Zarządu jest aktem wyższego rzędu
+niż zarządzenie Dyrektora DB</STRONG>.</P>
+<P LANG="zxx">Ja odpowiedziałbym w ten sposób:</P>
+<OL>
+	<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">&sect; 3 określa
+	<STRONG>kompetencję</STRONG> do wydawania regulacji.<BR>Mówi, że
+	Dyrektor DB <EM>może</EM> wprowadzać standardy zarządzeniem. 
+	</P>
+	<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Jeżeli jednak <STRONG>Zarząd
+	Banku</STRONG> wprowadził te same standardy uchwałą, to nie osłabia
+	to ich mocy. Przeciwnie &ndash; zostały ustanowione przez organ
+	wyższy w hierarchii wewnętrznej. 
+	</P>
+	<LI><P LANG="zxx">Nie wyobrażam sobie, aby ktoś skutecznie
+	argumentował:</P>
+	<BLOCKQUOTE>&bdquo;Gdyby podpisał Dyrektor DB, to by nas
+	obowiązywało, ale ponieważ podpisał Zarząd Banku, to już nie.&rdquo;</BLOCKQUOTE>
+	<P LANG="zxx">Taki argument byłby nielogiczny.</P>
+</OL>
+<P LANG="zxx">Moim zdaniem słabszy punkt jest gdzie indziej. DI może
+próbować powiedzieć:</P>
+<BLOCKQUOTE>&bdquo;&sect; 3 mówi o standardach <EM>wprowadzanych
+zarządzeniem Dyrektora DB</EM>, a te konkretne standardy zostały
+wprowadzone uchwałą Zarządu, więc &sect; 3 ich nie dotyczy.&rdquo;</BLOCKQUOTE>
+<P LANG="zxx">Na to również jest odpowiedź:</P>
+<BLOCKQUOTE>&sect; 3 nie ogranicza możliwości wprowadzenia standardów
+przez Zarząd. Określa jedynie minimalną kompetencję Dyrektora DB.
+Zarząd jako najwyższy organ kierujący Bankiem ma prawo ustanawiać
+regulacje również w tym zakresie. Uchwała Zarządu nie znosi skutków &sect;
+3, lecz realizuje je na wyższym poziomie kompetencyjnym.</BLOCKQUOTE>
+<P LANG="zxx">To jest zgodne z zasadami hierarchii aktów
+wewnętrznych.</P>
+<P LANG="zxx"><STRONG>Ja natomiast poszedłbym jeszcze dalej.</STRONG>
+W Waszym przypadku nie opierałbym argumentacji wyłącznie na &sect; 3.
+Zestawiłbym trzy fakty:</P>
+<UL>
+	<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Zarząd uchwałą
+	ustanowił Standardy. 
+	</P>
+	<LI><P LANG="zxx" STYLE="margin-bottom: 0cm">Instrukcja rozdziela
+	kompetencje między DI i DB, wskazując, że DB odpowiada za standardy
+	bezpieczeństwa systemów. 
+	</P>
+	<LI><P LANG="zxx">Te standardy są regulacjami obowiązującymi w
+	Banku, a nie zaleceniami DB. 
+	</P>
+</UL>
+<P LANG="zxx">Wtedy dyskusja przestaje dotyczyć formy (&bdquo;uchwała
+czy zarządzenie&rdquo;), a dotyczy obowiązywania regulacji bankowej.
+A z tym DI będzie już bardzo trudno polemizować. To moim zdaniem jest
+najmocniejsza linia argumentacji.</P>
+<P LANG="zxx" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<DIV ID="prompt-textarea" DIR="LTR">
+	<P LANG="zxx"><BR><BR>
+	</P>
+</DIV>
+<DIV ID="_r_cu_" DIR="LTR">
+	<P LANG="zxx" STYLE="margin-bottom: 0cm"><BR>
+	</P>
+</DIV>
+<DIV ID="_r_cv_" DIR="LTR">
+	<P LANG="zxx" STYLE="margin-bottom: 0cm"><BR>
+	</P>
+</DIV>
+<P STYLE="margin-bottom: 0cm"><BR>
 </P>
 </BODY>
 </HTML>
