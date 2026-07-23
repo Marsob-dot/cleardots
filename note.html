@@ -1,1 +1,708 @@
-.
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1250">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.15  (Win32)">
+	<META NAME="CREATED" CONTENT="20090416;11320264">
+	<META NAME="CHANGEDBY" CONTENT="MS ">
+	<META NAME="CHANGED" CONTENT="20260723;8251704">
+	<META NAME="Info 1" CONTENT="">
+	<META NAME="Info 2" CONTENT="">
+	<META NAME="Info 3" CONTENT="">
+	<META NAME="Info 4" CONTENT="">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { size: 21cm 29.7cm; margin: 2cm }
+		P { margin-bottom: 0.21cm; so-language: zxx }
+		H2 { margin-bottom: 0.21cm; page-break-after: avoid }
+		H2.western { font-family: "Times New Roman", serif; font-size: 18pt; font-weight: bold }
+		H2.cjk { font-family: "SimSun"; font-size: 18pt; font-weight: bold }
+		H2.ctl { font-family: "Lucida Sans"; font-size: 18pt; font-weight: bold }
+		H3 { margin-bottom: 0.21cm; page-break-after: avoid }
+		H3.western { font-family: "Times New Roman", serif; font-size: 14pt; font-weight: bold }
+		H3.cjk { font-family: "SimSun"; font-size: 14pt; font-weight: bold }
+		H3.ctl { font-family: "Lucida Sans"; font-size: 14pt; font-weight: bold }
+		A:link { color: #000080; so-language: zxx; text-decoration: underline }
+		A:visited { color: #800000; so-language: zxx; text-decoration: underline }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="pl-PL" LINK="#000080" VLINK="#800000" DIR="LTR">
+<P LANG="zxx">Architekt Bezpieczeństwa IT mówi o wymaganiach,
+standardach, segmentacji, opiniowaniu zmian, ocenie ryzyka i nadzorze
+architektonicznym.</P>
+<DIV ID="thread" DIR="LTR">
+	<P LANG="zxx">Administrator Systemów Bezpieczeństwa mówi o tym, jak
+	te wymagania są technicznie realizowane, monitorowane i potwierdzane
+	dowodami w narzędziach bezpieczeństwa.</P>
+	<P LANG="zxx">Najważniejsze zdanie otwierające spotkanie:</P>
+	<P LANG="zxx">&bdquo;W tym obszarze rozdzielamy nadzór
+	bezpieczeństwa od administracji infrastrukturą IT. Departament
+	Bezpieczeństwa określa wymagania, standardy i prowadzi nadzór
+	bezpieczeństwa nad architekturą, regułami, segmentacją, VPN oraz
+	zdarzeniami bezpieczeństwa. Techniczne utrzymanie infrastruktury IT
+	realizują właściwe zespoły IT, natomiast Administratorzy Systemów
+	Bezpieczeństwa w DB zarządzają narzędziami bezpieczeństwa,
+	monitorują zdarzenia, wspierają weryfikację konfiguracji i
+	dostarczają dowody skuteczności zabezpieczeń.&rdquo;</P>
+	<P LANG="zxx">To dobrze pokazuje, że DB nie próbuje przejąć roli DI,
+	ale ma realny nadzór.</P>
+	<H2 CLASS="western">1. Jak podzielić role na spotkaniu</H2>
+	<P LANG="zxx">Architekt Bezpieczeństwa IT powinien odpowiadać na
+	pytania:</P>
+	<P LANG="zxx">jakie są standardy segmentacji,</P>
+	<P LANG="zxx">jakie są strefy sieciowe,</P>
+	<P LANG="zxx">jakie są zasady komunikacji między strefami,</P>
+	<P LANG="zxx">jak DB opiniuje zmiany sieciowe,</P>
+	<P LANG="zxx">jak DB ocenia nowe połączenia VPN,</P>
+	<P LANG="zxx">jak DB identyfikuje odstępstwa od standardów,</P>
+	<P LANG="zxx">jak DB wpływa na projekty i zmiany IT,</P>
+	<P LANG="zxx">jak DB nadzoruje zgodność rozwiązań z wymaganiami
+	bezpieczeństwa.</P>
+	<P LANG="zxx">Administrator Systemów Bezpieczeństwa powinien
+	odpowiadać na pytania:</P>
+	<P LANG="zxx">jakie systemy bezpieczeństwa wspierają nadzór nad
+	siecią,</P>
+	<P LANG="zxx">czy logi z FW/VPN trafiają do monitoringu lub SIEM,</P>
+	<P LANG="zxx">jak wykrywane są zdarzenia dotyczące ruchu sieciowego,</P>
+	<P LANG="zxx">czy są alerty dotyczące VPN, FW, nieudanych logowań,
+	nietypowych połączeń,</P>
+	<P LANG="zxx">jak wygląda dostęp administracyjny do systemów
+	bezpieczeństwa,</P>
+	<P LANG="zxx">jak dokumentowane są zmiany w narzędziach
+	bezpieczeństwa,</P>
+	<P LANG="zxx">jak potwierdzić, że dane źródło logów działa,</P>
+	<P LANG="zxx">jakie raporty można pokazać audytorowi.</P>
+	<H2 CLASS="western">2. Główna narracja o nadzorze DB nad IT</H2>
+	<P LANG="zxx">Proponuję mówić tak:</P>
+	<P LANG="zxx">&bdquo;Nadzór DB nad IT nie polega na codziennym
+	zarządzaniu całą infrastrukturą IT. Polega na określaniu wymagań
+	bezpieczeństwa, opiniowaniu architektury i zmian, weryfikacji
+	zgodności rozwiązań z przyjętymi standardami, monitorowaniu zdarzeń
+	bezpieczeństwa, analizie ryzyka oraz wskazywaniu działań
+	korygujących. Administratorzy Systemów Bezpieczeństwa zapewniają
+	techniczne wsparcie tego nadzoru poprzez utrzymywanie narzędzi
+	bezpieczeństwa, analizę zdarzeń, raportowanie i dostarczanie dowodów
+	działania mechanizmów kontrolnych.&rdquo;</P>
+	<P LANG="zxx">To jest bezpieczne i dojrzałe. Nie deklaruje, że DB
+	administruje całym IT, ale pokazuje, że DB ma realne instrumenty
+	nadzoru.</P>
+	<H2 CLASS="western">3. Segmentacja sieci</H2>
+	<P LANG="zxx">Architekt powinien powiedzieć:</P>
+	<P LANG="zxx">&bdquo;Segmentacja sieci jest opisana w standardach
+	architektury bezpieczeństwa sieci. Jej celem jest rozdzielenie
+	środowisk o różnym poziomie ryzyka i ograniczenie komunikacji
+	wyłącznie do uzasadnionych przepływów. Segmentacja obejmuje między
+	innymi środowiska użytkowników, serwerów, systemów krytycznych, DMZ,
+	dostęp administracyjny, środowiska testowe i produkcyjne oraz
+	połączenia zewnętrzne.&rdquo;</P>
+	<P LANG="zxx">Administrator Systemów Bezpieczeństwa powinien
+	uzupełnić:</P>
+	<P LANG="zxx">&bdquo;Z perspektywy technicznej nadzór nad
+	segmentacją wspierają reguły FW, logi z urządzeń sieciowych,
+	zdarzenia z VPN, SIEM oraz inne narzędzia bezpieczeństwa. Możemy
+	pokazać, czy dane źródła logów są podłączone, jakie klasy zdarzeń są
+	monitorowane i jak wygląda obsługa alertów.&rdquo;</P>
+	<P LANG="zxx">Możliwe pytanie audytora:</P>
+	<P LANG="zxx">&bdquo;Jak DB sprawdza, że segmentacja działa?&rdquo;</P>
+	<P LANG="zxx">Odpowiedź:</P>
+	<P LANG="zxx">&bdquo;DB sprawdza segmentację poprzez opiniowanie
+	architektury i zmian, analizę reguł komunikacyjnych, testy
+	bezpieczeństwa, skanowania, monitoring zdarzeń, analizę incydentów
+	oraz przeglądy wynikające z audytów lub działań kontrolnych.
+	Administratorzy Systemów Bezpieczeństwa dostarczają dowody
+	techniczne, np. logi, alerty, raporty SIEM lub wyniki testów.&rdquo;</P>
+	<H2 CLASS="western">4. Reguły FW</H2>
+	<P LANG="zxx">Tu ważne jest pokazanie procesu, nie tylko
+	konfiguracji.</P>
+	<P LANG="zxx">Proponowana odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Reguła FW powinna wynikać z uzasadnionej
+	potrzeby biznesowej lub technicznej. Potrzebę zgłasza właściciel
+	systemu, projektu albo usługi. DB ocenia ją z punktu widzenia
+	bezpieczeństwa, segmentacji i zgodności ze standardami.
+	Administratorzy techniczni wdrażają regułę, a Administratorzy
+	Systemów Bezpieczeństwa mogą wspierać nadzór poprzez analizę logów,
+	alertów i przegląd działania mechanizmu.&rdquo;</P>
+	<P LANG="zxx">Jeżeli audytor zapyta:</P>
+	<P LANG="zxx">&bdquo;Czy DB zatwierdza każdą regułę?&rdquo;</P>
+	<P LANG="zxx">Bezpieczna odpowiedź:</P>
+	<P LANG="zxx">&bdquo;DB powinien opiniować reguły i zmiany istotne z
+	punktu widzenia bezpieczeństwa, szczególnie dotyczące komunikacji
+	między strefami, DMZ, dostępu zewnętrznego, VPN, systemów
+	krytycznych i wyjątków od standardów. Techniczne wdrożenie i pełna
+	konfiguracja pozostają po stronie administratorów infrastruktury.&rdquo;</P>
+	<P LANG="zxx">Jeżeli zapyta:</P>
+	<P LANG="zxx">&bdquo;Czy reguły są przeglądane?&rdquo;</P>
+	<P LANG="zxx">Odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Reguły są weryfikowane przy zmianach,
+	incydentach, testach, audytach i działaniach porządkujących.
+	Docelowo szczególnie istotne są cykliczne przeglądy reguł
+	historycznych, tymczasowych, szerokich oraz reguł dotyczących
+	komunikacji zewnętrznej. Jeżeli w części obszarów proces przeglądu
+	nie jest jeszcze w pełni ustandaryzowany, traktujemy to jako
+	kierunek doskonalenia.&rdquo;</P>
+	<H2 CLASS="western">5. VPN</H2>
+	<P LANG="zxx">Architekt powinien powiedzieć:</P>
+	<P LANG="zxx">&bdquo;VPN jest traktowany jako obszar podwyższonego
+	ryzyka, ponieważ umożliwia dostęp zdalny lub komunikację z
+	podmiotami zewnętrznymi. Wymagania dla VPN wynikają ze standardów
+	dostępu zdalnego, standardów kryptograficznych oraz standardów
+	architektury sieci. Dla nowych połączeń stosujemy aktualne
+	wymagania, natomiast historyczne tunele powinny być inwentaryzowane,
+	przeglądane i dostosowywane.&rdquo;</P>
+	<P LANG="zxx">Administrator Systemów Bezpieczeństwa powinien
+	uzupełnić:</P>
+	<P LANG="zxx">&bdquo;Od strony technicznej można wykazać listę
+	tuneli VPN, parametry bezpieczeństwa, logi połączeń, alerty
+	dotyczące nieudanych logowań, nietypowych prób dostępu lub zdarzeń
+	związanych z dostępem zdalnym. Ważne jest też potwierdzenie, czy
+	logi VPN są objęte monitoringiem bezpieczeństwa.&rdquo;</P>
+	<P LANG="zxx">Możliwe pytanie:</P>
+	<P LANG="zxx">&bdquo;Czy wszystkie VPN są zgodne z aktualnym
+	standardem kryptograficznym?&rdquo;</P>
+	<P LANG="zxx">Odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Dla nowych i zmienianych połączeń stosowane są
+	aktualne standardy. Dla połączeń historycznych prowadzimy lub
+	powinniśmy prowadzić działania porządkujące, obejmujące
+	inwentaryzację, weryfikację parametrów, właściciela, zasadności
+	dalszego utrzymywania połączenia oraz ewentualne dostosowanie lub
+	formalizację odstępstwa.&rdquo;</P>
+	<H2 CLASS="western">6. Nadzór nad IT przez systemy bezpieczeństwa</H2>
+	<P LANG="zxx">To jest nowy, ważny fragment.</P>
+	<P LANG="zxx">Proponuję powiedzieć:</P>
+	<P LANG="zxx">&bdquo;DB sprawuje nadzór nad IT nie tylko przez
+	standardy i opiniowanie zmian, ale również przez systemy
+	bezpieczeństwa. Administratorzy Systemów Bezpieczeństwa utrzymują
+	narzędzia, które pozwalają obserwować wybrane aspekty bezpieczeństwa
+	środowiska IT: logi, alerty, zdarzenia z FW/VPN, SIEM, EDR/XDR, DLP,
+	systemy monitorowania i inne źródła. Dzięki temu DB może
+	identyfikować naruszenia zasad, anomalie, incydenty oraz obszary
+	wymagające działań po stronie IT.&rdquo;</P>
+	<P LANG="zxx">Możliwe pytanie audytora:</P>
+	<P LANG="zxx">&bdquo;Jakie źródła danych są objęte monitoringiem?&rdquo;</P>
+	<P LANG="zxx">Odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Zakres źródeł danych wynika z wymagań
+	monitoringu bezpieczeństwa i listy źródeł danych podlegających
+	monitoringowi. W zależności od środowiska obejmuje to między innymi
+	urządzenia bezpieczeństwa, FW, VPN, systemy dostępowe, wybrane
+	systemy serwerowe, EDR/XDR, DLP i inne źródła istotne dla detekcji
+	zdarzeń bezpieczeństwa.&rdquo;</P>
+	<P LANG="zxx">Możliwe pytanie:</P>
+	<P LANG="zxx">&bdquo;Czy DB widzi wszystko w IT?&rdquo;</P>
+	<P LANG="zxx">Odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Nie zakładamy, że DB widzi każdy element
+	techniczny środowiska IT w czasie rzeczywistym. Zakres monitoringu
+	jest budowany na podstawie ryzyka, krytyczności systemów, wymagań
+	regulacyjnych i możliwości technicznych. DB określa wymagania
+	dotyczące źródeł danych i monitorowania, a następnie rozwija
+	pokrycie monitoringu w ramach planów doskonalenia.&rdquo;</P>
+	<P LANG="zxx">To jest bardzo ważne, bo nie można obiecać pełnej
+	widoczności, jeżeli jej nie ma.</P>
+	<H2 CLASS="western">7. Jak Administrator Systemów Bezpieczeństwa
+	powinien odpowiadać</H2>
+	<P LANG="zxx">Administrator nie powinien mówić tylko &bdquo;mamy
+	SIEM&rdquo; albo &bdquo;mamy firewall&rdquo;.</P>
+	<P LANG="zxx">Powinien opowiadać procesowo:</P>
+	<P LANG="zxx">&bdquo;Dane z wybranych źródeł trafiają do narzędzi
+	bezpieczeństwa.&rdquo;</P>
+	<P LANG="zxx">&bdquo;Zdarzenia są korelowane lub analizowane według
+	reguł.&rdquo;</P>
+	<P LANG="zxx">&bdquo;Alerty są obsługiwane przez właściwe zespoły.&rdquo;</P>
+	<P LANG="zxx">&bdquo;Dla zdarzeń istotnych powstaje zgłoszenie lub
+	incydent.&rdquo;</P>
+	<P LANG="zxx">&bdquo;Wyniki analizy mogą skutkować rekomendacją
+	zmiany reguł, blokadą, zawężeniem dostępu albo zgłoszeniem do
+	właściciela systemu lub DI.&rdquo;</P>
+	<P LANG="zxx">To pokazuje, że narzędzie jest elementem procesu
+	nadzoru, a nie tylko wdrożoną technologią.</P>
+	<H2 CLASS="western">8. Dowody dla Architekta Bezpieczeństwa</H2>
+	<P LANG="zxx">Architekt powinien mieć przygotowane:</P>
+	<P LANG="zxx">Standard Architektury Bezpieczeństwa Sieci
+	Teleinformatycznej.</P>
+	<P LANG="zxx">Standardy bezpiecznego dostępu zdalnego.</P>
+	<P LANG="zxx">Standardy kryptograficzne.</P>
+	<P LANG="zxx">Standardy Bezpieczeństwa Teleinformatycznego.</P>
+	<P LANG="zxx">Instrukcję zarządzania zmianami.</P>
+	<P LANG="zxx">Przykład opinii bezpieczeństwa do zmiany sieciowej.</P>
+	<P LANG="zxx">Przykład projektu lub zmiany, gdzie DB wskazał
+	wymagania segmentacji.</P>
+	<P LANG="zxx">Przykład odstępstwa od standardu, jeśli istnieje.</P>
+	<P LANG="zxx">Uproszczony schemat stref sieciowych.</P>
+	<P LANG="zxx">Przykład działania porządkującego po audycie, teście
+	lub incydencie.</P>
+	<H2 CLASS="western">9. Dowody dla Administratora Systemów
+	Bezpieczeństwa</H2>
+	<P LANG="zxx">Administrator powinien mieć przygotowane:</P>
+	<P LANG="zxx">Wykaz systemów bezpieczeństwa wspierających nadzór nad
+	siecią.</P>
+	<P LANG="zxx">Informację, czy logi FW trafiają do SIEM lub innego
+	monitoringu.</P>
+	<P LANG="zxx">Informację, czy logi VPN trafiają do SIEM lub innego
+	monitoringu.</P>
+	<P LANG="zxx">Przykład alertu z FW/VPN bez danych wrażliwych.</P>
+	<P LANG="zxx">Przykład reguły korelacyjnej lub scenariusza
+	monitorowania.</P>
+	<P LANG="zxx">Potwierdzenie działania źródeł logów.</P>
+	<P LANG="zxx">Przykład zgłoszenia lub incydentu powstałego na
+	podstawie alertu.</P>
+	<P LANG="zxx">Raport z EDR/XDR lub SIEM dotyczący zdarzeń
+	sieciowych.</P>
+	<P LANG="zxx">Informację o kontach administracyjnych do systemów
+	bezpieczeństwa.</P>
+	<P LANG="zxx">Dowód przeglądu uprawnień administratorów systemów
+	bezpieczeństwa, jeżeli jest.</P>
+	<P LANG="zxx">Przykład backupu konfiguracji urządzenia lub narzędzia
+	bezpieczeństwa, jeżeli dotyczy.</P>
+	<H2 CLASS="western">10. Trudne pytania i bezpieczne odpowiedzi</H2>
+	<P LANG="zxx">Pytanie:</P>
+	<P LANG="zxx">&bdquo;Czy DB ma realny nadzór nad IT, skoro nie
+	administruje infrastrukturą?&rdquo;</P>
+	<P LANG="zxx">Odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Tak, ale jest to nadzór bezpieczeństwa, nie
+	administracja IT. DB określa wymagania, opiniuje rozwiązania,
+	monitoruje zdarzenia bezpieczeństwa, analizuje ryzyka, wskazuje
+	działania korygujące i raportuje problemy. Techniczne wdrożenie
+	pozostaje po stronie właściwych zespołów IT.&rdquo;</P>
+	<P LANG="zxx">Pytanie:</P>
+	<P LANG="zxx">&bdquo;Czy Administrator Systemów Bezpieczeństwa może
+	sam zmienić regułę FW?&rdquo;</P>
+	<P LANG="zxx">Odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Zależy od podziału kompetencji technicznych. Co
+	do zasady zmiany powinny być realizowane zgodnie z procesem zmiany i
+	uprawnieniami administracyjnymi. Nawet jeżeli osoba z DB technicznie
+	administruje wybranym systemem bezpieczeństwa, zmiana powinna mieć
+	uzasadnienie, ślad decyzyjny i być zgodna ze standardami.&rdquo;</P>
+	<P LANG="zxx">Pytanie:</P>
+	<P LANG="zxx">&bdquo;Kto odpowiada za błąd w konfiguracji FW?&rdquo;</P>
+	<P LANG="zxx">Odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Za techniczne wdrożenie konfiguracji odpowiada
+	właściciel administracyjny danego systemu lub urządzenia. DB
+	odpowiada za wymagania bezpieczeństwa, opiniowanie i nadzór. Jeżeli
+	błąd zostanie wykryty przez monitoring, audyt lub test, DB inicjuje
+	działanie korygujące i monitoruje jego realizację.&rdquo;</P>
+	<P LANG="zxx">Pytanie:</P>
+	<P LANG="zxx">&bdquo;Czy DB ma dostęp do konfiguracji urządzeń
+	sieciowych?&rdquo;</P>
+	<P LANG="zxx">Odpowiedź:</P>
+	<P LANG="zxx">&bdquo;DB powinien mieć dostęp do informacji
+	niezbędnych do nadzoru bezpieczeństwa, opiniowania zmian i analizy
+	incydentów. Nie zawsze musi to oznaczać pełny administracyjny dostęp
+	do każdego urządzenia. Istotne jest, aby DB mógł pozyskać
+	konfiguracje, logi lub raporty potrzebne do oceny bezpieczeństwa.&rdquo;</P>
+	<P LANG="zxx">Pytanie:</P>
+	<P LANG="zxx">&bdquo;Czy monitoring FW/VPN jest kompletny?&rdquo;</P>
+	<P LANG="zxx">Odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Zakres monitoringu jest rozwijany zgodnie z
+	wymaganiami bezpieczeństwa, ryzykiem i możliwościami technicznymi.
+	Priorytetowo obejmowane są źródła istotne dla detekcji incydentów,
+	dostępu zdalnego, komunikacji zewnętrznej i ochrony systemów
+	krytycznych. Obszary wymagające rozszerzenia monitoringu są ujmowane
+	w planach doskonalenia.&rdquo;</P>
+	<H2 CLASS="western">11. Najważniejszy komunikat na koniec</H2>
+	<P LANG="zxx">&bdquo;W tym obszarze DB pełni dwie role. Pierwsza to
+	rola architektoniczno-nadzorcza: standardy, segmentacja, opiniowanie
+	zmian, ocena ryzyka i nadzór nad zgodnością. Druga to rola
+	operacyjna w zakresie systemów bezpieczeństwa: utrzymanie narzędzi
+	bezpieczeństwa, monitorowanie zdarzeń, analiza alertów i
+	dostarczanie dowodów działania mechanizmów kontrolnych. Te role
+	wspólnie zapewniają nadzór bezpieczeństwa nad IT, przy zachowaniu
+	odpowiedzialności technicznej właściwych zespołów IT za utrzymanie
+	infrastruktury.&rdquo;</P>
+	<P LANG="zxx">To zdanie dobrze spina obecność Architekta i
+	Administratora Systemów Bezpieczeństwa na jednym spotkaniu.</P>
+	<P LANG="zxx">Patrząc na nasze dotychczasowe doświadczenia i
+	omawiane regulacje przygotuj proszę spodziewane audytora pytania w
+	tym zakresie i zaproponuj dowody do okazania. Jeśli coś jeszcze może
+	pomóc rozmówcom, to zaproponuj to . 
+	</P>
+	<P LANG="zxx">Poniżej przygotowanie rozmówców do spotkania SOZ
+	&bdquo;Ochrona sieci / segmentacja / reguły FW / VPN / nadzór DB nad
+	IT&rdquo;. Pisałbym to jako ściągę dla Architekta Bezpieczeństwa IT
+	i Administratora Systemów Bezpieczeństwa.</P>
+	<H2 CLASS="western">1. Najważniejsza narracja na spotkanie</H2>
+	<P LANG="zxx">Na początku warto ustawić audytorowi kontekst:</P>
+	<P LANG="zxx">&bdquo;W tym obszarze DB pełni funkcję nadzorczą i
+	specjalistyczną. Architekt Bezpieczeństwa IT odpowiada za wymagania,
+	standardy, ocenę architektury, opiniowanie zmian i wskazywanie
+	ryzyk. Administrator Systemów Bezpieczeństwa odpowiada za techniczne
+	utrzymanie wybranych narzędzi bezpieczeństwa, monitoring, obsługę
+	alertów i dostarczanie dowodów działania zabezpieczeń. Techniczne
+	utrzymanie infrastruktury IT, sieci i części urządzeń pozostaje po
+	stronie właściwych administratorów IT. DB nie zastępuje DI, ale
+	sprawuje nadzór bezpieczeństwa nad tym, czy rozwiązania są zgodne ze
+	standardami, ryzykiem i wymaganiami Banku.&rdquo;</P>
+	<P LANG="zxx">To zdanie jest ważne, bo audytor może próbować
+	sprawdzić, czy DB realnie nadzoruje IT, czy tylko ma dokumenty.</P>
+	<H2 CLASS="western">2. Regulacje, które trzeba mieć pod ręką</H2>
+	<P LANG="zxx">Na spotkanie przygotowałbym przede wszystkim:</P>
+	<P LANG="zxx">Instrukcja &ndash; Standard Architektury
+	Bezpieczeństwa Sieci Teleinformatycznej w Banku.</P>
+	<P LANG="zxx">Instrukcja &ndash; Standardy bezpiecznego dostępu
+	zdalnego.</P>
+	<P LANG="zxx">Instrukcja &ndash; Standardy kryptograficzne.</P>
+	<P LANG="zxx">Instrukcja Standardy Bezpieczeństwa
+	Teleinformatycznego w Banku.</P>
+	<P LANG="zxx">Instrukcja Wymagania w zakresie monitoringu
+	bezpieczeństwa.</P>
+	<P LANG="zxx">Instrukcja Wymagania w zakresie źródeł danych
+	podlegających monitoringowi bezpieczeństwa.</P>
+	<P LANG="zxx">Instrukcja zarządzania projektami i zmianami w
+	środowisku teleinformatycznym Banku.</P>
+	<P LANG="zxx">Instrukcja zarządzania bazą konfiguracji komponentów
+	infrastruktury w Banku.</P>
+	<P LANG="zxx">Instrukcja stosowania odstępstw od obowiązujących w
+	Banku regulacji oraz wymaganych mechanizmów kontrolnych.</P>
+	<P LANG="zxx">Metodyka analizy ryzyka związanego z technologiami i
+	bezpieczeństwem ICT.</P>
+	<P LANG="zxx">Dobrze też mieć wykaz regulacji SZBI, żeby pokazać, że
+	standardy sieci nie są oderwane od całego systemu.</P>
+	<H2 CLASS="western">3. Pytania o segmentację sieci</H2>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Jak w Banku zdefiniowano segmentację sieci?&rdquo;</P>
+	<P LANG="zxx">Proponowana odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Segmentacja sieci jest określona w standardach
+	architektury bezpieczeństwa sieci. Jej celem jest rozdzielenie
+	środowisk o różnym poziomie ryzyka i różnym przeznaczeniu, np. stref
+	użytkowników, serwerów, DMZ, systemów krytycznych, środowisk
+	administracyjnych, środowisk testowych i produkcyjnych oraz połączeń
+	zewnętrznych. Ruch pomiędzy strefami powinien wynikać z uzasadnionej
+	potrzeby i być kontrolowany regułami bezpieczeństwa.&rdquo;</P>
+	<P LANG="zxx">Dowody do okazania:</P>
+	<P LANG="zxx">Uproszczony schemat stref sieciowych.</P>
+	<P LANG="zxx">Standard Architektury Bezpieczeństwa Sieci.</P>
+	<P LANG="zxx">Opis zasad komunikacji między strefami.</P>
+	<P LANG="zxx">Przykład opinii Architekta Bezpieczeństwa do projektu
+	lub zmiany.</P>
+	<P LANG="zxx">Przykład zmiany, w której DB wskazał wymagania
+	segmentacji.</P>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Jak sprawdzacie, że segmentacja działa?&rdquo;</P>
+	<P LANG="zxx">Proponowana odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Segmentacja jest weryfikowana przez opiniowanie
+	architektury i zmian, analizę reguł komunikacyjnych, testy
+	bezpieczeństwa, skanowania, monitoring zdarzeń, analizę incydentów
+	oraz przeglądy wykonywane po audytach lub zmianach. Administrator
+	Systemów Bezpieczeństwa może potwierdzić, jakie źródła logów i
+	alerty wspierają nadzór nad ruchem sieciowym.&rdquo;</P>
+	<P LANG="zxx">Dowody:</P>
+	<P LANG="zxx">Raport z testów bezpieczeństwa albo skanowania, jeśli
+	dotyczył segmentacji.</P>
+	<P LANG="zxx">Przykład alertu lub logu z FW/VPN/SIEM.</P>
+	<P LANG="zxx">Przykład zgłoszenia lub działania korygującego po
+	wykryciu niepożądanej komunikacji.</P>
+	<P LANG="zxx">Raport z przeglądu albo notatka z analizy reguł.</P>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Czy wszystkie systemy krytyczne są odseparowane
+	od pozostałych?&rdquo;</P>
+	<P LANG="zxx">Odpowiedź ostrożna:</P>
+	<P LANG="zxx">&bdquo;Systemy krytyczne powinny być objęte
+	podwyższonym poziomem ochrony, w tym separacją sieciową i
+	ograniczeniem komunikacji do niezbędnych przepływów. Zakres
+	separacji wynika z architektury systemu, jego krytyczności, analizy
+	ryzyka i możliwości technicznych. Jeżeli występują historyczne
+	zależności lub odstępstwa, powinny być identyfikowane i obejmowane
+	działaniami porządkującymi.&rdquo;</P>
+	<P LANG="zxx">To jest bezpieczne, bo nie deklaruje absolutnej
+	perfekcji.</P>
+	<H2 CLASS="western">4. Pytania o reguły FW</H2>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Jak powstaje nowa reguła FW?&rdquo;</P>
+	<P LANG="zxx">Proponowana odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Nowa reguła FW powinna wynikać z potrzeby
+	biznesowej, technicznej, projektowej lub utrzymaniowej. Wniosek
+	powinien wskazywać, kto potrzebuje komunikacji, pomiędzy jakimi
+	systemami, w jakim zakresie, na jaki czas i w jakim celu. DB
+	opiniuje zmianę pod kątem bezpieczeństwa i zgodności ze standardami,
+	a techniczne wdrożenie wykonuje właściwy administrator.&rdquo;</P>
+	<P LANG="zxx">Dowody:</P>
+	<P LANG="zxx">Przykładowy wniosek o regułę FW.</P>
+	<P LANG="zxx">Karta zmiany.</P>
+	<P LANG="zxx">Opinia DB / Architekta Bezpieczeństwa.</P>
+	<P LANG="zxx">Potwierdzenie wdrożenia zmiany.</P>
+	<P LANG="zxx">Zgłoszenie w systemie ticketowym.</P>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Kto zatwierdza reguły FW?&rdquo;</P>
+	<P LANG="zxx">Proponowana odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Potrzebę komunikacji potwierdza właściciel
+	systemu, projektu lub usługi. DB opiniuje ją z punktu widzenia
+	bezpieczeństwa, a administrator wdraża technicznie zgodnie z
+	procesem zmiany. W przypadku reguł istotnych, szerokich, nietypowych
+	albo odstępstw od standardu powinien istnieć wyraźny ślad akceptacji
+	i uzasadnienia.&rdquo;</P>
+	<P LANG="zxx">Dowody:</P>
+	<P LANG="zxx">Przykładowa akceptacja właściciela systemu.</P>
+	<P LANG="zxx">Opinia DB.</P>
+	<P LANG="zxx">Ślad w systemie zmiany.</P>
+	<P LANG="zxx">Rejestr odstępstw, jeżeli reguła jest wyjątkiem.</P>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Czy reguły FW są okresowo przeglądane?&rdquo;</P>
+	<P LANG="zxx">Proponowana odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Reguły są weryfikowane przy zmianach,
+	incydentach, testach, audytach i działaniach porządkowych. Docelowo
+	szczególnie istotne są cykliczne przeglądy reguł historycznych,
+	szerokich, tymczasowych, komunikacji zewnętrznej i reguł dotyczących
+	systemów krytycznych. Jeżeli przegląd wszystkich reguł nie jest
+	jeszcze w pełni ustandaryzowany, traktujemy to jako obszar
+	doskonalenia procesu.&rdquo;</P>
+	<P LANG="zxx">Dowody:</P>
+	<P LANG="zxx">Raport z przeglądu reguł, jeśli jest.</P>
+	<P LANG="zxx">Lista reguł tymczasowych lub historycznych, jeśli jest
+	prowadzona.</P>
+	<P LANG="zxx">Przykład reguły wygaszonej lub zawężonej po
+	przeglądzie.</P>
+	<P LANG="zxx">Plan działań porządkujących.</P>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Czy występują reguły szerokie, np. any-any?&rdquo;</P>
+	<P LANG="zxx">Proponowana odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Zgodnie z podejściem bezpieczeństwa reguły
+	powinny być zawężane do niezbędnego zakresu. Reguły szerokie powinny
+	występować wyłącznie w przypadkach uzasadnionych technicznie albo
+	biznesowo, mieć właściciela, uzasadnienie i być objęte przeglądem
+	lub formalnym odstępstwem. Jeżeli występują reguły historyczne,
+	powinny być przedmiotem działań porządkujących.&rdquo;</P>
+	<P LANG="zxx">Dowody:</P>
+	<P LANG="zxx">Przykład formalnego odstępstwa.</P>
+	<P LANG="zxx">Przykład zawężenia reguły.</P>
+	<P LANG="zxx">Raport z analizy reguł.</P>
+	<H2 CLASS="western">5. Pytania o VPN</H2>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Jak Bank zarządza tunelami VPN?&rdquo;</P>
+	<P LANG="zxx">Proponowana odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Tunele VPN są traktowane jako obszar
+	podwyższonego ryzyka, ponieważ umożliwiają dostęp zdalny albo
+	komunikację z podmiotami zewnętrznymi. Wymagania dla VPN wynikają ze
+	standardów dostępu zdalnego, standardów kryptograficznych i
+	standardów architektury sieci. Dla nowych połączeń stosowane są
+	aktualne wymagania, a historyczne połączenia powinny być
+	inwentaryzowane, przeglądane i dostosowywane.&rdquo;</P>
+	<P LANG="zxx">Dowody:</P>
+	<P LANG="zxx">Wykaz tuneli VPN.</P>
+	<P LANG="zxx">Standardy bezpiecznego dostępu zdalnego.</P>
+	<P LANG="zxx">Standardy kryptograficzne.</P>
+	<P LANG="zxx">Przykładowy wniosek o zestawienie VPN.</P>
+	<P LANG="zxx">Przykład akceptacji DB.</P>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Czy wszystkie tunele VPN mają właścicieli?&rdquo;</P>
+	<P LANG="zxx">Proponowana odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Docelowo każdy tunel VPN powinien mieć
+	właściciela biznesowego lub technicznego, uzasadnienie, zakres
+	komunikacji i informację o powiązanej usłudze lub umowie. Dla
+	połączeń historycznych może być konieczne uporządkowanie
+	właścicielstwa i zasadności dalszego utrzymywania.&rdquo;</P>
+	<P LANG="zxx">Dowody:</P>
+	<P LANG="zxx">Wykaz VPN z polami: właściciel, cel, dostawca, system,
+	termin przeglądu.</P>
+	<P LANG="zxx">Przykład przeglądu tunelu historycznego.</P>
+	<P LANG="zxx">Przykład decyzji o utrzymaniu, zmianie lub wycofaniu
+	VPN.</P>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Czy wszystkie tunele VPN spełniają aktualne
+	standardy kryptograficzne?&rdquo;</P>
+	<P LANG="zxx">Odpowiedź ostrożna:</P>
+	<P LANG="zxx">&bdquo;Dla nowych i zmienianych połączeń stosowane są
+	aktualne standardy kryptograficzne. Dla połączeń historycznych Bank
+	prowadzi lub powinien prowadzić działania porządkujące, obejmujące
+	inwentaryzację parametrów, ocenę zgodności ze standardem,
+	dostosowanie albo formalne udokumentowanie odstępstwa.&rdquo;</P>
+	<P LANG="zxx">Dowody:</P>
+	<P LANG="zxx">Wykaz parametrów kryptograficznych VPN.</P>
+	<P LANG="zxx">Przykład dostosowania tunelu do standardu.</P>
+	<P LANG="zxx">Rejestr odstępstw, jeżeli występują wyjątki.</P>
+	<P LANG="zxx">Plan dostosowania historycznych tuneli.</P>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Czy logi VPN są monitorowane?&rdquo;</P>
+	<P LANG="zxx">Proponowana odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Zdarzenia VPN powinny być objęte monitoringiem
+	bezpieczeństwa zgodnie z wymaganiami dotyczącymi źródeł danych
+	podlegających monitorowaniu. Zakres monitorowania zależy od
+	rozwiązania technicznego, ale istotne są m.in. nieudane logowania,
+	nietypowe próby dostępu, połączenia administracyjne, połączenia
+	zewnętrzne i zdarzenia mogące wskazywać na nadużycie dostępu.&rdquo;</P>
+	<P LANG="zxx">Dowody:</P>
+	<P LANG="zxx">Lista źródeł logów objętych monitoringiem.</P>
+	<P LANG="zxx">Przykład logu VPN w SIEM.</P>
+	<P LANG="zxx">Przykład alertu VPN.</P>
+	<P LANG="zxx">Przykład incydentu albo zgłoszenia powstałego z
+	alertu.</P>
+	<H2 CLASS="western">6. Pytania o nadzór DB nad IT</H2>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Na czym polega nadzór DB nad IT?&rdquo;</P>
+	<P LANG="zxx">Proponowana odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Nadzór DB nad IT jest nadzorem bezpieczeństwa.
+	DB nie przejmuje administracji IT, ale określa wymagania
+	bezpieczeństwa, opiniuje architekturę i zmiany, monitoruje zdarzenia
+	bezpieczeństwa, analizuje ryzyka, identyfikuje odstępstwa i wskazuje
+	działania korygujące. Administratorzy Systemów Bezpieczeństwa
+	wspierają ten nadzór przez utrzymanie narzędzi bezpieczeństwa,
+	analizę alertów i dostarczanie dowodów działania zabezpieczeń.&rdquo;</P>
+	<P LANG="zxx">Dowody:</P>
+	<P LANG="zxx">Regulamin Organizacyjny DB.</P>
+	<P LANG="zxx">Zakres zadań WAiUB / Architektów / Administratorów
+	Systemów Bezpieczeństwa.</P>
+	<P LANG="zxx">Przykłady opinii DB do zmian IT.</P>
+	<P LANG="zxx">Przykład rekomendacji DB po audycie, incydencie lub
+	teście.</P>
+	<P LANG="zxx">Raporty z monitorowania bezpieczeństwa.</P>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Czy DB ma dostęp do konfiguracji urządzeń IT?&rdquo;</P>
+	<P LANG="zxx">Proponowana odpowiedź:</P>
+	<P LANG="zxx">&bdquo;DB powinien mieć dostęp do informacji
+	niezbędnych do nadzoru bezpieczeństwa, opiniowania zmian i analizy
+	incydentów. Nie zawsze oznacza to pełny administracyjny dostęp do
+	każdego urządzenia. Istotne jest, aby DB mógł pozyskać konfiguracje,
+	logi lub raporty potrzebne do oceny bezpieczeństwa.&rdquo;</P>
+	<P LANG="zxx">Dowody:</P>
+	<P LANG="zxx">Przykład pozyskania konfiguracji do analizy.</P>
+	<P LANG="zxx">Raport z przeglądu.</P>
+	<P LANG="zxx">Ticket lub mail z przekazaniem danych przez DI.</P>
+	<P LANG="zxx">Uprawnienia DB do narzędzi monitorowania.</P>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Czy DB może wymusić zmianę w IT?&rdquo;</P>
+	<P LANG="zxx">Proponowana odpowiedź:</P>
+	<P LANG="zxx">&bdquo;DB wskazuje wymaganie bezpieczeństwa,
+	rekomenduje działanie i monitoruje jego realizację. Techniczne
+	wykonanie pozostaje po stronie właściciela technicznego. Jeżeli
+	działanie nie jest realizowane albo istnieje spór dotyczący
+	odpowiedzialności, temat powinien być eskalowany do Pełnomocnika lub
+	właściwego poziomu zarządczego.&rdquo;</P>
+	<P LANG="zxx">To pasuje do szerszej narracji o systemowym
+	zarządzaniu.</P>
+	<P LANG="zxx">Dowody:</P>
+	<P LANG="zxx">Przykład działania naprawczego z właścicielem i
+	terminem.</P>
+	<P LANG="zxx">Rejestr działań doskonalących.</P>
+	<P LANG="zxx">Przykład eskalacji lub statusu działania.</P>
+	<H2 CLASS="western">7. Pytania o systemy bezpieczeństwa
+	administrowane przez DB</H2>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Jakie systemy bezpieczeństwa wspierają nadzór
+	nad siecią?&rdquo;</P>
+	<P LANG="zxx">Proponowana odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Nadzór wspierają systemy bezpieczeństwa służące
+	do monitorowania, detekcji i analizy zdarzeń, w tym m.in. SIEM,
+	EDR/XDR, systemy DLP, systemy obsługi incydentów oraz źródła logów z
+	FW, VPN i innych komponentów istotnych z punktu widzenia
+	bezpieczeństwa. Zakres pokrycia rozwijany jest na podstawie ryzyka i
+	wymagań monitoringu bezpieczeństwa.&rdquo;</P>
+	<P LANG="zxx">Dowody:</P>
+	<P LANG="zxx">Wykaz systemów bezpieczeństwa.</P>
+	<P LANG="zxx">Lista źródeł logów.</P>
+	<P LANG="zxx">Przykładowy dashboard SIEM.</P>
+	<P LANG="zxx">Przykład alertu.</P>
+	<P LANG="zxx">Przykład incydentu lub zgłoszenia.</P>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Czy wszystkie wymagane źródła logów są
+	podłączone?&rdquo;</P>
+	<P LANG="zxx">Odpowiedź ostrożna:</P>
+	<P LANG="zxx">&bdquo;Zakres źródeł danych jest rozwijany zgodnie z
+	wymaganiami monitoringu, krytycznością systemów i możliwościami
+	technicznymi. Priorytetowo obejmowane są źródła istotne dla detekcji
+	incydentów, dostępu zdalnego, komunikacji zewnętrznej i systemów
+	krytycznych. Obszary wymagające rozszerzenia monitoringu są ujmowane
+	w planach doskonalenia.&rdquo;</P>
+	<P LANG="zxx">Dowody:</P>
+	<P LANG="zxx">Lista źródeł podłączonych do SIEM.</P>
+	<P LANG="zxx">Lista źródeł planowanych.</P>
+	<P LANG="zxx">Plan podłączania źródeł.</P>
+	<P LANG="zxx">Raport z przeglądu Ram ICT, jeśli wskazuje rozwój
+	SIEM/SOAR.</P>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Jak kontrolujecie dostęp administratorów do
+	systemów bezpieczeństwa?&rdquo;</P>
+	<P LANG="zxx">Proponowana odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Dostęp do systemów bezpieczeństwa powinien być
+	ograniczony do osób uprawnionych, nadawany zgodnie z rolą,
+	ewidencjonowany i okresowo przeglądany. W przypadku kont
+	uprzywilejowanych stosowane są wymagania wynikające z instrukcji
+	zarządzania kontami uprzywilejowanymi i IDM.&rdquo;</P>
+	<P LANG="zxx">Dowody:</P>
+	<P LANG="zxx">Lista uprawnionych administratorów do systemu
+	bezpieczeństwa.</P>
+	<P LANG="zxx">Przykład przeglądu uprawnień.</P>
+	<P LANG="zxx">Zgłoszenie nadania lub odebrania dostępu.</P>
+	<P LANG="zxx">Instrukcja zarządzania kontami uprzywilejowanymi.</P>
+	<P LANG="zxx">Instrukcja zarządzania uprawnieniami w IDM.</P>
+	<H2 CLASS="western">8. Pytania o zmiany i odstępstwa</H2>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Jak DB nadzoruje zmiany sieciowe?&rdquo;</P>
+	<P LANG="zxx">Proponowana odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Zmiany sieciowe powinny przechodzić przez
+	proces zarządzania zmianą. DB opiniuje zmiany istotne z punktu
+	widzenia bezpieczeństwa, szczególnie dotyczące segmentacji, FW, VPN,
+	DMZ, dostępu zewnętrznego, systemów krytycznych i komunikacji między
+	strefami. Po wdrożeniu zmiana powinna mieć ślad w dokumentacji,
+	konfiguracji lub CMDB.&rdquo;</P>
+	<P LANG="zxx">Dowody:</P>
+	<P LANG="zxx">Przykład zmiany.</P>
+	<P LANG="zxx">Opinia DB.</P>
+	<P LANG="zxx">Akceptacja.</P>
+	<P LANG="zxx">Potwierdzenie wdrożenia.</P>
+	<P LANG="zxx">Aktualizacja dokumentacji.</P>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Co robicie, jeżeli rozwiązanie nie spełnia
+	standardu?&rdquo;</P>
+	<P LANG="zxx">Proponowana odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Jeżeli rozwiązanie nie spełnia standardu, DB
+	wskazuje niezgodność lub ryzyko i rekomenduje działanie korygujące.
+	Jeżeli odstępstwo jest uzasadnione, powinno zostać formalnie
+	zarejestrowane, mieć właściciela, termin obowiązywania i ocenę
+	wpływu na bezpieczeństwo.&rdquo;</P>
+	<P LANG="zxx">Dowody:</P>
+	<P LANG="zxx">Rejestr odstępstw.</P>
+	<P LANG="zxx">Przykład odstępstwa od standardu.</P>
+	<P LANG="zxx">Przykład działania korygującego.</P>
+	<P LANG="zxx">Plan dostosowania.</P>
+	<H2 CLASS="western">9. Pytania o incident response w kontekście
+	sieci</H2>
+	<H3 CLASS="western">Pytanie audytora</H3>
+	<P LANG="zxx">&bdquo;Co się dzieje, gdy monitoring wykryje
+	podejrzany ruch sieciowy?&rdquo;</P>
+	<P LANG="zxx">Proponowana odpowiedź:</P>
+	<P LANG="zxx">&bdquo;Zdarzenie jest analizowane przez właściwe
+	zespoły bezpieczeństwa. W zależności od charakteru może być
+	obsłużone jako alert, zgłoszenie, incydent bezpieczeństwa albo
+	incydent ICT. Możliwe działania to analiza logów, blokada ruchu,
+	zawężenie reguły, kontakt z administratorem, eskalacja do SOC lub
+	DI, a po zakończeniu analiza przyczyny i ewentualne działanie
+	naprawcze.&rdquo;</P>
+	<P LANG="zxx">Dowody:</P>
+	<P LANG="zxx">Przykład alertu.</P>
+	<P LANG="zxx">Zgłoszenie/incydent.</P>
+	<P LANG="zxx">Ślad analizy.</P>
+	<P LANG="zxx">Dowód wykonania działania: blokada, zmiana reguły,
+	rekomendacja.</P>
+	<P LANG="zxx">Raport po incydencie, jeżeli dotyczy.</P>
+	<H2 CLASS="western">10. Co jeszcze może pomóc rozmówcom</H2>
+	<P LANG="zxx">Przygotowałbym krótką mapę ról, jedną stronę:</P>
+	<P LANG="zxx">Architekt Bezpieczeństwa IT: standardy, segmentacja,
+	opiniowanie zmian, wymagania FW/VPN, ocena ryzyka, odstępstwa.</P>
+	<P LANG="zxx">Administrator Systemów Bezpieczeństwa:
+	SIEM/EDR/DLP/inne narzędzia, źródła logów, alerty, monitoring,
+	techniczne dowody, obsługa zdarzeń.</P>
+	<P LANG="zxx">DI /</P>
+	<DIV ID="thread-bottom-container" DIR="LTR">
+		<P LANG="zxx" STYLE="margin-bottom: 0cm"><BR>
+		</P>
+		<DIV ID="prompt-textarea" DIR="LTR">
+			<P LANG="zxx"><BR><BR>
+			</P>
+		</DIV>
+		<DIV ID="_r_bp_" DIR="LTR">
+			<P LANG="zxx" STYLE="margin-bottom: 0cm"><BR>
+			</P>
+		</DIV>
+		<DIV ID="_r_bq_" DIR="LTR">
+			<P LANG="zxx" STYLE="margin-bottom: 0cm"><BR>
+			</P>
+		</DIV>
+		<DIV ID="_r_eo_" DIR="LTR">
+			<P LANG="zxx" STYLE="margin-bottom: 0cm"><BR>
+			</P>
+		</DIV>
+	</DIV>
+</DIV>
+<P LANG="zxx"><BR><BR>
+</P>
+</BODY>
+</HTML>
