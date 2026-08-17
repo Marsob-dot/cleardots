@@ -13,6 +13,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
 <!--[if gte mso 9]><xml>
  <o:DocumentProperties>
  
+ </o:OfficeDocumentSettings>
 </xml><![endif]-->
 <link rel=themeData href="OpisOdpowiedzi_pliki/themedata.thmx">
 <link rel=colorSchemeMapping href="OpisOdpowiedzi_pliki/colorschememapping.xml">
@@ -683,6 +684,9 @@ p.msonormal0, li.msonormal0, div.msonormal0
 	font-family:"Times New Roman",serif;
 	mso-fareast-font-family:"Times New Roman";
 	mso-fareast-theme-font:minor-fareast;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
 .MsoChpDefault
 	{mso-style-type:export-only;
 	mso-default-props:yes;
@@ -1091,19 +1095,58 @@ ul
 
 <div class=WordSection1>
 
-<p class=MsoNormal><b>SOC / Raport incydentu</b><br>
-&#8594; <b>DB – utworzenie przeglądu i częściowe 01_Dane</b><br>
-&#8594; <b>SOC – uzupełnienie 02_SOC tylko w zakresie braków</b><br>
-&#8594; <b>IT/RCA</b><br>
-&#8594; <b>właściciel procesu + BCM + dostawca równolegle</b><br>
-&#8594; <b>architektura / bezpieczeństwo techniczne</b><br>
-&#8594; <b>inne jednostki, jeżeli dotyczą</b><br>
-&#8594; <b>DB uzupełnia ostatecznie 01_Dane</b><br>
-&#8594; <b>DB: działania, źródła, analiza</b><br>
-&#8594; <b>Karta</b><br>
-&#8594; <b>Sprawozdanie</b><br>
-&#8594; <b>KBC</b><br>
-&#8594; <b>Zarząd</b>.<o:p></o:p></p>
+<p class=MsoNormal>RCA uznałem za prawidłowo udokumentowane w istniejących
+materiałach. W 03_IT_RCA jest teraz wskazane, że analiza przyczyny źródłowej
+wynika łącznie z „Raportu z naruszenia bezpieczeństwa nr 004/2026/A”,
+zgłoszenia DORA, „Opisu i planu działania dla awarii KA28012026” oraz
+„Protokołu zakończenia awarii KA28012026”. Nie oczekujemy odrębnego dokumentu o
+nazwie RCA, jeżeli te dokumenty pozwalają jednoznacznie ustalić przyczynę,
+sposób usunięcia i wnioski.<o:p></o:p></p>
+
+<p class=MsoNormal>Włączyłem również dane z wcześniejszej bazowej oceny ryzyka
+ICT. Dla tego incydentu zastosowałem główny scenariusz:<o:p></o:p></p>
+
+<p class=MsoNormal>TI02 – Utrata dostępności systemu + niewłaściwa konfiguracja
+certyfikatu TLS / brak walidacji łańcucha certyfikatów.<o:p></o:p></p>
+
+<p class=MsoNormal>Bazowo przyjęte były <span class=SpellE>Wp</span>=1, <span
+class=SpellE>Wi</span>=1, <span class=SpellE>Wd</span>=3, <span class=SpellE>Wa</span>=2,
+Po=3, Pr=3, czyli R=63. Po incydencie pozostawiłem wpływy i Pr=3, natomiast Po
+podniosłem z 3 do 4, ponieważ incydent wykazał nieskuteczność istniejącej
+kontroli <span class=SpellE>change</span>/test. Daje to R=84, czyli poziom
+średni/akceptowalny, ale ze względu na poważny incydent i stwierdzoną słabość
+przyjęliśmy działania redukujące. Docelowo, po potwierdzeniu ich skuteczności,
+przy Po=2 otrzymujemy R=42.<o:p></o:p></p>
+
+<p class=MsoNormal>Dla ciągłości przyjąłem roboczo RTO=4 godziny i RPO=15 minut,
+wyraźnie oznaczając je jako wartości do formalnego potwierdzenia w BIA/PCD. W
+konsekwencji 13-godzinna niedostępność oznacza roboczo przekroczenie RTO o
+około 9 godzin. Nie stwierdzono utraty danych, więc RPO nie zostało faktycznie
+przekroczone w sensie utraty punktu odtworzenia.<o:p></o:p></p>
+
+<p class=MsoNormal>Wszystkie odwołania typu Z01, Z02 itd. usunąłem. W polach
+„Źródło / dowód / link” występują teraz pełne nazwy, np. „Raport z naruszenia
+bezpieczeństwa nr 004/2026/A”, „CSIRT KNF – zgłoszenie DORA / sprawozdanie
+końcowe dla incydentu 004/2026/A”, „Bazowa ocena ryzyka ICT – zbiorczy arkusz
+scenariuszy ryzyka dla systemów ICT” itd.<o:p></o:p></p>
+
+<p class=MsoNormal>Pozostał natomiast rzeczywisty problem z godzinami. W tym
+zakresie przygotowałem w Formularzu pytanie do SOC. Możesz je też po prostu
+wysłać:<o:p></o:p></p>
+
+<p class=MsoNormal>Proszę o potwierdzenie jednej osi czasu incydentu 004/2026/A
+i wskazanie znaczenia poszczególnych godzin: 08:52 – wykrycie/pierwszy sygnał,
+09:00 – początek wpływu na usługę, 17:00 – identyfikacja w RTIR, 17:24 –
+klasyfikacja jako poważny incydent ICT. Którą godzinę należy przyjąć jako
+faktyczny początek incydentu/przerwy w świadczeniu usługi oraz jaka była
+dokładna godzina eskalacji do DI i Asseco?<o:p></o:p></p>
+
+<p class=MsoNormal>Do odpowiedzi SOC nie blokowałbym dalszego przeglądu. W
+Karcie roboczo pozostawiłem 09:00 jako początek przerwy w świadczeniu usługi,
+ponieważ tak wynika z Karty awarii, a po odpowiedzi SOC będzie można zmienić
+jedno pole i automatycznie odświeżyć Sprawozdanie.<o:p></o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
 
 </div>
 
